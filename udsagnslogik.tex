@@ -1,0 +1,39 @@
+Udsagnslogik bruges til at beskrive logiske strukture uafhænigt af virkeligheden.
+Eksempler fra virkeligheden:
+\begin{itemize}
+    \item ``Det regner''
+    \item ``Det er ikke sandt at det ikke regner''
+    \item ``Hvis jeg regner bliver jeg våd''
+    \item ``Hvis det regner bliver jeg våd. Det regner, derfor bliver jeg våd''
+    \item ``''
+\end{itemize}
+
+For at beskrive sådanne udsagn har vi brug for en del notation notation. Et udsagn vil fra nu af blive beskrevet ved brug af af små bøgstaver: $p, q, \cdots$,
+vi sammensætter udsagns ved hjælp at konnektiver, til disse bruger vi notationen:
+
+\begin{description}
+    \item[$\land$] betyder 'og', det vil sige at $a \land b$ er sand hvis $a$ og $b$ er sande.
+    \item[$\lor$] betyder 'eller', det vil sige at $a \lor b$ er sand hvis $a$, $b$ eller begge er sande.
+    \item[$\lnot$] betyder 'ikke'(læses non), det vil sige at $\lnot a$ er sand, hvis $a$ er falsk.
+    \item[$\imp$] betyder 'medføre', det vil sige at $a \imp b$ er equvivalent med $\lnot a \lor b$.
+    \item[$\bimp$] betyder 'ækvivalent', det vil sige at $a \bimp b$ er sand, hvis $a$ og $b$ har samme sandheds værdi.
+\end{description}
+
+Vi kan nu fjerne alt unødig information fra de eksempler vi havde før:
+\begin{itemize}
+    \item ``$a$''
+    \item ``\lnot \lnot a''
+    \item ``a \imp b''
+\end{itemize}
+
+den sidste sætning kan vi dog endnu ikke reducere til symbolsk logik, derfor bliver vi nød til at indføre mere notation.
+
+\begin{prooftree}
+    \AxiomC{Ting vi antager}
+    \UnaryInfC{Ting vi har lov til at konkludere}
+\end{prooftree}
+
+For at kunne analysere sådanne udtryk, er det nødvendigt at indføre et formelt sprog hvor vi kan beskrive sådanne strukture.
+Logik kan beskrives ved simple substitutioner,  vi vil beskrive disse substitioner med følgene notation:
+
+Så vi kan indføre
