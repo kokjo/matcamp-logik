@@ -2,14 +2,25 @@ I det foregående har vi set hvordan vi formelt kan beskrive simple udsagn og sa
 
 Basis for prædikatlogikken er kvantiseret udtryk:
 \[
-	\forall x : P(x)
+	\forall x \, P(x)
 \]
 
-Det læses som: "For alle $x$ gælder $P(x)$". $\forall$ symbolet kaldet for en "al-kvantor". $x$ her er en variabel, og $P(x)$ er hvad vi kalder for et prædikat - et prædikat er et udsagn der afhænger af en eller flere variable. Præcist hvad variable og prædikater kan være beskæftiger prædikatlogikken sig ikke direkte med, det er noget man definerer ved at tilføje flere aksiomer til ens logiske system.
+Det læses som: "For alle $x$ gælder $P(x)$". $\forall$ symbolet kaldet for en "alkvantor". $x$ her er en variabel, og $P(x)$ er hvad vi kalder for et prædikat - et prædikat er et udsagn der afhænger af en eller flere variable. Præcist hvad variable og prædikater kan være beskæftiger prædikatlogikken sig ikke direkte med, det er noget man definerer ved at tilføje flere aksiomer til ens logiske system.
 
 Så hvad mener vi så når vi siger "alle $x$"? Det kommer an på hvad vi ellers har defineret - eneste det siger er at for enhver variabel vi på en eller anden måde kan komme frem til skal udagnet $P(x)$ være sandt. I matematik har i måske set et lignende udtryk i form af
 \[
 	\forall n \in \nats : 2n \leq n
 \]
 
-Hvis man ikke er bekendt med et sådan udtryk, så er det der står simpelthen den trivielle sætning at hvis man fordobler et naturligt tal så får man et tal der er større end eller lig med tallet. Det har 
+Hvis man ikke er bekendt med et sådan udtryk, så er det der står simpelthen den trivielle sætning at hvis man fordobler et naturligt tal så får man et tal der er større end eller lig med tallet. Denne måde at skrive kvantiseret udtryk på kan ses som en "syntaktisk genvej" til vores måde at skrive kvantiseret udtryk på i prædikatlogik. F.eks. kan ovestående i prædikatlogik skrives som: 
+\[
+	\forall n \, n \in \nats \imp 2n \geq n
+\]
+
+Dvs. "For alle $n$ gælder at når $n$ er et naturligt tal så er $2n$ større eller lig med $n$".
+
+Udover alkvantoren har vi også "eksistenskvantoren": $\exists$. Et kvantiseret udtryk med denne har formen
+\[
+	\exists x \, P(x),
+\]
+hvilket vil sige "Der eksisterer et $x$ hvor $P(x)$ gælder". 
