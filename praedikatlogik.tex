@@ -43,6 +43,20 @@ hvilket vil sige "Der eksisterer et $x$ hvor $P(x)$ gælder". F.eks. kunne vi ha
 	\UnaryInfC{$\exists x \, \phi$}
 \end{prooftree}
 
+Hvad så med at introducere for alle? Hvis vi skal bevise at noget gælder for alle elementer i en samling så starter vi med at antage at vi er givet et af elementerne hvorefter vi viser sætningen for dette. Hvis vi kan vise at sætningen gælder lige meget hvilket element vi er givet så vil det være oplagt at konstatere at det gælder for alle elementer. Derfor introducere vi "for alle introduktion":
+\begin{prooftree}
+	\AxiomC{$$\boxed{
+		\begin{matrix}
+			x_0 \\
+			\vdots \\
+			\phi[x_0/x]
+		\end{matrix}
+	}$$}
+	\RightLabel{$\forall x $ i}
+	\UnaryInfC{$\forall x \, \phi$}
+\end{prooftree}
+
+
 %\begin{prooftree}
 %	\AxiomC{$$\boxed{
 %		\begin{matrix}
