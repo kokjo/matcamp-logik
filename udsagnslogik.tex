@@ -97,6 +97,7 @@ Vi bliver derfor nød til at skabe 2 seperate beviser hvor vi antager $\phi$ og 
             \vdots \\
             \alpha
         \end{matrix}}$$}
+    \RightLabel{($\lor e$)}
     \TrinaryInfC{$\alpha$}
 \end{prooftree}
 
@@ -108,7 +109,54 @@ Reglerne for negation:
             \vdots \\
             \bot
         \end{matrix}}$$}
+    \RightLabel{($\lnot i$)}
     \UnaryInfC{$\lnot \phi$}
+\end{prooftree}
+Hvis du antager noget og kommer frem til at du kan konkludere falsk, må det du antog være falsk. Det omvendte er derfor sandt.
+
+\begin{prooftree}
+    \AxiomC{$\lnot \lnot \phi$}
+    \RightLabel{($\lnot \lnot e$)}
+    \UnaryInfC{$\phi$}
+\end{prooftree}
+``minus minus giver plus''
+
+\begin{prooftree}
+    \AxiomC{$$\boxed{
+        \begin{matrix}
+            \phi \\
+            \vdots \\
+            \psi
+        \end{matrix}}$$}
+    \RightLabel{($\imp$ i)}
+    \UnaryInfC{$\phi \imp \psi$}
+\end{prooftree}
+Hvis du kan bevise $\psi$ udfra $\psi$ så $\phi \imp \psi$.
+
+\begin{prooftree}
+    \AxiomC{$\phi \imp \psi$}
+    \AxiomC{$\phi$}
+    \RightLabel{($\imp$ e)}
+    \BinaryInfC{$\psi$}
+\end{prooftree}
+Hvis $\phi$ medføre $\psi$, og $\phi$ er sand, må $\psi$ også være sand.
+
+\subsection{Beviser}
+Da vi nu har alle reglerne på plads, kan vi bruge dem til at vise at andre sætninger er sande.
+Hvis vi tager sætningen $p \imp q \vdash p \land r \imp q \land r$, ser vi at det ikke er en af vores axiomer,
+Men vi kan udfra vores axiomer konkludere om sætningen er sand, ved at udføre et bevis for den:
+\begin{prooftree}
+    \AxiomC{$p \imp q$}
+    \AxiomC{$p \land r$}
+    \RightLabel{($\land e_1$)}
+    \UnaryInfC{$p$}
+    \RightLabel{($\imp$ e)}
+    \BinaryInfC{$q$}
+    \AxiomC{$p \land r$}
+    \RightLabel{($\land e_2$)}
+    \UnaryInfC{$r$}
+    \RightLabel{($\land i$)}
+    \BinaryInfC{$q \land r$} 
 \end{prooftree}
 
 %\begin{tabular}[l c r]
