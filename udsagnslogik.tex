@@ -3,7 +3,7 @@ Eksempler fra virkeligheden:
 \begin{itemize}
     \item ``Det regner''
     \item ``Det er ikke sandt at det ikke regner''
-    \item ``Hvis jeg regner bliver jeg våd''
+    \item ``Hvis det regner bliver jeg våd''
     \item ``Hvis det regner bliver jeg våd. Det regner, derfor bliver jeg våd''
 \end{itemize}
 
@@ -15,7 +15,7 @@ vi sammensætter udsagns ved hjælp at konnektiver, til disse bruger vi notation
     \item[$\lor$] betyder 'eller', det vil sige at $a \lor b$ er sand hvis $a$, $b$ eller begge er sande.
     \item[$\lnot$] betyder 'ikke'(læses non), det vil sige at $\lnot a$ er sand, hvis $a$ er falsk.
     \item[$\imp$] betyder 'medføre', det vil sige at $a \imp b$ er equvivalent med $\lnot a \lor b$.
-    \item[$\bimp$] betyder 'ækvivalent', det vil sige at $a \bimp b$ er sand, hvis $a$ og $b$ har samme sandheds værdi.
+    \item[$\bimp$] betyder 'ækvivalent med', det vil sige at $a \bimp b$ er sand, hvis $a$ og $b$ har samme sandheds værdi.
 \end{description}
 
 Vi kan nu fjerne alt unødig information fra de eksempler vi havde før:
@@ -32,7 +32,37 @@ Den sidste sætning kan vi dog endnu ikke reducere til symboler, derfor bliver v
     \UnaryInfC{Ting vi har lov til at konkludere}
 \end{prooftree}
 
+Nu kan vi så antage at $a \imp b$ og $a$ og derefter konkludere $b$:
+\begin{prooftree}
+    \AxiomC{$a \imp b$}
+    \AxiomC{$a$}
+    \BinaryInfC{$b$}
+\end{prooftree}
+
+Vi kan med denne notation kan vi indføre regler for hvad vi kan konkludere udfra sammesatte udsagn.
+F.eks. kan reglerne for brugen af 'og' sammensætnigen defineres som 3 regler:
+
+\begin{prooftree}
+    \AxiomC{$\phi$}
+    \AxiomC{$\psi$}
+    \RightLabel{($\land$i)}
+    \BinaryInfC{$\phi \land \psi$}
+\end{prooftree}
+Reglen siger at hvis vi ved $\phi$ og $\psi$ er sande, ved vi også at $\phi \land \psi$ er sand(vi har bare lavet 'og' om til $\land$)
+
+\begin{prooftree}
+    \AxiomC{$\phi \land \psi$}
+    \RightLabel{($\land e_1$)}
+    \UnaryInfC{$\phi$}
+\end{prooftree}
+
+\begin{prooftree}
+    \AxiomC{$\phi \land \psi$}
+    \RightLabel{($\land e_2$)}
+    \UnaryInfC{$\psi$}
+\end{prooftree}
+Hvis vi ved at $\phi \land \psi$ er sand, ved vi specielt også at $\phi$ og $\psi$ er sande hver for sig.
+
 For at kunne analysere sådanne udtryk, er det nødvendigt at indføre et formelt sprog hvor vi kan beskrive sådanne strukture.
 Logik kan beskrives ved simple substitutioner,  vi vil beskrive disse substitioner med følgene notation:
 
-Så vi kan indføre
