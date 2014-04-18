@@ -9,7 +9,7 @@ Det læses som: "For alle $x$ gælder $P(x)$". $\forall$ symbolet kaldet for en 
 
 Så hvad mener vi så når vi siger "alle $x$"? Det kommer an på hvad vi ellers har defineret - eneste det siger er at for enhver variabel vi på en eller anden måde kan komme frem til skal udagnet $P(x)$ være sandt. I matematik har i måske set et lignende udtryk i form af
 \[
-	\forall n \in \nats : 2n \leq n
+	\forall n \in \nats : 2n \geq n
 \]
 
 Hvis man ikke er bekendt med et sådan udtryk, så er det der står simpelthen den trivielle sætning at hvis man fordobler et naturligt tal så får man et tal der er større end eller lig med tallet. Denne måde at skrive kvantiseret udtryk på kan ses som en "syntaktisk genvej" til vores måde at skrive kvantiseret udtryk på i prædikatlogik. F.eks. kan ovestående i prædikatlogik skrives som: 
@@ -18,9 +18,38 @@ Hvis man ikke er bekendt med et sådan udtryk, så er det der står simpelthen d
 \]
 
 Dvs. "For alle $n$ gælder at når $n$ er et naturligt tal så er $2n$ større eller lig med $n$".
+Hvis vi ved at noget gælder for alle elementer i en samling må vi også kunne sige at det gælder for enkelte af dem.
+F.eks. hvis vi har sætningen "alle stjerner er mere end 1000 km væk"{ }så skulle vi nok også kunne konkludere at solen er mere end 1000 km væk.
+Vi introducerer derfor vores første aksiom "for alle eliminering":
+\begin{prooftree}
+	\AxiomC{$\forall x \, \phi$}
+	\RightLabel{$\forall x$ e}
+	\UnaryInfC{$\phi[t/x]$}
+\end{prooftree}
+Her betyder $\phi[t/x]$ at vi tager $\phi$ og erstatter med $t$ alle forekomster af $x$ der er frie for $t$.
+Og hvad betyder det så? Lad os tage udsagnet $\forall x \exists y \, x < y$. Det er naturligvis sandt for f.eks. reelle tal.
+Hvis vi nu bruger $\forall x$ e hvor vi erstatter $x$ med $y$ så får vi $\exists y \, y < y$. Nu kan et tal ikke være mindre end sig selv, så det er noget vås vi får ud af det.
+Det er derfor vigtigt at vi ikke substituerer med en variabel der er bundet til en kvantor.
+I det her tilfælde ville vi sige at $x$ ikke var fri for $y$ -- altså $x$ kan ikke erstattes med $y$ fordi $x$ fremgår i et prædikat hvor $y$ er bundet af en kvantor.
 
 Udover alkvantoren har vi også "eksistenskvantoren": $\exists$. Et kvantiseret udtryk med denne har formen
 \[
 	\exists x \, P(x),
 \]
-hvilket vil sige "Der eksisterer et $x$ hvor $P(x)$ gælder". 
+hvilket vil sige "Der eksisterer et $x$ hvor $P(x)$ gælder". F.eks. kunne vi have udtrykket "der findes en bilejer": $\exists x \, x\text{ ejer en bil}$. Hvordan finder vi så ud af at dette er sandt? En måde kunne jo være at bevise det ved et eksempel. Lad os f.eks. sige at vi finder en bilejer der hedder Søren. Så skal vi fra sætningen "Søren ejer en bil" kunne konkludere $\exists x \, x\text{ ejer en bil}$. Så vi kunne jo passende introducere et axiom der tillader os dette:
+\begin{prooftree}
+	\AxiomC{$\phi[t/x]$}
+	\RightLabel{$\exists x $ i}
+	\UnaryInfC{$\exists x \, \phi$}
+\end{prooftree}
+
+%\begin{prooftree}
+%	\AxiomC{$$\boxed{
+%		\begin{matrix}
+%			\phi \\
+%			\vdots \\
+%			\psi
+%		\end{matrix}
+%	}$$}
+%	\UnaryInfC{$\exists x \, \phi$}
+%\end{prooftree}
