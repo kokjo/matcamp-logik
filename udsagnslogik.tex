@@ -3,11 +3,12 @@ Eksempler fra virkeligheden:
 \begin{itemize}
     \item ``Det regner''
     \item ``Det er ikke sandt at det ikke regner''
-    \item ``Hvis jeg regner bliver jeg våd''
+    \item ``Hvis det regner bliver jeg våd''
     \item ``Hvis det regner bliver jeg våd. Det regner, derfor bliver jeg våd''
 \end{itemize}
 
 For at beskrive sådanne udsagn har vi brug for en del notation notation. Et udsagn vil fra nu af blive beskrevet ved brug af af små bøgstaver: $p, q, \cdots$,
+eller små græske bogstaver: $\phi$, $\psi$, \ldots
 vi sammensætter udsagns ved hjælp at konnektiver, til disse bruger vi notationen:
 
 \begin{description}
@@ -15,8 +16,10 @@ vi sammensætter udsagns ved hjælp at konnektiver, til disse bruger vi notation
     \item[$\lor$] betyder 'eller', det vil sige at $a \lor b$ er sand hvis $a$, $b$ eller begge er sande.
     \item[$\lnot$] betyder 'ikke'(læses non), det vil sige at $\lnot a$ er sand, hvis $a$ er falsk.
     \item[$\imp$] betyder 'medføre', det vil sige at $a \imp b$ er equvivalent med $\lnot a \lor b$.
-    \item[$\bimp$] betyder 'ækvivalent', det vil sige at $a \bimp b$ er sand, hvis $a$ og $b$ har samme sandheds værdi.
+    \item[$\bimp$] betyder 'ækvivalent med', det vil sige at $a \bimp b$ er sand, hvis $a$ og $b$ har samme sandheds værdi.
 \end{description}
+
+
 
 Vi kan nu fjerne alt unødig information fra de eksempler vi havde før:
 \begin{itemize}
@@ -32,7 +35,87 @@ Den sidste sætning kan vi dog endnu ikke reducere til symboler, derfor bliver v
     \UnaryInfC{Ting vi har lov til at konkludere}
 \end{prooftree}
 
-For at kunne analysere sådanne udtryk, er det nødvendigt at indføre et formelt sprog hvor vi kan beskrive sådanne strukture.
-Logik kan beskrives ved simple substitutioner,  vi vil beskrive disse substitioner med følgene notation:
+Vi skal også bruge notationen $p \vdash q$ for at sige at p beviser q(der eksistere et bevis som antager p og konkludere q, uden rent faktisk at give et bevis for det).
 
-Så vi kan indføre
+Nu kan vi så antage at $a \imp b$ og $a$ og derefter konkludere $b$:
+\begin{prooftree}
+    \AxiomC{$a \imp b$}
+    \AxiomC{$a$}
+    \BinaryInfC{$b$}
+\end{prooftree}
+
+Vi kan med denne notation kan vi indføre regler for hvad vi kan konkludere udfra sammesatte udsagn.
+F.eks. kan reglerne for brugen af 'og' sammensætnigen defineres som 3 regler:
+
+\begin{prooftree}
+    \AxiomC{$\phi$}
+    \AxiomC{$\psi$}
+    \RightLabel{($\land$i)}
+    \BinaryInfC{$\phi \land \psi$}
+\end{prooftree}
+Reglen siger at hvis vi ved $\phi$ og $\psi$ er sande, ved vi også at $\phi \land \psi$ er sand(vi har bare lavet 'og' om til $\land$). Reglen kaldes introduktion af 'og'
+
+\begin{prooftree}
+    \AxiomC{$\phi \land \psi$}
+    \RightLabel{($\land e_1$)}
+    \UnaryInfC{$\phi$}
+\end{prooftree}
+
+\begin{prooftree}
+    \AxiomC{$\phi \land \psi$}
+    \RightLabel{($\land e_2$)}
+    \UnaryInfC{$\psi$}
+\end{prooftree}
+Hvis vi ved at $\phi \land \psi$ er sand, ved vi specielt også at $\phi$ og $\psi$ er sande hver for sig. Disse 2 regler kaldes elimination af 'og'.
+
+'eller'-reglerne er lidt sværer, for at introducere et $\lor$ er det kun nødvendigt at vide om en af 2 udsagn er sande:
+\begin{prooftree}
+    \AxiomC{$\phi$}
+    \RightLabel{($\lor i_1$)}
+    \UnaryInfC{$\phi \lor \psi$}
+\end{prooftree}
+\begin{prooftree}
+    \AxiomC{$\psi$}
+    \RightLabel{($\lor i_2$)}
+    \UnaryInfC{$\phi \lor \psi$}
+\end{prooftree}
+
+Elimination af 'eller' er den del svære, hvis vi har lyst til at konkludere $\alpha$ udfra $\phi \lor \psi$, ved vi ikke om det er $\phi$, $\psi$ eller begge som er sande.
+Vi bliver derfor nød til at skabe 2 seperate beviser hvor vi antager $\phi$ og $\psi$ seperat og konkludere $\alpha$ i begge tilfælde:
+
+\begin{prooftree}
+    \AxiomC{$\phi \lor \psi$}
+    \AxiomC{$$\boxed{
+        \begin{matrix}
+            \phi \\
+            \vdots \\
+            \alpha
+        \end{matrix}}$$}
+    \AxiomC{$$\boxed{
+        \begin{matrix}
+            \phi \\
+            \vdots \\
+            \alpha
+        \end{matrix}}$$}
+    \TrinaryInfC{$\alpha$}
+\end{prooftree}
+
+Reglerne for negation:
+\begin{prooftree}
+    \AxiomC{$$\boxed{
+        \begin{matrix}
+            \phi \\
+            \vdots \\
+            \bot
+        \end{matrix}}$$}
+    \UnaryInfC{$\lnot \phi$}
+\end{prooftree}
+
+%\begin{tabular}[l c r]
+%    \begin{prooftree}
+%        \AxiomC{$\phi$}
+%        \RightLable{($\lor i$)}
+%        \UnaryInfC{$\phi \lor \psi$}
+%    \end{prooftree} &
+%\end{tabular}
+
