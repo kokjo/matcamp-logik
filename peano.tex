@@ -1,0 +1,41 @@
+Formålet med peanos aksiom system er at beskrive hvad vi tænker på som naturlige tal.
+
+De ser således ud:
+
+\[ 0 \in \nats \]
+Hvilket betyder: ``$0$'' er indeholdt i mængden af naturlige tal, dvs. ``$0$'' er et naturligt tal.
+
+For at vi kan tale om lighed bliver vi nød til at indføre det formelt først.
+Det er derfor nødvendigt at definere hvordan ``$=$'' fungere, ved at beskrive hvilke ting det opfylder:
+
+\[ \forall n \in \nats: n = n \]
+``$=$''-relationen er refleksiv: Alle naturlige tal er lig med sig selv.
+
+\[ \forall x,y \in \nats: x = y \bimp y = x \]
+``$=$''-relationen er symmetrisk.
+
+\[ \forall x,y,z \in \nats: x = y \land y = z \imp x = z \]
+``$=$''-relationen er transitiv: Hvis x er ligmed y og y er ligmed z så må x være ligmed z.
+
+\[ \forall y \forall x \in \nats: x = y \imp y \in \nats \]
+``$=$''-relationen er begrænset til de naturlige tal. De naturlige tal er lukket under ``$=$''.
+
+
+Med det vi har indført indtil videre er det eneste vi ved med sikkerhed omkring de naturlige tal er at der findes mindst et(``0''),
+samt at dette tal er lig med sig selv. Vi indføre derfor hva det vil sige at noget kommer efter noget andet,
+ved at indføre efter følger funktionen $S$. Igen vil vi gøre således som vi intuitivt tænker på de naturlige tal.
+
+Følgende gælder for $S$:
+
+\[ \forall n: n \in \nats \imp S(n) \in \nats \]
+Hvis $n$ er et naturligt tal, så er det som kommer efter $n$ også et naturligt tal.
+
+\[ \forall n: \neg (S(n) = 0) \]
+Der findes intet naturligt tal hvis efterfølger er $0$.
+
+\[ \forall x, y \in \nats: x = y \imp S(x) = S(y) \]
+$2$ naturlige tal som er ens(dvs. opfylder ``$=$''-relationen) har også efterfølger som er ens.
+Dette giver en sammenhængen mellem ``$=$'' og $S$ som vi ikke kunne sige noget om før,
+indtil nu ``$=$'' og $S$ været uafhænige af hinnanden.
+
+ 
