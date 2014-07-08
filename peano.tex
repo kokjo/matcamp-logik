@@ -2,41 +2,50 @@ Formålet med peanos aksiom system er at beskrive hvad vi tænker på som naturl
 
 De ser således ud:
 
-\[ 0 \in \nats \]
-Hvilket betyder: ``$0$'' er indeholdt i mængden af naturlige tal, dvs. ``$0$'' er et naturligt tal.
-
-For at vi kan tale om lighed bliver vi nød til at indføre det formelt først.
-Det er derfor nødvendigt at definere hvordan ``$=$'' fungere, ved at beskrive hvilke ting det opfylder:
-
-\[ \forall n \in \nats: n = n \]
-``$=$''-relationen er refleksiv: Alle naturlige tal er lig med sig selv.
-
-\[ \forall x,y \in \nats: x = y \bimp y = x \]
-``$=$''-relationen er symmetrisk.
-
-\[ \forall x,y,z \in \nats: x = y \land y = z \imp x = z \]
-``$=$''-relationen er transitiv: Hvis x er ligmed y og y er ligmed z så må x være ligmed z.
-
-\[ \forall y \forall x \in \nats: x = y \imp y \in \nats \]
-``$=$''-relationen er begrænset til de naturlige tal. De naturlige tal er lukket under ``$=$''.
-Det er vigtigt at bemærke at dette ikke udelukker at der findes ting som ikke er naturlige tal,
-bare at vi ik kan bruge 'vores' ``$=$'' til andet end at sammenligne naturlige tal.
+\begin{prooftree}
+    \AxiomC{}
+    \UnaryInfC{$nat(0)$}
+\end{prooftree}
+Hvilket betyder: symbolet ``$0$'' er et naturligt tal (er en taotologi) og dette $0$ er et naturligt tal.
 
 
 Med det vi har indført indtil videre er det eneste vi ved med sikkerhed omkring de naturlige tal er at der findes mindst et(``0''),
-samt at dette tal er lig med sig selv. Vi indføre derfor hva det vil sige at noget kommer efter noget andet,
-ved at indføre efter følger funktionen $S$. Igen vil vi gøre således som vi intuitivt tænker på de naturlige tal.
+samt at dette tal er lig med sig selv.
+Vi indføre derfor hvad det vil sige at noget kommer efter noget andet,
+ved at indføre efterfølger prædikatet $S$.
+
+Igen vil vi gøre således som vi intuitivt tænker på de naturlige tal.
 
 Følgende gælder for $S$:
 
-\[ \forall n: n \in \nats \imp S(n) \in \nats \]
-Hvis $n$ er et naturligt tal, så er det som kommer efter $n$ også et naturligt tal.
+\begin{prooftree}
+    \AxiomC{$\forall n \, nat(n)$}
+    \UnaryInfC{$nat(S(n))$}
+\end{prooftree}
+Alle naturlige tal har en eterfølger som også selv er et naturligt tal.
 
-\[ \forall n: \neg (S(n) = 0) \]
-Der findes intet naturligt tal hvis efterfølger er $0$.
+\begin{prooftree}
+    \AxiomC{$\forall n \, nat(n)$}
+    \UnaryInfC{$\neg (S(n) = 0)$}
+\end{prooftree}
+Der findes intet naturligt tal hvis efterfølger er $0$(alle naturlige tal er ikke efterfølgere til $0$).
 
-\[ \forall x, y \in \nats: x = y \imp S(x) = S(y) \]
+\begin{prooftree}
+    \AxiomC{$\forall x, y \, nat(x) \land nat(y)$}
+    \UnaryInfC{$S(x) = S(y)$}
+\end{prooftree}
 $2$ naturlige tal som er ens(dvs. opfylder ``$=$''-relationen) har også efterfølger som er ens.
 Dette giver en sammenhængen mellem ``$=$'' og $S$ som vi ikke kunne sige noget om før,
 indtil nu ``$=$'' og $S$ været uafhænige af hinnanden.
+
+
+Det vigtigste aksiom er nok det vigtigste: Induktions aksiomet, hvilket giver os mulig hed for at introducere et
+$\forall$-symbol med visse begrensninger:
+\begin{prooftree}
+    \AxiomC{$\phi(0) \land \forall a(\phi(a) \imp \phi(S(a)))$}
+    \UnaryInfC{$\forall a \phi(a)$}
+\end{prooftree}
+Såfremt at en sætning($\phi$) er sand for $0$ og at hvis sætningen er sand for et naturligt tal
+medføre at sætningen også er sand for dettes tals efterfølger,
+kan vi konkludere at sætningen er sand for alle naturlige tal.
 
