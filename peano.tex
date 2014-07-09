@@ -31,21 +31,62 @@ Alle naturlige tal har en eterfølger som også selv er et naturligt tal.
 Der findes intet naturligt tal hvis efterfølger er $0$(alle naturlige tal er ikke efterfølgere til $0$).
 
 \begin{prooftree}
-    \AxiomC{$\forall x, y \, nat(x) \land nat(y)$}
-    \UnaryInfC{$S(x) = S(y)$}
+    \AxiomC{$S(x) = S(y)$}
+    \UnaryInfC{$x = y$}
 \end{prooftree}
-$2$ naturlige tal som er ens(dvs. opfylder ``$=$''-relationen) har også efterfølger som er ens.
+$2$ naturlige tal hvis efterfølgere er ens(dvs. opfylder ``$=$''-relationen) er også ens.
 Dette giver en sammenhængen mellem ``$=$'' og $S$ som vi ikke kunne sige noget om før,
-indtil nu ``$=$'' og $S$ været uafhænige af hinnanden.
+indtil nu ``$=$'' og $S$ været uafhænige af hinnanden. Dette aksiom giver også mulighedden for at fjerne $S$'er
 
-
-Det vigtigste aksiom er nok det vigtigste: Induktions aksiomet, hvilket giver os mulig hed for at introducere et
+Det vigtigste aksiom er nok det vigtigste: Induktions aksiomet, hvilket giver os mulighed for at introducere et
 $\forall$-symbol med visse begrensninger:
 \begin{prooftree}
-    \AxiomC{$\phi(0) \land \forall a(\phi(a) \imp \phi(S(a)))$}
-    \UnaryInfC{$\forall a \phi(a)$}
+    \AxiomC{$\phi(0)$}
+    \AxiomC{$\forall a(\phi(a) \imp \phi(S(a)))$}
+    \BinaryInfC{$\forall a \phi(a)$}
 \end{prooftree}
 Såfremt at en sætning($\phi$) er sand for $0$ og at hvis sætningen er sand for et naturligt tal
 medføre at sætningen også er sand for dettes tals efterfølger,
 kan vi konkludere at sætningen er sand for alle naturlige tal.
 
+\subsection*{Aritmetik med naturlige tal}
+Da vi nu har indført hvad det vil sige at være et naturligt tal,
+kan vi udvide vores aksiom system med hvordan addition og multiplikation virker.
+
+Aksiomerne for addition ser således ud:
+
+\begin{prooftree}
+    \AxiomC{$nat(a)$}
+    \UnaryInfC{$a+0 = a$}
+\end{prooftree}
+Hvis man ligger 0 og et naturligt tal sammen vil dette 'nye' naturlige tal være det sammen som det første.
+
+\begin{prooftree}
+    \AxiomC{$nat(a)$}
+    \AxiomC{$nat(b)$}
+    \BinaryInfC{$S(a) + S(b) = S(S(a)) + b$}
+\end{prooftree}
+
+
+For multiplikation gælder der:
+\begin{prooftree}
+    \AxiomC{$nat(a)$}
+    \UnaryInfC{$a \times S(0) = a$}
+\end{prooftree}
+
+\begin{prooftree}
+    \AxiomC{$nat(a)$}
+    \AxiomC{$nat(b)$}
+    \BinaryInfC{$S(a) \times S(b) = S(a) \times b + S(a)$}
+\end{prooftree}
+
+\subsection*{bevis for at addition er kommutativ}
+
+\begin{tabular}{l c r}
+    1 & $nat(S(a))$ premisse \\
+    2 & $S(a) + S(0)$ antaglese \\
+    3 & $S(S(a) + 0)$ additions-egenskaben
+    4 & $i$ \\
+    2 & $nat(b)$ premisse \\
+
+\end{tabular}
