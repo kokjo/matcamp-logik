@@ -4,6 +4,7 @@ De ser således ud:
 
 \begin{prooftree}
     \AxiomC{}
+    \RightLabel{($p_{0a}$)}
     \UnaryInfC{$nat(0)$}
 \end{prooftree}
 Hvilket betyder: symbolet ``$0$'' er et naturligt tal (er en taotologi) og dette $0$ er et naturligt tal.
@@ -20,18 +21,21 @@ Følgende gælder for $S$:
 
 \begin{prooftree}
     \AxiomC{$\forall n \, nat(n)$}
+    \RightLabel{($p_S$)}
     \UnaryInfC{$nat(S(n))$}
 \end{prooftree}
 Alle naturlige tal har en eterfølger som også selv er et naturligt tal.
 
 \begin{prooftree}
     \AxiomC{$\forall n \, nat(n)$}
+    \RightLabel{($p_{0b}$)}
     \UnaryInfC{$\neg (S(n) = 0)$}
 \end{prooftree}
 Der findes intet naturligt tal hvis efterfølger er $0$(alle naturlige tal er ikke efterfølgere til $0$).
 
 \begin{prooftree}
     \AxiomC{$S(x) = S(y)$}
+    \RightLabel{($p_{=} $)}
     \UnaryInfC{$x = y$}
 \end{prooftree}
 $2$ naturlige tal hvis efterfølgere er ens(dvs. opfylder ``$=$''-relationen) er også ens.
@@ -43,6 +47,7 @@ $\forall$-symbol med visse begrensninger:
 \begin{prooftree}
     \AxiomC{$\phi(0)$}
     \AxiomC{$\forall a(\phi(a) \imp \phi(S(a)))$}
+    \RightLabel{($p_I$)}
     \BinaryInfC{$\forall a \phi(a)$}
 \end{prooftree}
 Såfremt at en sætning($\phi$) er sand for $0$ og at hvis sætningen er sand for et naturligt tal
@@ -57,6 +62,7 @@ Aksiomerne for addition ser således ud:
 
 \begin{prooftree}
     \AxiomC{$nat(a)$}
+    \RightLabel{(${p+}_1$)}
     \UnaryInfC{$a+0 = a$}
 \end{prooftree}
 Hvis man ligger 0 og et naturligt tal sammen vil dette 'nye' naturlige tal være det sammen som det første.
@@ -64,29 +70,60 @@ Hvis man ligger 0 og et naturligt tal sammen vil dette 'nye' naturlige tal være
 \begin{prooftree}
     \AxiomC{$nat(a)$}
     \AxiomC{$nat(b)$}
+    \RightLabel{(${p+}_2$)}
     \BinaryInfC{$S(a) + S(b) = S(S(a)) + b$}
 \end{prooftree}
-
+Additions egenskaben, beskriver hvordan vi tænker på addition intuitivt.
 
 For multiplikation gælder der:
 \begin{prooftree}
     \AxiomC{$nat(a)$}
+    \RightLabel{($p\times_1$)}
     \UnaryInfC{$a \times S(0) = a$}
 \end{prooftree}
 
 \begin{prooftree}
     \AxiomC{$nat(a)$}
     \AxiomC{$nat(b)$}
+    \RightLabel{($p\times_2$)}
     \BinaryInfC{$S(a) \times S(b) = S(a) \times b + S(a)$}
 \end{prooftree}
 
-\subsection*{bevis for at addition er kommutativ}
+
+\subsection*{Bevis for at ``$0$'' er et nuetral element}
+Vi vil vise at predikatet $P(a) := 0+a = a$ er sand for alle naturlige tal.
 
 \begin{tabular}{l c r}
-    1 & $nat(S(a))$ premisse \\
-    2 & $S(a) + S(0)$ antaglese \\
-    3 & $S(S(a) + 0)$ additions-egenskaben
-    4 & $i$ \\
-    2 & $nat(b)$ premisse \\
+    1 & $0+0$ & \\
+    2 & $0$ & Axiom($p+_1, 1$) \\
+    3 & $P(0)$ & 2 \\
+    \hline
+    4 & $P(a)$ & antagelse \\
+    5 & $0+a = a$ & 4 \\
+    6 & $S(0+a) = S(a)$ & 5 \\
+    7 & $0+S(a) = S(a)$ & 6 \\
+    8 & $P(S(a))$ & 7 \\
+    \hline
+    9 & $P(a) \imp P(S(a))$ & 4-7 \\
+    10 & $\forall a\, nat(a) \imp P(a)$ & induktion(3, 9) \\
+    11 & $\forall a\, nat(a) \imp 0+a = a$ & 10
+\end{tabular}
 
+\subsection*{Bevis for at addition er kommutativ}
+Vi vil gerne bevise følgende sætning:
+
+\begin{prooftree}
+    \AxiomC{$nat(a)$}
+    \AxiomC{$nat()$}
+    \BinaryInfC{$a + b = b + a$}
+\end{prooftree}
+
+\begin{tabular}{l c r}
+    1 & $nat(a)$ & Premisse \\
+    2 & $nat(0)$ & Aksiom($p_0a$) \\
+    3 & $nat(S(0))$ & Aksiom($p_S$, 2) \\
+    2 & $a + S(0)$ & Antaglese \\
+    3 & $S(a) + 0)$ & Aksiom(${p+}_1$) \\
+    4 & $i$ &  \\
+    2 & $nat(b)$ premisse \\
 \end{tabular}
