@@ -89,9 +89,11 @@ For multiplikation gælder der:
     \BinaryInfC{$S(a) \times S(b) = S(a) \times b + S(a)$}
 \end{prooftree}
 
-
-\subsection*{Bevis for at ``$0$'' er et nuetral element}
-Vi vil vise at predikatet $P(a) := 0+a = a$ er sand for alle naturlige tal.
+\subsection*{Bevis for at ``$0$'' er et neutral element}
+Vi ved allerede at ``$0$''neutral element hvis man bruger det fra højre side.
+For at vise at det er et neutral element,
+mangler vi at vise at der er et venstre nuetral element.
+For at gøre dette viser vi at predikatet $P(a) := 0+a = a$ er sand for alle naturlige tal.
 
 \begin{tabular}{l c r}
     1 & $0+0$ & \\
@@ -109,16 +111,16 @@ Vi vil vise at predikatet $P(a) := 0+a = a$ er sand for alle naturlige tal.
     11 & $\forall a\, 0+a = a$ & 10
 \end{tabular}
 
-\subsection*{Bevis for at addition er kommutativ}
-Vi vil gerne bevise at prædikatet $P(a) := a+b= b+a$ er sand for alle naturlige tal $a$ og $b$
-
-
-\begin{tabular}{l c r}
-    1 & $nat(a)$ & Premisse \\
-    2 & $nat(0)$ & Aksiom($p_0a$) \\
-    3 & $nat(S(0))$ & Aksiom($p_S$, 2) \\
-    2 & $a + S(0)$ & Antaglese \\
-    3 & $S(a) + 0)$ & Aksiom(${p+}_1$) \\
-    4 & $i$ &  \\
-    2 & $nat(b)$ premisse \\
-\end{tabular}
+%\subsection*{Bevis for at addition er kommutativ}
+%Vi vil gerne bevise at prædikatet $P(a) := a+b= b+a$ er sand for alle naturlige tal $a$ og $b$
+%
+%
+%\begin{tabular}{l c r}
+%    1 & $nat(a)$ & Premisse \\
+%    2 & $nat(0)$ & Aksiom($p_0a$) \\
+%    3 & $nat(S(0))$ & Aksiom($p_S$, 2) \\
+%    2 & $a + S(0)$ & Antaglese \\
+%    3 & $S(a) + 0)$ & Aksiom(${p+}_1$) \\
+%    4 & $i$ &  \\
+%    2 & $nat(b)$ premisse \\
+%\end{tabular}
