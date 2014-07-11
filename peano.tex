@@ -46,7 +46,7 @@ Det vigtigste aksiom er nok det vigtigste: Induktions aksiomet, hvilket giver os
 $\forall$-symbol med visse begrensninger:
 \begin{prooftree}
     \AxiomC{$\phi(0)$}
-    \AxiomC{$\forall a(\phi(a) \imp \phi(S(a)))$}
+    \AxiomC{$\forall a \, \phi(a) \imp \phi(S(a))$}
     \RightLabel{($p_I$)}
     \BinaryInfC{$\forall a \phi(a)$}
 \end{prooftree}
@@ -105,18 +105,13 @@ Vi vil vise at predikatet $P(a) := 0+a = a$ er sand for alle naturlige tal.
     8 & $P(S(a))$ & 7 \\
     \hline
     9 & $P(a) \imp P(S(a))$ & 4-7 \\
-    10 & $\forall a\, nat(a) \imp P(a)$ & induktion(3, 9) \\
-    11 & $\forall a\, nat(a) \imp 0+a = a$ & 10
+    10 & $\forall a\, P(a)$ & induktion(3, 9) \\
+    11 & $\forall a\, 0+a = a$ & 10
 \end{tabular}
 
 \subsection*{Bevis for at addition er kommutativ}
-Vi vil gerne bevise følgende sætning:
+Vi vil gerne bevise at prædikatet $P(a) := a+b= b+a$ er sand for alle naturlige tal $a$ og $b$
 
-\begin{prooftree}
-    \AxiomC{$nat(a)$}
-    \AxiomC{$nat()$}
-    \BinaryInfC{$a + b = b + a$}
-\end{prooftree}
 
 \begin{tabular}{l c r}
     1 & $nat(a)$ & Premisse \\
