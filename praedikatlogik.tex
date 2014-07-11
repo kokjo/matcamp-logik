@@ -69,9 +69,68 @@ Vi har nu for-alle-introduktion og eliminering og der-eksisterer-introduktion. D
 	\RightLabel{$\exists x $ e}
 	\UnaryInfC{$\chi$}
 \end{prooftree}
+Altså lader vi der være en arbitrær variabel vi siger prædikatet er opfyldt for, og så viser vi at der er en sætning $\chi$ der er opfyldt \textit{som ikke selv indeholder variablen}.
 
-
-
+Hvis der for alle elementer gælder en ting må det være sandt at det ikke gælder at der findes et element for hvilket tingen ikke gælder. Omvendt hvis der eksisterer et element hvor nået gælder for så må det være sandt at det ikke gælder at for alle elementer er den ting ikke opfyldt. Udtrykt i prædikatlogik vil det sige at sætningerne
+\[
+	\forall x \phi \bimp \neg \exists x \neg \phi
+\]
+og
+\[
+	\exists x \phi \bimp \neg \forall x \neg \phi
+\]
+er sande. Vi viser den første af dem her:
+\begin{proofbox}
+   \lbl{imp_box1}
+   \[
+      \: \forall x \phi \= \text{antagelse (for $\imp$i)} \\
+      \lbl{neg_box}
+      \[
+      	\: \exists x \neg \phi \= \text{antagelse (for $\neg$i)} \\
+      	\lbl{exists_box}
+      	\[
+ 	   		\lbl{1_1}
+ 	   		x_0 \: \neg\phi[x_0/x] \= \text{antagelse (for $\exists x$ e)} \\
+      		\lbl{1_2}
+      		\: \phi[x_0/x] 	\= \forall x \text{ e} \\
+      		\label{_forall_to_not_box3a_end}
+      		\: \bot \= \neg \text{ e } \ref{1_2},\ref{1_1}
+      	\]
+      	\label{_forall_to_not_box2a_end}
+      	\: \bot \= \exists x \text{ e } \ref{exists_box}-\ref{_forall_to_not_box3a_end}
+      \]
+      \label{_forall_to_not_box1a_end}
+      \: \neg \exists x \neg \phi \= \neg \text{ i } \ref{neg_box}-\ref{_forall_to_not_box2a_end}
+   \]
+  \lbl{imp_1}
+  \: \forall x \phi \imp \neg \exists x \neg \phi \= \imp \text{i }
+    \ref{imp_box1}-\ref{_forall_to_not_box1a_end} \\
+  \lbl{imp_box2}
+  \[
+    \lbl{2}
+  	\: \neg \exists x \neg \phi \= \text{antagelse (for $\imp$ i)} \\
+  	\lbl{forall_box}
+  	\[
+  		x_0 \= \text{lad $x_0$ være givet (for $\forall x$ i)} \\
+  		\lbl{pbc_box}
+  		\[
+  		    \lbl{2_1_1}
+  			\: \neg \phi[x_0/x] \= \text{antagelse (for PBC)} \\
+  			\lbl{2_1_2}
+  			\: \exists x \neg \phi \= \exists \text{ i } \ref{2_1_1} \\
+  			\label{_forall_to_not_box3b_end}
+  			\: \bot \= \neg \text{e } \ref{2_1_2}, \ref{2}
+  		\]
+  		\label{_forall_to_not_box2b_end}
+  		\: \phi[x_0/x] \= \text{PBC } \ref{pbc_box}-\ref{_forall_to_not_box3b_end}
+  	\]
+  	\label{_forall_to_not_box1b_end}
+  	\: \forall x \phi \= \forall x \text{ i } \ref{forall_box}-\ref{_forall_to_not_box2b_end}
+  \]
+  \lbl{imp_2}
+  \: \neg \exists x \neg \phi \imp \forall x \phi \= \imp \text{i } \ref{imp_box2}-\ref{_forall_to_not_box1b_end} \\
+  \: \forall x \phi \bimp \neg \exists x \neg \phi \= \bimp \text{i } \ref{imp_1},\ref{imp_2}
+\end{proofbox}
 
 %\begin{prooftree}
 %	\AxiomC{$$\boxed{
