@@ -73,17 +73,17 @@ Altså lader vi der være en arbitrær variabel vi siger prædikatet er opfyldt 
 
 Hvis der for alle elementer gælder en ting må det være sandt at det ikke gælder at der findes et element for hvilket tingen ikke gælder. Omvendt hvis der eksisterer et element hvor nået gælder for så må det være sandt at det ikke gælder at for alle elementer er den ting ikke opfyldt. Udtrykt i prædikatlogik vil det sige at sætningerne
 \[
-	\forall x \phi \bimp \neg \exists x \neg \phi
+	\forall x \, \phi \bimp \neg \exists x \neg \phi
 \]
 og
 \[
-	\exists x \phi \bimp \neg \forall x \neg \phi
+	\exists x \, \phi \bimp \neg \forall x \neg \phi
 \]
 er sande. Vi viser den første af dem her:
 \begin{proofbox}
    \lbl{imp_box1}
    \[
-      \: \forall x \phi \= \text{antagelse (for $\imp$i)} \\
+      \: \forall x \, \phi \= \text{antagelse (for $\imp$i)} \\
       \lbl{neg_box}
       \[
       	\: \exists x \neg \phi \= \text{antagelse (for $\neg$i)} \\
@@ -103,7 +103,7 @@ er sande. Vi viser den første af dem her:
       \: \neg \exists x \neg \phi \= \neg \text{ i } \ref{neg_box}-\ref{_forall_to_not_box2a_end}
    \]
   \lbl{imp_1}
-  \: \forall x \phi \imp \neg \exists x \neg \phi \= \imp \text{i }
+  \: \forall x \, \phi \imp \neg \exists x \neg \phi \= \imp \text{i }
     \ref{imp_box1}-\ref{_forall_to_not_box1a_end} \\
   \lbl{imp_box2}
   \[
@@ -125,11 +125,11 @@ er sande. Vi viser den første af dem her:
   		\: \phi[x_0/x] \= \text{PBC } \ref{pbc_box}-\ref{_forall_to_not_box3b_end}
   	\]
   	\label{_forall_to_not_box1b_end}
-  	\: \forall x \phi \= \forall x \text{ i } \ref{forall_box}-\ref{_forall_to_not_box2b_end}
+  	\: \forall x \, \phi \= \forall x \text{ i } \ref{forall_box}-\ref{_forall_to_not_box2b_end}
   \]
   \lbl{imp_2}
-  \: \neg \exists x \neg \phi \imp \forall x \phi \= \imp \text{i } \ref{imp_box2}-\ref{_forall_to_not_box1b_end} \\
-  \: \forall x \phi \bimp \neg \exists x \neg \phi \= \bimp \text{i } \ref{imp_1},\ref{imp_2}
+  \: \neg \exists x \neg \phi \imp \forall x \, \phi \= \imp \text{i } \ref{imp_box2}-\ref{_forall_to_not_box1b_end} \\
+  \: \forall x \, \phi \bimp \neg \exists x \neg \phi \= \bimp \text{i } \ref{imp_1},\ref{imp_2}
 \end{proofbox}
 
 %\begin{prooftree}
