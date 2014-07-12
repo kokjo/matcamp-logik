@@ -1,3 +1,4 @@
+\section{Udsagnslogik}
 Udsagnslogik bruges til at beskrive logiske strukture uafhænigt af virkeligheden.
 Eksempler fra virkeligheden:
 \begin{itemize}
@@ -165,32 +166,35 @@ Hvis $\phi$ medføre $\psi$, og $\phi$ er sand, må $\psi$ også være sand.
 Da vi nu har alle reglerne på plads, kan vi bruge dem til at vise at andre sætninger er sande.
 Hvis vi tager sætningen $p \imp q \vdash p \land r \imp q \land r$, ser vi at det ikke er en af vores axiomer,
 Men vi kan udfra vores axiomer konkludere om sætningen er sand, ved at udføre et bevis for den:
-\begin{center}
-    \begin{prooftree}
-        \AxiomC{$p \imp q$}
-        \AxiomC{$p \land r$}
-        \RightLabel{($\land e_1$)}
-        \UnaryInfC{$p$}
-        \RightLabel{($\imp$ e)}
-        \BinaryInfC{$q$}
-        \AxiomC{$p \land r$}
-        \RightLabel{($\land e_2$)}
-        \UnaryInfC{$r$}
-        \RightLabel{($\land i$)}
-        \BinaryInfC{$q \land r$} 
-    \end{prooftree}
-\end{center}
+\begin{prooftree}
+    \AxiomC{$p \imp q$}
+    \AxiomC{$p \land r$}
+    \RightLabel{($\land e_1$)}
+    \UnaryInfC{$p$}
+    \RightLabel{($\imp$ e)}
+    \BinaryInfC{$q$}
+    \AxiomC{$p \land r$}
+    \RightLabel{($\land e_2$)}
+    \UnaryInfC{$r$}
+    \RightLabel{($\land i$)}
+    \BinaryInfC{$q \land r$} 
+\end{prooftree}
 
 Dette ser en smule kludret ud, derfor er det bedre at bruge en form for linært bevis som ser således ud:
 
-\begin{tabular}{l c r}
-    1 & $p \land r$ & premisse \\
-    2 & $p$         & $\land e_1 \, 1$ \\
-    3 & $r$         & $\land e_2 \, 1$ \\
-    4 & $p \imp q$  & antagelse \\
-    5 & $q$         & $\imp e \, 2, 4$ \\
-    6 & $q \land r$ & $\land i \, 3, 5$
-\end{tabular}
+\begin{proofbox}
+	\lbl{1}
+    \: p \land r \= \text{præmis} \\
+    \lbl{4}
+    \: p \imp q  \= \text{præmis} \\
+    \lbl{2}
+    \: p         \= \land \text{e}_1 \, \ref{1} \\
+    \lbl{3}
+    \: r         \= \land \text{e}_2 \, \ref{1} \\
+    \lbl{5}
+    \: q         \= \imp e \, \ref{2}, \ref{4} \\
+    \: q \land r \= \land i \, \ref{3}, \ref{5}
+\end{proofbox}
 
 %\begin{tabular}[l c r]
 %    \begin{prooftree}

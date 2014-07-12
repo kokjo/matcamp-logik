@@ -1,0 +1,15 @@
+\ifx\preampleIncluded\undefined
+\def\startLoesninger{}
+\def\noFooterHeader{}
+\include{preample}
+\begin{document}
+\fi
+
+\solutiontrue
+
+\include{opgaver-udsagnslogik}
+\include{opgaver-praedikatlogik}
+\include{opgaver-peano}
+\include{opgaver-goedel}
+
+\ifdefined\startLoesninger\end{document}\fi

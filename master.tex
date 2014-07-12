@@ -1,49 +1,17 @@
-\documentclass[a4paper]{article}
-
-\usepackage[utf8]{inputenc}
-\usepackage[danish]{babel}
-
-\usepackage{amsmath, amsthm, amsfonts, amssymb}
-\usepackage{bussproofs}
-\usepackage{boxproof}
-\newtheorem{thm}{Sætning}
-\newtheorem{lem}{Lemma}
-\newtheorem{cor}{Korollar}
-
-\theoremstyle{definition}
-\newtheorem{dfn}{Definition}
-
-\theoremstyle{remark}
-\newtheorem{eks}{Eksempel}
-\renewcommand{\phi}{\varphi}
-
-\newcommand{\nats}{\ensuremath{\mathbb{N}}}
-\newcommand{\reals}{\ensuremath{\mathbb{R}}}
-\newcommand{\integers}{\ensuremath{\mathbb{Z}}}
-
-\newcommand{\dx}{\,\mathrm{d} x}
-\newcommand{\dz}{\,\mathrm{d} z}
-
-\newcommand{\Uline}[1]{\underline{\underline{#1}}}
-\renewcommand{\imp}{\Rightarrow}
-\newcommand{\bimp}{\Leftrightarrow}
-\newcommand{\andL}{\wedge}
-\newcommand{\orL}{\vee}
-\newcommand{\abs}[1]{\left|#1\right|}
-% \title{}
-
-
+\ifx\preampleIncluded\undefined
+\def\startSamlet{}
+\include{preample}
 \begin{document}
-\section{Udsagnslogik}
-\input{udsagnslogik}
+\fi
 
-\section{Prædikatlogik}
+\documentstart{Logik}{Kasper Fabæch Brandt \& Jonas Thomas Rudloff}{Institut for Matematiske Fag, Københavns Universitet}{frontimage}{UNF Matematik Camp}{2014}
+
+\include{udsagnslogik}
+
 \input{praedikatlogik}
 
-\section{Peanos aksiomer}
 \input{peano}
 
-\section{Gödels ufuldstændigheds sætninger}
 \input{godel}
 
-\end{document}
+\ifdefined\startSamlet\end{document}\fi

@@ -1,0 +1,3 @@
+\ProvidesFile{UNFfont.fd}[UNF font]
+\DeclareFontFamily{T1}{UNFfont}{}
+\DeclareFontShape{T1}{UNFfont}{m}{n}{ <-> UNFfont}{}

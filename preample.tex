@@ -1,0 +1,38 @@
+\documentclass[12pt,a4paper,danish,twoside,reqno]{unf-compendium}
+
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\usepackage{bussproofs}
+\usepackage{boxproof}
+\usepackage{environ}
+\newtheorem{thm}{Sætning}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Korollar}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}
+
+\theoremstyle{remark}
+\newtheorem{eks}{Eksempel}
+\renewcommand{\phi}{\varphi}
+
+\newcommand{\nats}{\ensuremath{\mathbb{N}}}
+\newcommand{\reals}{\ensuremath{\mathbb{R}}}
+\newcommand{\integers}{\ensuremath{\mathbb{Z}}}
+
+\newcommand{\dx}{\,\mathrm{d} x}
+\newcommand{\dz}{\,\mathrm{d} z}
+
+\newcommand{\Uline}[1]{\underline{\underline{#1}}}
+\renewcommand{\imp}{\Rightarrow}
+\newcommand{\bimp}{\Leftrightarrow}
+\newcommand{\andL}{\wedge}
+\newcommand{\orL}{\vee}
+%\newcommand{\abs}[1]{\left|#1\right|}
+
+\newif\ifsolution
+\NewEnviron{solution}{\ifsolution{\par\noindent\textbf{Løsning.} }\expandafter\BODY\hfill$\square$\par\fi}
+
+\def\preampleIncluded{}
