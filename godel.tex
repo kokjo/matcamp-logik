@@ -1,1 +1,9 @@
+\ifx\preampleIncluded\undefined
+\def\startGoedel{}
+\include{preample}
+\begin{document}
+\fi
+
 \section{Gödels ufuldstændigheds sætninger}
+
+\ifdefined\startGoedel\end{document}\fi

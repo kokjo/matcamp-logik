@@ -1,3 +1,9 @@
+\ifx\preampleIncluded\undefined
+\def\startPeano{}
+\include{preample}
+\begin{document}
+\fi
+
 \section{Peanos aksiomer}
 Formålet med peanos aksiom system er at beskrive hvad vi tænker på som naturlige tal.
 
@@ -125,3 +131,5 @@ For at gøre dette viser vi at predikatet $P(a) := 0+a = a$ er sand for alle nat
 %    4 & $i$ &  \\
 %    2 & $nat(b)$ premisse \\
 %\end{tabular}
+
+\ifdefined\startPeano\end{document}\fi

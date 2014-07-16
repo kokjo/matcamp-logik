@@ -1,3 +1,9 @@
+\ifx\preampleIncluded\undefined
+\def\startUdsagnslogik{}
+\include{preample}
+\begin{document}
+\fi
+
 \section{Udsagnslogik}
 Udsagnslogik bruges til at beskrive logiske strukture uafhænigt af virkeligheden.
 Eksempler fra virkeligheden:
@@ -248,3 +254,4 @@ kan $q$ stadig blive inkluderet i et udsagn.
 %    \end{prooftree} &
 %\end{tabular}
 
+\ifdefined\startUdsagnslogik\end{document}\fi

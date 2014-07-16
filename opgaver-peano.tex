@@ -1,0 +1,10 @@
+\ifx\preampleIncluded\undefined
+\def\startOpgaverPeano{}
+\include{preample}
+\begin{document}
+\fi
+% Fjern kommentar fra følgende linje for at genenerere dokument med løsningsvejledninger
+%\solutiontrue
+
+
+\ifdefined\startOpgaverPeano\end{document}\fi
