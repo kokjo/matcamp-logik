@@ -1,3 +1,9 @@
+\ifx\preampleIncluded\undefined
+\def\startUdsagnslogik{}
+\include{preample}
+\begin{document}
+\fi
+
 \section{Udsagnslogik}
 Udsagnslogik bruges til at beskrive logiske strukture uafhænigt af virkeligheden.
 Eksempler fra virkeligheden:
@@ -94,7 +100,7 @@ Vi bliver derfor nød til at skabe 2 seperate beviser hvor vi antager $\phi$ og 
         \end{matrix}}$$}
     \AxiomC{$$\boxed{
         \begin{matrix}
-            \phi \\
+            \psi \\
             \vdots \\
             \alpha
         \end{matrix}}$$}
@@ -182,19 +188,63 @@ Men vi kan udfra vores axiomer konkludere om sætningen er sand, ved at udføre 
 
 Dette ser en smule kludret ud, derfor er det bedre at bruge en form for linært bevis som ser således ud:
 
+%\begin{tabular}{l c r}
+%    1 & $p \land r$ & premisse \\
+%    2 & $p$         & $\land e_1 \, 1$ \\
+%    3 & $r$         & $\land e_2 \, 1$ \\
+%    4 & $p \imp q$  & antagelse \\
+%    5 & $q$         & $\imp e \, 2, 4$ \\
+%    6 & $q \land r$ & $\land i \, 3, 5$
+%\end{tabular}
+
 \begin{proofbox}
-	\lbl{1}
-    \: p \land r \= \text{præmis} \\
-    \lbl{4}
-    \: p \imp q  \= \text{præmis} \\
-    \lbl{2}
-    \: p         \= \land \text{e}_1 \, \ref{1} \\
-    \lbl{3}
-    \: r         \= \land \text{e}_2 \, \ref{1} \\
-    \lbl{5}
-    \: q         \= \imp e \, \ref{2}, \ref{4} \\
-    \: q \land r \= \land i \, \ref{3}, \ref{5}
+    \lbl{eks1}
+    \: p \land r        \= \text{premisse} \\
+    \lbl{eks1_p}
+    \: p                \= \land e_1, 1 \\
+    \lbl{eks1_r}
+    \: r                \= \land e_2, 1 \\
+    \lbl{eks1_p_imp_q}
+    \: p \imp q         \= \text{antagelse} \\
+    \lbl{eks1_q}
+    \: q                \= \imp e \ref{eks1_p_imp_q}, \ref{eks1_p}
+    \: q \land r        \= \land i \ref{eks1_q}, \ref{eks1_r}
 \end{proofbox}
+
+\subsection{Eksempler på beviser}
+\subsubsection{$p \imp q, q \imp r \vdash p \imp r$}
+\begin{proofbox}
+    \lbl{eks2_imp_box}
+    \[
+        \lbl{eks2_p}
+        p \: p      \= \text{premisse for $\imp$ i} \\
+        \lbl{eks2_piq}
+        \: p \imp q \= \text{antagelse} \\
+        \lbl{eks2_q}
+        \: q        \= \imp e \ref{eks2_p}, \ref{eks2_piq} \\
+        \lbl{eks2_qir}
+        \: q \imp r \= \text{antagelse} \\
+        \label{_eks2_imp_box_end}
+        \: r        \= \imp e \ref{eks2_q} \\
+    \]
+    \: p \imp r     \= \imp i \ref{eks2_imp_box}-\ref{_eks2_imp_box_end}
+\end{proofbox}
+
+
+\subsubsection{$p \vdash q \imp p$}
+Beviset her er lidt sjovt da $p$ klart er sandt, men selvom vi intet viden har omkring $q$,
+kan $q$ stadig blive inkluderet i et udsagn.
+\begin{proofbox}
+    \lbl{eks3_qip}
+    \[
+        \lbl{eks2_q}
+        q \: q      \= \text{premisse for $\imp$ i} \\
+        \label{_eks3_qip_end}
+        \: p        \= \text{Antagelse} \\
+    \]
+    \: q \imp p     \= \imp i \ref{eks3_qip}-\ref{_eks3_qip_end}
+\end{proofbox}
+
 
 %\begin{tabular}[l c r]
 %    \begin{prooftree}
@@ -204,3 +254,4 @@ Dette ser en smule kludret ud, derfor er det bedre at bruge en form for linært 
 %    \end{prooftree} &
 %\end{tabular}
 
+\ifdefined\startUdsagnslogik\end{document}\fi

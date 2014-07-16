@@ -1,4 +1,14 @@
 master.pdf
+loesninger.pdf
+udsagnslogik.pdf
+praedikatlogik.pdf
+peano.pdf
+godel.pdf
+opgaver-udsagnslogik.pdf
+opgaver-praedikatlogik.pdf
+opgaver-peano.pdf
+opgaver-goedel.pdf
+*.tmp
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
