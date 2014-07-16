@@ -26,8 +26,6 @@ vi sammensætter udsagns ved hjælp at konnektiver, til disse bruger vi notation
     \item[$\bimp$] betyder 'ækvivalent med', det vil sige at $a \bimp b$ er sand, hvis $a$ og $b$ har samme sandheds værdi. Et udtryk $a \bimp b$ kaldes for en 'biimplikation'.
 \end{description}
 
-
-
 Vi kan nu fjerne alt unødig information fra de eksempler vi havde før:
 \begin{itemize}
     \item ``$a$''
@@ -188,15 +186,6 @@ Men vi kan udfra vores axiomer konkludere om sætningen er sand, ved at udføre 
 
 Dette ser en smule kludret ud, derfor er det bedre at bruge en form for linært bevis som ser således ud:
 
-%\begin{tabular}{l c r}
-%    1 & $p \land r$ & premisse \\
-%    2 & $p$         & $\land e_1 \, 1$ \\
-%    3 & $r$         & $\land e_2 \, 1$ \\
-%    4 & $p \imp q$  & antagelse \\
-%    5 & $q$         & $\imp e \, 2, 4$ \\
-%    6 & $q \land r$ & $\land i \, 3, 5$
-%\end{tabular}
-
 \begin{proofbox}
     \lbl{eks1}
     \: p \land r        \= \text{premisse} \\
@@ -253,5 +242,23 @@ kan $q$ stadig blive inkluderet i et udsagn.
 %        \UnaryInfC{$\phi \lor \psi$}
 %    \end{prooftree} &
 %\end{tabular}
+
+\subsection{Opgaver}
+\begin{exercise}
+    Vis at $p \imp q, \lnot q \vdash \lnot p$.
+\end{exercise}
+
+\begin{exercise}
+    Vis at $p \lor (q \land r) \vdash p \lor q$.
+    (hint: Del den op i tilfælde og brug $\lor e$)
+\end{exercise}
+
+\begin{exercise}
+    Vis at $p \land q \imp \lnot r, s \imp r, q, s \vdash \lnot p$.
+\end{exercise}
+
+\begin{exercise}
+    Lav et eksempel på dansk af overstående sætning.
+\end{exercise}
 
 \ifdefined\startUdsagnslogik\end{document}\fi
