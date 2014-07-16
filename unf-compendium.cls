@@ -1888,10 +1888,17 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
 \newcommand{\unfheight}{0.7cm}
 
 \fancyhead{}
+%\fancyhead{\begin{tikzpicture}[remember picture, overlay]
+%	\draw 
+%		(current page.north east) 
+%		++ (-3.0, -2.5) node[anchor=center,opacity=1]
+%		{\includegraphics[width=4.0cm]{unflogo.pdf}};
+%\end{tikzpicture}
+%}
 \fancyhead{\begin{tikzpicture}[remember picture, overlay]
 	\draw 
 		(current page.north east) 
-		++ (-3.0, -2.5) node[anchor=center,opacity=1]
+		++ (-6.0, -28.5) node[anchor=center,opacity=1]
 		{\includegraphics[width=4.0cm]{unflogo.pdf}};
 \end{tikzpicture}
 }
@@ -1900,16 +1907,30 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
 \begin{tikzpicture}[remember picture, overlay,opacity=1]
 	\draw []
 		(current page.south east) 
-		++ (-7.0cm, 0cm) node[yshift=1.5cm, left]{\ttfUNFfont{Ungdommens Naturvidenskabelige Forening}} -- 
+		++ (-7.0cm, -2.5cm) node[yshift=1.5cm, left]{\ttfUNFfont{Ungdommens Naturvidenskabelige Forening}} -- 
 		++ (0cm, 1.2cm + 2*\unfheight) node[xshift=0.25cm, yshift=-0.4cm, right]{\ttfUNFfont{Danmark}} --
 		++ (3.75cm, 0cm) -- 
 		++ (0cm, -\unfheight) -- 
-		++ (-20cm, 0cm); 
+		++ (-21cm, 0cm); 
 	\draw []
 		(current page.south east) 
-		++ (-2.25cm, 1.2cm) node[xshift=-4.5cm, yshift=-0.4cm, right]{\ttfUNFfont{www.unf.dk}} -- 
-		++ (-21cm, 0cm); 
+		++ (-2.25cm, -1.3cm) node[xshift=-4.5cm, yshift=-0.4cm, right]{\ttfUNFfont{www.unf.dk}} -- 
+		++ (-22cm, 0cm); 
 \end{tikzpicture}}
+%\fancyfoot{
+%\begin{tikzpicture}[remember picture, overlay,opacity=1]
+%	\draw []
+%		(current page.south east) 
+%		++ (-4.5cm, 0cm) node[yshift=1.5cm, left]{\ttfUNFfont Ungdommens Naturvidenskabelige Forening} -- 
+%		++ (0cm, 1.2cm + 2*\unfheight) node[yshift=-0.4cm, right]{\ttfUNFfont Danmark} --
+%		++ (3.75cm, 0cm) -- 
+%		++ (0cm, -\unfheight) -- 
+%		++ (-20cm, 0cm); 
+%	\draw []
+%		(current page.south east) 
+%		++ (0cm, 1.2cm) node[xshift=-4.5cm, yshift=-0.4cm, right]{\ttfUNFfont www.unf.dk} -- 
+%		++ (-12.25cm, 0cm); 
+%\end{tikzpicture}}
 \fancyfoot[LO,CE]{}
 \fancyfoot[CO,RE]{}
 \renewcommand{\headrulewidth}{0pt}
