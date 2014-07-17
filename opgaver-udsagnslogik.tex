@@ -4,17 +4,58 @@
 \begin{document}
 \fi
 % Fjern kommentar fra følgende linje for at genenerere dokument med løsningsvejledninger
-%\solutiontrue
+\solutiontrue
 
 \subsection{Opgaver}
 
-\begin{opg}[Associvitet af $\land$, $\lor$ og $\bimp$]
+\begin{opg}[Associvitet af $\land$, $\lor$]
     vis følgende gælder
     \begin{align*}
         \vdash p \land (q \land r) &\bimp (p \land q) \land r \\
         \vdash p \lor (q \lor r) &\bimp (p \lor q) \lor r \\
         \vdash (p \bimp (q \bimp r)) &\bimp (p \bimp q) \bimp r
     \end{align*}
+    \begin{solution}
+        $\vdash p \land (q \land r) \bimp (p \land q) \land r$
+        \begin{proofbox}
+            \lbl{assoc_1}
+            \[
+                \lbl{assoc_1_antag1}
+                \: p \land (q \land r)  \= \text{antagelse for $\imp i$} \\
+                \lbl{q_and_r}
+                \: q \land r            \= \land e \, \ref{assoc_1_antag1} \\
+                \lbl{p1}
+                \: p                    \= \land e \, \ref{assoc_1_antag1} \\
+                \lbl{q1}
+                \: q                    \= \land e \, \ref{q_and_r} \\
+                \lbl{r1}
+                \: r                    \= \land e \, \ref{q_and_r} \\
+                \lbl{p_and_q}
+                \: p \land q            \= \land i \, \ref{p1},\ref{q1} \\
+                \: (p \land q) \land r  \= \land i \, \ref{p_and_q}, \ref{r1} \\
+            \]
+            \lbl{imp_i1}
+            \: p \land (q \land r) \imp (p \land q) \land r \= \imp i 
+            \[
+                \lbl{assoc_2_antag1}
+                \: (p \land q) \land r  \= \text{antagelse for $\imp i$} \\
+                \lbl{p_and_q}
+                \: p \land q            \= \land e \, \ref{assoc_2_antag1} \\
+                \lbl{p2}
+                \: r                    \= \land e \, \ref{assoc_2_antag1} \\
+                \lbl{q2}
+                \: p                    \= \land e \, \ref{p_and_q} \\
+                \lbl{r2}
+                \: q                    \= \land e \, \ref{p_and_q} \\
+                \lbl{q_and_r}
+                \: q \land r            \= \land i \, \ref{q2},\ref{r2} \\
+                \: p \land (q \land r)  \= \land i \, \ref{p2}, \ref{q_and_r} \\
+            \]
+            \lbl{imp_i2}
+            \: (p \land q) \land r \imp p \land (q \land r) \= \imp i \\
+            \: p \land (q \land r) \bimp (p \land q) \land r  \= \bimp i \, \ref{imp_i1}, \ref{imp_i2}
+        \end{proofbox}
+    \end{solution}
 \end{opg}
 
 \begin{opg}[Kommutivitet af $\land$, $\lor$ og $\bimp$]
@@ -44,6 +85,9 @@
     vis at følgende sætninger er sande
     \[ \vdash \lnot (p \land q) \bimp \lnot p \lor \lnot q \]
     \[ \vdash \lnot (p \lor q) \bimp \lnot p \land \lnot q \]
+	\begin{solution}
+		Løsning...
+	\end{solution}
 \end{opg}
 
 \begin{opg}
@@ -71,6 +115,23 @@
 \begin{opg}
     Er følgende sætning sand:
     \[ p \imp q, r \imp p, q \imp r, q \vdash p \bimp q \land p \bimp r \land q \bimp r \]
+	\begin{solution}
+		Løsning...
+	\end{solution}
+\end{opg}
+
+\begin{opg}
+    $p \lor q, p \imp r, \lnot s \imp \lnot q \vdash r \lor s$
+	\begin{solution}
+		Løsning...
+	\end{solution}
+\end{opg}
+
+\begin{opg}
+    $a \bimp b \vdash (a \land b) \lor (\lnot a \land \lnot b)$
+	\begin{solution}
+		Løsning...
+	\end{solution}
 \end{opg}
 
 \ifdefined\startOpgaverUdsagnslogik\end{document}\fi
