@@ -4,7 +4,80 @@
 \begin{document}
 \fi
 % Fjern kommentar fra følgende linje for at genenerere dokument med løsningsvejledninger
-%\solutiontrue
+\solutiontrue
 
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+
+\begin{opg}\hspace{0pt} Bevis følgende sekventer uden at referere til sætningerne om ækvivalens mellem $\exists$ og $\forall$:\\
+\begin{enumerate}
+	\item $\vdash \exists x \, \phi \bimp \neg \forall x \, \neg \phi$
+	\begin{solution}
+		\begin{proofbox}
+			\lbl{imp_box1}
+			\[
+				\lbl{1_1}
+				\: \exists x \, \phi \= \text{antagelse (for $\imp$i)} \\
+				\lbl{neg_box}
+				\[
+					\lbl{1_1_1}
+					\: \forall x \, \neg \phi \= \text{antagelse (for $\neg$i)} \\
+					\lbl{exists_box}
+					\[
+						\lbl{is_true}
+						x_0 \: \phi[x_0/x] \= \text{antagelse (for $\exists x$ e)} \\
+						\lbl{is_false}
+						\: \neg \phi[x_0/x] \= \forall x\text{ e } \ref{1_1_1} \\
+						\label{_pr_exc1_exists_box1a_end}
+						\: \bot \= \neg\text{e } \ref{is_true},\ref{is_false}
+					\]
+					\label{_pr_exc1_neg_box1a_end}
+					\: \bot \= \exists x \text{ e } \ref{1_1},\ref{exists_box}-\ref{_pr_exc1_exists_box1a_end}
+				\]
+				\label{_pr_exc1_imp_box1a_end}
+				\: \neg \forall x \, \neg \phi \= \neg\text{i } \ref{neg_box}-\ref{_pr_exc1_neg_box1a_end}
+			\]
+			\lbl{imp1}
+			\: \exists x \, \phi \imp \neg \forall x \, \neg \phi \= \text{$\imp$i }\ref{imp_box1}-\ref{_pr_exc1_imp_box1a_end}
+			\lbl{imp_box2}
+			\[
+				\lbl{forall_is_false}
+				\: \neg \forall x \, \neg \phi \= \text{antagelse (for $\imp$i)} \\
+				\lbl{pbc_box}
+				\[
+					\lbl{is_false}
+					\: \neg \exists x \, \phi \= \text{antagelse (for PBC)} \\
+					\lbl{forall_box}
+					\[
+						x_0 \: \= \text{lad $x_0$ være givet (for $\forall x$ i)} \\
+						\lbl{neg_box}
+						\[
+							\lbl{phi_true}
+							\: \phi[x_0/x] \= \text{antagelse (for $\neg$i)} \\
+							\lbl{is_true}
+							\: \exists x \, \phi \= \exists x\text{ i } \ref{phi_true} \\
+							\label{_pr_exc1_neg_box2a_end}
+							\: \bot \= \neg\text{e } \ref{is_true},\ref{is_false}
+						\]
+						\label{_pr_exc1_forall_box2a_end}
+						\: \neg \phi[x_0/x] \= \text{$\neg$i } \ref{neg_box}-\ref{_pr_exc1_neg_box2a_end}
+					\]
+					\lbl{forall_is_true}
+					\: \forall x \, \neg \phi \= \forall x \text{ i } \ref{forall_box}-\ref{_pr_exc1_forall_box2a_end} \\
+					\label{_pr_exc1_pbc_box2a_end}
+					\: \bot \= \text{$\neg$e } \ref{forall_is_true},\ref{forall_is_false}
+				\]
+				\label{_pr_exc1_imp_box2a_end}
+				\: \exists x \, \phi \= \text{PBC } \ref{pbc_box}-\ref{_pr_exc1_pbc_box2a_end}
+			\]
+			\lbl{imp2}
+			\: \neg \forall x \, \neg \phi \imp \exists x \, \phi \= \text{$\imp$i } \ref{imp_box2}-\ref{_pr_exc1_imp_box2a_end} \\
+			\: \exists x \, \phi \bimp \neg \forall x \, \neg \phi \= \text{$\bimp$i } \ref{imp1},\ref{imp2}
+		\end{proofbox}
+	\end{solution}
+
+	\item ...
+\end{enumerate}
+\end{opg}
 
 \ifdefined\startOpgaverPraedikatlogik\end{document}\fi
