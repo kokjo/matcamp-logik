@@ -44,7 +44,14 @@ $\forall$-symbol med visse begrensninger:
 \end{prooftree}
 Såfremt at en sætning($\phi$) er sand for $0$ og at hvis sætningen er sand for et naturligt tal
 medføre at sætningen også er sand for dettes tals efterfølger,
-kan vi konkludere at sætningen er sand for alle naturlige tal.
+Kan vi konkludere at sætningen er sand for alle naturlige tal.
+
+Til sidst vil vi også tildele det velkendte mening til visse symboler for nemhedens skyld.
+\begin{align*}
+    \vdash 1 &= S(0) \\
+    \vdash 2 &= S(S(0)) \\
+    &\cdots\\
+\end{align*}
 
 \subsection*{Aritmetik med naturlige tal}
 Da vi nu har indført hvad det vil sige at være et naturligt tal,
@@ -53,55 +60,72 @@ kan vi udvide vores aksiom system med hvordan addition og multiplikation virker.
 Aksiomerne for addition ser således ud:
 
 \begin{prooftree}
-    \AxiomC{$nat(a)$}
+    \AxiomC{}
     \RightLabel{(${p+}_1$)}
-    \UnaryInfC{$a+0 = a$}
+    \UnaryInfC{$\forall a \, a+0 = a$}
 \end{prooftree}
 Hvis man ligger 0 og et naturligt tal sammen vil dette 'nye' naturlige tal være det sammen som det første.
 
 \begin{prooftree}
-    \AxiomC{$nat(a)$}
-    \AxiomC{$nat(b)$}
+    \AxiomC{}
     \RightLabel{(${p+}_2$)}
-    \BinaryInfC{$S(a) + S(b) = S(S(a)) + b$}
+    \UnaryInfC{$\forall a \forall b \, a + S(b) = S(a+b)$}
 \end{prooftree}
 Additions egenskaben, beskriver hvordan vi tænker på addition intuitivt.
 
-For multiplikation gælder der:
+For multiplikation gælder der ligende regler:
 \begin{prooftree}
-    \AxiomC{$nat(a)$}
-    \RightLabel{($p\times_1$)}
-    \UnaryInfC{$a \times 0 = 0$}
+    \AxiomC{}
+    \RightLabel{(${p\times}_1$)}
+    \UnaryInfC{$\forall a \, a \times 0 = 0$}
 \end{prooftree}
 
 \begin{prooftree}
-    \AxiomC{$nat(a)$}
-    \AxiomC{$nat(b)$}
-    \RightLabel{($p\times_2$)}
-    \BinaryInfC{$S(a) \times S(b) = S(a) \times b + S(a)$}
+    \AxiomC{}
+    \RightLabel{(${p\times}_2$)}
+    \UnaryInfC{$\forall a \forall b \, a \times S(b) = a \times b + a$}
 \end{prooftree}
+
+Hvis vi ønsker at antage alle peanos aksiomer på engang bruger vi $PA \vdash \cdots$
+
 
 \subsection*{Bevis for at ``$0$'' er et neutral element}
-Vi ved allerede at ``$0$''neutral element hvis man bruger det fra højre side.
-For at vise at det er et neutral element,
-mangler vi at vise at der er et venstre nuetral element.
+For at $0$ skal være et additivt neutralelement skal det gælde at $\forall a \, (a+0 = a \land 0+a = a)$.
+Vi ved allerede at ``$0$''neutral element hvis man bruger det fra højre side, det nemlig hvad aksiomet ${p+}_1$.
+vi mangler derfor at vise at det er et venstre nuetral element.
 For at gøre dette viser vi at predikatet $P(a) := 0+a = a$ er sand for alle naturlige tal.
 
-\begin{tabular}{l c r}
-    1 & $0+0$ & \\
-    2 & $0$ & Axiom($p+_1, 1$) \\
-    3 & $P(0)$ & 2 \\
-    \hline
-    4 & $P(a)$ & antagelse \\
-    5 & $0+a = a$ & 4 \\
-    6 & $S(0+a) = S(a)$ & 5 \\
-    7 & $0+S(a) = S(a)$ & 6 \\
-    8 & $P(S(a))$ & 7 \\
-    \hline
-    9 & $P(a) \imp P(S(a))$ & 4-7 \\
-    10 & $\forall a\, P(a)$ & induktion(3, 9) \\
-    11 & $\forall a\, 0+a = a$ & 10
-\end{tabular}
+\begin{proofbox}
+    \: 0+0 = 0 \= \text{${p+}_1$ hvor $a$ er $0$} \\
+    \lbl{base}
+    \: P(0)
+    \[
+        \: P(a) \\
+        \: 0+a = a          \= \text{antagelse for $\imp i$} \\
+        \: S(0+a) = S(a)    \= \text{$=i$ og $=e$} \\
+        \: 0+S(a) = S(a)    \= {p+}_1 \\
+        \: P(S(a))
+    \]
+    \lbl{step}
+    \: P(a) \imp P(S(a)) \= \imp i \\
+    \: \forall a P(a) \= p_I\, \ref{base}-\ref{step} 
+    \: \forall a (0+a = a)
+\end{proofbox}
+%\begin{tabular}{l c r}
+%    1 & $0+0$ & \\
+%    2 & $0$ & Axiom($p+_1, 1$) \\
+%    3 & $P(0)$ & 2 \\
+%    \hline
+%    4 & $P(a)$ & antagelse \\
+%    5 & $0+a = a$ & 4 \\
+%    6 & $S(0+a) = S(a)$ & 5 \\
+%    7 & $0+S(a) = S(a)$ & 6 \\
+%    8 & $P(S(a))$ & 7 \\
+%    \hline
+%    9 & $P(a) \imp P(S(a))$ & 4-7 \\
+%    10 & $\forall a\, P(a)$ & induktion(3, 9) \\
+%    11 & $\forall a\, 0+a = a$ & 10
+%\end{tabular}
 
 %\subsection*{Bevis for at addition er kommutativ}
 %Vi vil gerne bevise at prædikatet $P(a) := a+b= b+a$ er sand for alle naturlige tal $a$ og $b$
