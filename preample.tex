@@ -7,6 +7,7 @@
 \usepackage{bussproofs}
 \usepackage{boxproof}
 \usepackage{environ}
+\usepackage{wasysym}
 \newtheorem{thm}{Sætning}
 \newtheorem{lem}{Lemma}
 \newtheorem{cor}{Korollar}
@@ -26,11 +27,21 @@
 \newcommand{\dz}{\,\mathrm{d} z}
 
 \newcommand{\Uline}[1]{\underline{\underline{#1}}}
+\newcommand{\vdashv}{\dashv\vdash}
 \renewcommand{\imp}{\Rightarrow}
 \newcommand{\bimp}{\Leftrightarrow}
 \newcommand{\andL}{\wedge}
 \newcommand{\orL}{\vee}
 %\newcommand{\abs}[1]{\left|#1\right|}
+
+\DeclareMathOperator{\Pfar}{far}
+\DeclareMathOperator{\Pmor}{mor}
+\DeclareMathOperator{\Pforaelder}{forælder}
+\DeclareMathOperator{\Psoeskende}{søskende}
+\DeclareMathOperator{\Phs}{hs}
+\DeclareMathOperator{\Pfarmor}{farmor}
+\DeclareMathOperator{\Pbedstemor}{bedstemor}
+\DeclareMathOperator{\Pbedsteforaelder}{bedsteforælder}
 
 \newif\ifsolution
 \NewEnviron{solution}{\ifsolution{\par\noindent\textbf{Løsning.} }\expandafter\BODY\hfill$\square$\par\fi}

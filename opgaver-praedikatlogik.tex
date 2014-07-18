@@ -4,14 +4,86 @@
 \begin{document}
 \fi
 % Fjern kommentar fra følgende linje for at genenerere dokument med løsningsvejledninger
-\solutiontrue
+%\solutiontrue
 
-\renewcommand{\theenumi}{\alph{enumi}}
-\renewcommand{\labelenumi}{\theenumi)}
+\renewcommand{\theenumii}{\alph{enumii}}
+\renewcommand{\labelenumii}{\theenumii)}
 
-\begin{opg}\hspace{0pt} Bevis følgende sekventer uden at referere til sætningerne om ækvivalens mellem $\exists$ og $\forall$:\\
+\renewcommand{\theenumi}{\arabic{enumi}}
+\renewcommand{\labelenumi}{\theenumi.}
+
+\begin{opg} Vi har et logisk system med følgende prædikater:
+	\begin{flalign*}
+		\Pfar(f, b)	&:	\text{$f$ er $b$'s far} \\
+		\Pmor(m, b)	&:	\text{$m$ er $b$'s mor} \\
+		\Pforaelder(x, b) &: \text{$x$ er $b$'s forælder} \\
+		%\Psoeskende(x, y) &: \text{$x$ og $y$ er søskende} \\
+		\male(x) &: \text{$x$ er mand} \\
+		\female(x) &: \text{$x$ er kvinde}
+	\end{flalign*}
+	\begin{enumerate}
+		\item Oversæt følgende til sætninger i prædikatlogik:
+		\begin{enumerate}
+			\item Mia er Sørens mor
+			\item Søren har en far
+			\item Lise og Søren er søskende
+			\item Lise har en bedstemor
+			\item Alle fædre er mænd
+			\item Alle har en far
+			\item Alle har (mindst) to forældre
+			\item Ingen bedstemor er nogens far
+			\item Ane er Lises moster
+		\end{enumerate}
+		\item Vi tilføjer disse prædikater:
+		\begin{flalign*}
+			\Pfarmor{x, b} &: \text{$x$ er $b$'s farmor} \\
+			\Pbedstemor{x, b} &: \text{$x$ er $b$'s bedstemor} \\
+			\Pbedsteforaelder(x,b) &: \text{$x$ er $b$'s bedsteforælder} \\
+		\end{flalign*}
+		- og følgende axiomer til systemet:
+		\begin{flalign*}
+			\Pforaelder(x,b) &\vdashv \Pfar(x,b) \lor \Pmor(x,b) \\
+			\Pfarmor(x, b) &\vdashv \exists f \left( \Pfar(f,b) \land \Pmor(x,f) \right) \\
+			\Pbedstemor(x, b) &\vdashv \exists y \left( \Pforaelder(y,x) \land \Pmor(x,y) \right) \\
+			\Pmor(m,b) &\vdash \female(m) \\
+			\Pfar(f,b) &\vdash \male(f) \\
+			\male(x) &\vdashv \neg\female(x) \\
+			&\vdash \forall x \exists f \, \Pfar(f,x) \\
+			&\vdash \forall x \exists m \, \Pmor(m,x) \\
+			\Pfar(f_0,x) &\vdash \forall f \, (\Pfar(f,x) \imp f=f_0) \\
+			\Pmor(m_0,x) &\vdash \forall m \, (\Pmor(m,x) \imp m=m_0) \\
+		\end{flalign*}
+		Bevis følgende
+		\begin{enumerate}
+			\item $\Pforaelder(x,b),\female(x) \vdash \Pmor(x,b)$
+			\item $\Pfarmor(x,b) \vdash \female(x)$
+			\item $\vdash \Pfarmor(x,b)\imp\Pbedstemor(x,b)$
+			\item * $\vdash \forall x \exists f_1 \exists f_2 \,
+				\left(\Pforaelder(f_1,x)\land\Pforaelder(f_2,x)\land \neg(f_1=f_2)\right)$
+			\item * $\Pforaelder(f_1,x),\Pforaelder(f_2,x),\neg(f_1=f_2) \vdash
+				\forall f \, ( \Pforaelder(f,x) \imp (f=f_1 \lor f=f_2) )$
+		\end{enumerate}
+		\item ** Udtryk og bevis følgende i vores logiske system: Alle har præcis fire bedsteforældre.
+	\end{enumerate}
+\end{opg}
+
+%\renewcommand{\theenumi}{\alph{enumi}}
+%\renewcommand{\labelenumi}{\theenumi)}
+
+\begin{opg}
+\item
 \begin{enumerate}
-	\item $\vdash \exists x \, \phi \bimp \neg \forall x \, \neg \phi$
+	\item Bevis følgende sekventer
+	\begin{enumerate}
+		\item $(y=0)\land(y=x)\vdash 0=x$
+		\item $t_1=t_2 \vdash (t+t_2) = (t+t_1)$
+		\item $\exists x\,P(x) \imp S \vdash \forall x(P(x) \imp S)$
+		\item $S\imp\exists x \, Q(x) \vdash \exists(S\imp Q(x))$
+		\item $\forall x (P(x)\land Q(x)) \vdash \forall x \, P(x) \land \forall x \, Q(x)$
+		\item $\vdash \forall x \left( P(x) \imp Q(x) \right) \imp \left( \forall x\, P(x) \imp \forall x\, Q(x) \right)$
+	\end{enumerate}
+	\item Bevis følgende sekvens uden at referere til sætningerne om ækvivalens mellem $\exists$ og $\forall$:
+	$\vdash \exists x \, \phi \bimp \neg \forall x \, \neg \phi$
 	\begin{solution}
 		\begin{proofbox}
 			\lbl{imp_box1}
@@ -75,9 +147,11 @@
 			\: \exists x \, \phi \bimp \neg \forall x \, \neg \phi \= \text{$\bimp$i } \ref{imp1},\ref{imp2}
 		\end{proofbox}
 	\end{solution}
-
-	\item ...
 \end{enumerate}
+\end{opg}
+
+\begin{opg}
+	
 \end{opg}
 
 \ifdefined\startOpgaverPraedikatlogik\end{document}\fi
