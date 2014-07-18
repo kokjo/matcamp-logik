@@ -77,12 +77,17 @@
 	\begin{enumerate}
 		\item $(y=0)\land(y=x)\vdash 0=x$
 		\item $t_1=t_2 \vdash (t+t_2) = (t+t_1)$
-		\item $\exists x\,P(x) \imp S \vdash \forall x(P(x) \imp S)$
-		\item $S\imp\exists x \, Q(x) \vdash \exists(S\imp Q(x))$
+		\item $\exists x\,P(x) \imp \phi \vdash \forall x(P(x) \imp \phi)$
 		\item $\forall x (P(x)\land Q(x)) \vdash \forall x \, P(x) \land \forall x \, Q(x)$
 		\item $\vdash \forall x \left( P(x) \imp Q(x) \right) \imp \left( \forall x\, P(x) \imp \forall x\, Q(x) \right)$
+		\item $\phi\imp\exists x \, Q(x) \vdash \exists x (\phi\imp Q(x))$\\
+		Hint: Start med at antage $\forall x \neg(\phi\imp Q(x))$
 	\end{enumerate}
-	\item Bevis følgende sekvens uden at referere til sætningerne om ækvivalens mellem $\exists$ og $\forall$:
+	\item{Afgør sandheden af følgende}
+	\begin{enumerate}
+		\item $$
+	\end{enumerate}
+	\item Bevis følgende sekvent uden at referere til sætningerne om ækvivalens mellem $\exists$ og $\forall$:
 	$\vdash \exists x \, \phi \bimp \neg \forall x \, \neg \phi$
 	\begin{solution}
 		\begin{proofbox}
@@ -148,10 +153,6 @@
 		\end{proofbox}
 	\end{solution}
 \end{enumerate}
-\end{opg}
-
-\begin{opg}
-	
 \end{opg}
 
 \ifdefined\startOpgaverPraedikatlogik\end{document}\fi

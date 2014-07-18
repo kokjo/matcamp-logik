@@ -39,6 +39,17 @@ Hvis vi nu bruger $\forall x$ e hvor vi erstatter $x$ med $y$ så får vi $\exis
 Det er derfor vigtigt at vi ikke substituerer med en variabel der er bundet til en kvantor.
 I det her tilfælde ville vi sige at $x$ ikke var fri for $y$ -- altså $x$ kan ikke erstattes med $y$ fordi $x$ fremgår i et prædikat hvor $y$ er bundet af en kvantor.
 
+Det vi betegner som "variable" her er en delmængde at hvad vi kalder "termer".
+Et term er et symbol som virker som en slags udskiftelig del af et udtryk. Hvis vi skal være meget pendantiske så giver vi en samling af symboler som vi siger er gyldige termer. I praksis er det eneste vigtige at de ikke syntaktisk kan "kollidere" med symboler der ellers har betydning. F.eks. ville
+"$\phi \land \psi$" være et dårligt valg af navn til et term.
+
+Rent formelt set er der ikke nogen distinktion mellem termer og variable i form af tegnene selv, den findes kun i hvordan vi bruger dem.
+F.eks. er et udtryk som $\forall 0 \, 0=0$ ækvivalent med $\forall x \, x=x$, men det siger ikke noget om tallet 0 selv hvis vi har andre sætninger i vores system der definerer 0, fordi det eneste man kan gøre med 0'et her er at erstatte det med en anden term ved brug af $\forall 0$ e.
+
+Når vi læser reglerne for kvantorene skal vi forstå variablene der står der som placeholders for ethvert term - altså kan de $x$ og $x_0$ der står ved reglerne for kvantorene erstattes med ethvert andet term - specielt må de gerne erstattes af det samme term.
+F.eks. hvis vi har $\vdash 0+1=1$ kan vi ikke erstatte termen 0 med termen 1, men hvis der står $\forall 0 \, 0=0$ må vi gerne konkludere $1=1$. 
+Hvis vi skulle være meget pendantiske skulle vi faktisk angive ved reglerne hvilke termer der fungerer som variable.
+
 Udover alkvantoren har vi også "eksistenskvantoren": $\exists$. Et kvantiseret udtryk med denne har formen
 \[
 	\exists x \, P(x),
@@ -137,6 +148,41 @@ er sande. Vi viser den første af dem her:
   \lbl{imp_2}
   \: \neg \exists x \neg \phi \imp \forall x \, \phi \= \imp \text{i } \ref{imp_box2}-\ref{_forall_to_not_box1b_end} \\
   \: \forall x \, \phi \bimp \neg \exists x \neg \phi \= \bimp \text{i } \ref{imp_1},\ref{imp_2}
+\end{proofbox}
+
+Vi har nu introduceret nogen regler der gør det muligt at arbejde med prædikater der er opfyldt for elementer i hele eller dele af vores univers. Men vi mangler en måde at snakke om sammenhænge imellem elementerne. Vi introducere derfor "$=$". Vi starter med introduktionsreglen:
+
+\begin{prooftree}
+	\AxiomC{}
+	\RightLabel{$=$i}
+	\UnaryInfC{$t=t$}
+\end{prooftree}
+
+Altså er ting lig med sig selv, hvilket ikke skulle være nogen overaskelse. $t$ her er igen en placeholder for en arbitrær term. Vi kan ikke rigtigt bruge den regel til så meget i sig selv, derfor har vi også en elimineringsregel:
+
+\begin{prooftree}
+	\AxiomC{$t_1 = t_2$}
+	\AxiomC{$\phi[t_1/x]$}
+	\RightLabel{$=$e}
+	\BinaryInfC{$\phi[t_2/x]$}
+\end{prooftree}
+
+Her er også $t_1,t_2$ og $x$ placeholders for andre termer. Det kan være svært at se den egentlige styrke af reglen, tricket ved den er ofte at man skal finde den rigtige $\phi$ at bruge - bemærk nemmelig at det er to forskellige termer der er erstattet med i præmissen og i konklusionen. Vi kan bruge den til at konkludere nogen af de egenskaber vi forventer gælder for lig med. Vi vil gerne have at hvis $t_1=t_2$ og $t_2=t_3$ så er $t_1=t_2$. Altså at der gælder $t_1=t_2,t_2=t_3\vdash t_1=t_3$.Vi kalder dette transitivitet.
+\begin{proofbox}
+	\lbl{1}
+	\: t_1 = t_2 \= \text{præmis} \\
+	\lbl{2}
+	\: t_2 = t_3 \= \text{præmis} \\
+	\: t_1 = t_3 \= \text{$=$e \ref{2},\ref{1}: $\phi\!: t_1=t, [t_2/t]\to[t_3/t]$}
+\end{proofbox}
+
+Derudover forventer vi også at lig med er symmetrisk. Dvs. at hvis $a=b$ så er $b=a$, så vi viser $t_1=t_2 \vdash t_2=t_1$:
+\begin{proofbox}
+	\lbl{1}
+	\: t_1 = t_2 \\
+	\lbl{2}
+	\: t_1 = t_1 \= \text{$=$i} \\
+	\: t_2 = t_1 \= \text{$=$e \ref{1},\ref{2}: $\phi\!: t=t_1, [t_1/t]\to[t_2/t]$}
 \end{proofbox}
 
 %\begin{prooftree}
