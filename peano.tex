@@ -6,37 +6,22 @@
 
 \section{Peanos aksiomer}
 Formålet med peanos aksiom system er at beskrive hvad vi tænker på som naturlige tal.
+Den mest intuitive måske som vi tænker på naturlige tal er den som vi lærte ved at
+tælle på fingre og vide hvilke tal som kommer efter andre tal.
+f. eks er velkendt at $2$ kommer efter $1$, og der ikke kommer nogle (positive) tal før $0$.
 
-De ser således ud:
+Den måde hvor med vi lærte at ligge tal sammen var at man holdt $3$ fingre op på
+den ene hånd og $2$ fingre på den anden,
+og derefter hver gang man tog en finger ned på den ene hånd,
+slog man en fingre ned på den anden indtil at alle fingrene var taget ned på den ene hånd.
+På den helt sammen og meget simple måde kommer vi også til at formulere de naturlige tal i logik.
+
+Aksiomer vi har tænkt os at bruge ser således ud:
 
 \begin{prooftree}
     \AxiomC{}
-    \RightLabel{($p_{0a}$)}
-    \UnaryInfC{$nat(0)$}
-\end{prooftree}
-Hvilket betyder: symbolet ``$0$'' er et naturligt tal (er en taotologi) og dette $0$ er et naturligt tal.
-
-
-Med det vi har indført indtil videre er det eneste vi ved med sikkerhed omkring de naturlige tal er at der findes mindst et(``0''),
-samt at dette tal er lig med sig selv.
-Vi indføre derfor hvad det vil sige at noget kommer efter noget andet,
-ved at indføre efterfølger prædikatet $S$.
-
-Igen vil vi gøre således som vi intuitivt tænker på de naturlige tal.
-
-Følgende gælder for $S$:
-
-\begin{prooftree}
-    \AxiomC{$\forall n \, nat(n)$}
-    \RightLabel{($p_S$)}
-    \UnaryInfC{$nat(S(n))$}
-\end{prooftree}
-Alle naturlige tal har en eterfølger som også selv er et naturligt tal.
-
-\begin{prooftree}
-    \AxiomC{$\forall n \, nat(n)$}
     \RightLabel{($p_{0b}$)}
-    \UnaryInfC{$\neg (S(n) = 0)$}
+    \UnaryInfC{$\forall n \neg (S(n) = 0)$}
 \end{prooftree}
 Der findes intet naturligt tal hvis efterfølger er $0$(alle naturlige tal er ikke efterfølgere til $0$).
 
@@ -49,7 +34,7 @@ $2$ naturlige tal hvis efterfølgere er ens(dvs. opfylder ``$=$''-relationen) er
 Dette giver en sammenhængen mellem ``$=$'' og $S$ som vi ikke kunne sige noget om før,
 indtil nu ``$=$'' og $S$ været uafhænige af hinnanden. Dette aksiom giver også mulighedden for at fjerne $S$'er
 
-Det vigtigste aksiom er nok det vigtigste: Induktions aksiomet, hvilket giver os mulighed for at introducere et
+Det vigtigste aksiom er nok det følgende: Induktions aksiomet, hvilket giver os mulighed for at introducere et
 $\forall$-symbol med visse begrensninger:
 \begin{prooftree}
     \AxiomC{$\phi(0)$}
@@ -86,7 +71,7 @@ For multiplikation gælder der:
 \begin{prooftree}
     \AxiomC{$nat(a)$}
     \RightLabel{($p\times_1$)}
-    \UnaryInfC{$a \times S(0) = a$}
+    \UnaryInfC{$a \times 0 = 0$}
 \end{prooftree}
 
 \begin{prooftree}
