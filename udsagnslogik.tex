@@ -14,9 +14,9 @@ Eksempler fra virkeligheden:
     \item ``Hvis det regner bliver jeg våd. Det regner, derfor bliver jeg våd''
 \end{itemize}
 
-For at beskrive sådanne udsagn har vi brug for en del notation notation. Et udsagn vil fra nu af blive beskrevet ved brug af af små bøgstaver: $p, q, \cdots$,
+For at beskrive sådanne udsagn har vi brug for en del notation. Et udsagn vil fra nu af blive beskrevet ved brug af af små bøgstaver: $p, q, \cdots$,
 eller små græske bogstaver: $\phi$, $\psi$, \ldots
-vi sammensætter udsagns ved hjælp at konnektiver, til disse bruger vi notationen:
+vi sammensætter udsagn ved hjælp af symboler vi vil kalde konnektiver(symboler som sætter udsagn sammen), til disse bruger vi notationen:
 
 \begin{description}
     \item[$\land$] betyder 'og', det vil sige at $a \land b$ er sand hvis $a$ og $b$ er sande.
@@ -26,17 +26,18 @@ vi sammensætter udsagns ved hjælp at konnektiver, til disse bruger vi notation
     \item[$\bimp$] betyder 'ækvivalent med', det vil sige at $a \bimp b$ er sand, hvis $a$ og $b$ har samme sandheds værdi. Et udtryk $a \bimp b$ kaldes for en 'biimplikation'.
 \end{description}
 
-Vi kan nu fjerne alt unødig information fra de eksempler vi havde før:
+Vi kan nu fjerne alt unødig information fra de eksempler vi havde før, og kun se på den logiske struktur:
 \begin{itemize}
     \item ``$a$''
     \item ``$\lnot \lnot a$''
     \item ``$a \imp b$''
 \end{itemize}
 
-Den sidste sætning kan vi dog endnu ikke reducere til symboler, derfor bliver vi nød til at indføre mere notation:
+Den sidste sætning kan vi dog endnu ikke reducere til symboler, grunden til dette ar at vi mangler en måde at konkludere derfor bliver vi nød til at indføre mere notation:
 
 \begin{prooftree}
     \AxiomC{Ting vi antager}
+    \RightLabel{(regelnavn)}
     \UnaryInfC{Ting vi har lov til at konkludere}
 \end{prooftree}
 

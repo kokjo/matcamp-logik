@@ -11,9 +11,9 @@
 \begin{opg}[Associvitet af $\land$, $\lor$]
     vis følgende gælder
     \begin{align*}
-        \vdash p \land (q \land r) &\bimp (p \land q) \land r \\
-        \vdash p \lor (q \lor r) &\bimp (p \lor q) \lor r \\
-        \vdash (p \bimp (q \bimp r)) &\bimp (p \bimp q) \bimp r
+        \vdash p \land (q \land r) &\bimp (p \land q) \land r \quad \text{Lang men let}\\
+        \vdash (p \bimp (q \bimp r)) &\bimp (p \bimp q) \bimp r \quad \text{Middel} \\
+        \vdash p \lor (q \lor r) &\bimp (p \lor q) \lor r \quad \text{Svær} \\
     \end{align*}
     \begin{solution}
         $\vdash p \land (q \land r) \bimp (p \land q) \land r$
@@ -55,6 +55,7 @@
             \: (p \land q) \land r \imp p \land (q \land r) \= \imp i \\
             \: p \land (q \land r) \bimp (p \land q) \land r  \= \bimp i \, \ref{imp_i1}, \ref{imp_i2}
         \end{proofbox}
+
     \end{solution}
 \end{opg}
 
