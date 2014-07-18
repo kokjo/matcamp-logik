@@ -22,7 +22,7 @@ vi sammensætter udsagn ved hjælp af symboler vi vil kalde konnektiver(symboler
     \item[$\land$] betyder 'og', det vil sige at $a \land b$ er sand hvis $a$ og $b$ er sande.
     \item[$\lor$] betyder 'eller', det vil sige at $a \lor b$ er sand hvis $a$, $b$ eller begge er sande.
     \item[$\lnot$] betyder 'ikke'(læses non), det vil sige at $\lnot a$ er sand, hvis $a$ er falsk.
-    \item[$\imp$] betyder 'medføre', det vil sige at $a \imp b$ er equvivalent med $\lnot a \lor b$. Et udtryk $a \imp b$ kaldes for en 'implikation'.
+    \item[$\imp$] betyder 'medføre'. Et udtryk $a \imp b$ kaldes for en 'implikation'.
     \item[$\bimp$] betyder 'ækvivalent med', det vil sige at $a \bimp b$ er sand, hvis $a$ og $b$ har samme sandheds værdi. Et udtryk $a \bimp b$ kaldes for en 'biimplikation'.
 \end{description}
 
@@ -33,7 +33,7 @@ Vi kan nu fjerne alt unødig information fra de eksempler vi havde før, og kun 
     \item ``$a \imp b$''
 \end{itemize}
 
-Den sidste sætning kan vi dog endnu ikke reducere til symboler, grunden til dette ar at vi mangler en måde at konkludere derfor bliver vi nød til at indføre mere notation:
+Den sidste sætning kan vi dog endnu ikke reducere til symboler, grunden til dette er at vi mangler en måde at konkludere derfor bliver vi nød til at indføre mere notation:
 
 \begin{prooftree}
     \AxiomC{Ting vi antager}
@@ -41,7 +41,7 @@ Den sidste sætning kan vi dog endnu ikke reducere til symboler, grunden til det
     \UnaryInfC{Ting vi har lov til at konkludere}
 \end{prooftree}
 
-Vi skal også bruge notationen $p \vdash q$ for at sige at p beviser q(der eksistere et bevis som antager p og konkludere q, uden rent faktisk at give et bevis for det).
+Vi skal også bruge notationen $p \vdash q$ for at sige at p beviser q(der eksisterer et bevis som antager p og konkludere q, uden rent faktisk at give et bevis for det).
 
 Nu kan vi så antage at $a \imp b$ og $a$ og derefter konkludere $b$:
 \begin{prooftree}
@@ -50,7 +50,7 @@ Nu kan vi så antage at $a \imp b$ og $a$ og derefter konkludere $b$:
     \BinaryInfC{$b$}
 \end{prooftree}
 
-Vi kan med denne notation kan vi indføre regler for hvad vi kan konkludere udfra sammesatte udsagn.
+Med denne notation kan vi indføre regler for hvad vi kan konkludere udfra sammesatte udsagn.
 F.eks. kan reglerne for brugen af 'og' sammensætnigen defineres som 3 regler:
 
 \begin{prooftree}
@@ -86,8 +86,10 @@ Hvis vi ved at $\phi \land \psi$ er sand, ved vi specielt også at $\phi$ og $\p
     \UnaryInfC{$\phi \lor \psi$}
 \end{prooftree}
 
-Elimination af 'eller' er den del svære, hvis vi har lyst til at konkludere $\alpha$ udfra $\phi \lor \psi$, ved vi ikke om det er $\phi$, $\psi$ eller begge som er sande.
-Vi bliver derfor nød til at skabe 2 seperate beviser hvor vi antager $\phi$ og $\psi$ seperat og konkludere $\alpha$ i begge tilfælde:
+Elimination af 'eller' er den del sværere,
+hvis vi har lyst til at konkludere $\alpha$ udfra $\phi \lor \psi$,
+ved vi ikke om det er $\phi$, $\psi$ eller begge som er sande.
+Vi bliver derfor nødt til at skabe 2 seperate beviser hvor vi antager $\phi$ og $\psi$ seperat og konkluderer $\alpha$ i begge tilfælde:
 
 \begin{prooftree}
     \AxiomC{$\phi \lor \psi$}
@@ -107,6 +109,14 @@ Vi bliver derfor nød til at skabe 2 seperate beviser hvor vi antager $\phi$ og 
     \TrinaryInfC{$\alpha$}
 \end{prooftree}
 
+Vi vil også indføre et symbol som altid er falsk. Til dette bruger vi $\bot$. $\bot$ har inden introduktions regel, men kun en eliminations regel:
+\begin{prooftree}
+    \AxiomC{$\bot$}
+    \RightLabel{($\bot e$)}
+    \UnaryInfC{$\phi$}
+\end{prooftree}
+Denne regel giver at hvis du kan konkludere at noget er falsk, kan du udlede at enhver sætning er sand.
+
 Reglerne for negation:
 \begin{prooftree}
     \AxiomC{$$\boxed{
@@ -118,7 +128,8 @@ Reglerne for negation:
     \RightLabel{($\lnot i$)}
     \UnaryInfC{$\lnot \phi$}
 \end{prooftree}
-Hvis du antager noget og kommer frem til at du kan konkludere falsk, må det du antog være falsk. Det omvendte er derfor sandt.
+Hvis du antager noget og kommer frem til at du kan konkludere falsk,
+må det du antog være falsk. Det omvendte er derfor sandt.
 
 \begin{prooftree}
     \AxiomC{$\lnot \lnot \phi$}
@@ -137,7 +148,7 @@ Hvis du antager noget og kommer frem til at du kan konkludere falsk, må det du 
     \RightLabel{($\imp$ i)}
     \UnaryInfC{$\phi \imp \psi$}
 \end{prooftree}
-Hvis du kan bevise $\psi$ udfra $\psi$ så $\phi \imp \psi$.
+Hvis du kan bevise $\psi$ udfra $\phi$ så kan du konkludere $\phi \imp \psi$.
 
 \begin{prooftree}
     \AxiomC{$\phi \imp \psi$}
@@ -145,7 +156,7 @@ Hvis du kan bevise $\psi$ udfra $\psi$ så $\phi \imp \psi$.
     \RightLabel{($\imp$ e)}
     \BinaryInfC{$\psi$}
 \end{prooftree}
-Hvis $\phi$ medføre $\psi$, og $\phi$ er sand, må $\psi$ også være sand.
+Hvis $\phi$ medfører $\psi$, og $\phi$ er sand, må $\psi$ også være sand.
 
 Ækvivalent med ($\bimp$) er bare en forkortelse for at der er en implikation begge veje mellem udtrykkene. Det kan vi udtrykke ved reglerne
 \par\noindent \begin{tabular}{@{}l@{}l@{}}
@@ -169,8 +180,8 @@ Hvis $\phi$ medføre $\psi$, og $\phi$ er sand, må $\psi$ også være sand.
 
 \subsection{Beviser}
 Da vi nu har alle reglerne på plads, kan vi bruge dem til at vise at andre sætninger er sande.
-Hvis vi tager sætningen $p \imp q \vdash p \land r \imp q \land r$, ser vi at det ikke er en af vores axiomer,
-Men vi kan udfra vores axiomer konkludere om sætningen er sand, ved at udføre et bevis for den:
+Hvis vi tager sætningen $p \imp q \vdash p \land r \imp q \land r$, ser vi at det ikke er et af vores aksiomer,
+Men vi kan udfra vores aksiomer konkludere at sætningen er sand, ved at udføre et bevis for den:
 \begin{prooftree}
     \AxiomC{$p \imp q$}
     \AxiomC{$p \land r$}
@@ -182,23 +193,28 @@ Men vi kan udfra vores axiomer konkludere om sætningen er sand, ved at udføre 
     \RightLabel{($\land e_2$)}
     \UnaryInfC{$r$}
     \RightLabel{($\land i$)}
-    \BinaryInfC{$q \land r$} 
+    \BinaryInfC{$q \land r$}
 \end{prooftree}
 
 Dette ser en smule kludret ud, derfor er det bedre at bruge en form for linært bevis som ser således ud:
 
 \begin{proofbox}
-    \lbl{eks1}
-    \: p \land r        \= \text{premisse} \\
-    \lbl{eks1_p}
-    \: p                \= \land e_1, 1 \\
-    \lbl{eks1_r}
-    \: r                \= \land e_2, 1 \\
-    \lbl{eks1_p_imp_q}
-    \: p \imp q         \= \text{antagelse} \\
-    \lbl{eks1_q}
-    \: q                \= \imp e \ref{eks1_p_imp_q}, \ref{eks1_p}
-    \: q \land r        \= \land i \ref{eks1_q}, \ref{eks1_r}
+    \lbl{eks1_imp_beg}
+    \[
+        \lbl{eks1}
+        \: p \land r        \= \text{Antagelse for $\imp i$ } \\
+        \lbl{eks1_p}
+        \: p                \= \land e_1, 1 \\
+        \lbl{eks1_r}
+        \: r                \= \land e_2, 1 \\
+        \lbl{eks1_p_imp_q}
+        \: p \imp q         \= \text{Antagelse} \\
+        \lbl{eks1_q}
+        \: q                \= \imp e \ref{eks1_p_imp_q}, \ref{eks1_p} \\
+        \lbl{eks1_imp_end}
+        \: q \land r        \= \land i \ref{eks1_q}, \ref{eks1_r}
+    \]
+    \: p \land r \imp q \land r \= \imp i \, \ref{eks1_imp_beg}-\ref{eks1_imp_end}
 \end{proofbox}
 
 \subsection{Eksempler på beviser}
@@ -220,7 +236,7 @@ Dette ser en smule kludret ud, derfor er det bedre at bruge en form for linært 
     \: p \imp r     \= \imp i \ref{eks2_imp_box}-\ref{_eks2_imp_box_end}
 \end{proofbox}
 
-
+za
 \subsubsection{$p \vdash q \imp p$}
 Beviset her er lidt sjovt da $p$ klart er sandt, men selvom vi intet viden har omkring $q$,
 kan $q$ stadig blive inkluderet i et udsagn.

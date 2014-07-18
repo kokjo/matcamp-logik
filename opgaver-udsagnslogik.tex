@@ -8,13 +8,22 @@
 
 \subsection{Opgaver}
 
+\begin{opg}[Kommutivitet af $\land$, $\lor$ og $\bimp$]
+    Vis at følgende gælder
+    \begin{align*}
+        \vdash p \land q &\bimp q \land p \\
+        \vdash p \lor q &\bimp q \lor p \\
+        \vdash (p \bimp q) &\bimp (q \bimp p) \\
+    \end{align*}
+\end{opg}
+
 \begin{opg}[Associvitet af $\land$, $\lor$]
-    vis følgende gælder
+    Vis følgende sætninger
     \begin{align*}
         \vdash p \land (q \land r) &\bimp (p \land q) \land r \quad \text{Lang men let}\\
-        \vdash (p \bimp (q \bimp r)) &\bimp (p \bimp q) \bimp r \quad \text{Middel} \\
         \vdash p \lor (q \lor r) &\bimp (p \lor q) \lor r \quad \text{Svær} \\
     \end{align*}
+    Denne opgave kan springes over, men det er vigtigt at indse at resultatet ikke er trivielt i logik sammenhæng.
     \begin{solution}
         $\vdash p \land (q \land r) \bimp (p \land q) \land r$
         \begin{proofbox}
@@ -35,7 +44,7 @@
                 \: (p \land q) \land r  \= \land i \, \ref{p_and_q}, \ref{r1} \\
             \]
             \lbl{imp_i1}
-            \: p \land (q \land r) \imp (p \land q) \land r \= \imp i 
+            \: p \land (q \land r) \imp (p \land q) \land r \= \imp i
             \[
                 \lbl{assoc_2_antag1}
                 \: (p \land q) \land r  \= \text{antagelse for $\imp i$} \\
@@ -59,15 +68,6 @@
     \end{solution}
 \end{opg}
 
-\begin{opg}[Kommutivitet af $\land$, $\lor$ og $\bimp$]
-    Vis at følgende gælder
-    \begin{align*}
-        \vdash p \land q &\bimp q \land p \\
-        \vdash p \lor q &\bimp q \lor p \\
-        \vdash (p \bimp q) &\bimp (q \bimp p) \\
-    \end{align*}
-\end{opg}
-
 \begin{opg}
     Vis at $p \imp q, \lnot q \vdash \lnot p$.
 	\begin{solution}
@@ -75,8 +75,8 @@
 	\end{solution}
 \end{opg}
 
-\begin{opg}[bevis ved modbevis]
-    bevis at 'bevis ved modbevis virker', ved at se på $\lnot p \imp \bot \vdash p$
+\begin{opg}[bevis ved modstrid]
+    bevis at 'bevis ved modstrid virker', ved at se på $\lnot p \imp \bot \vdash p$
     \begin{solution}
         Løsning...
     \end{solution}
@@ -126,6 +126,10 @@
 	\begin{solution}
 		Løsning...
 	\end{solution}
+\end{opg}
+
+\begin{opg}[Associvitet $\bimp$]
+    $\vdash (p \bimp (q \bimp r)) \bimp ((p \bimp q) \bimp r)$
 \end{opg}
 
 \begin{opg}
