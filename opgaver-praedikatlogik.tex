@@ -80,8 +80,8 @@
 		\item $\exists x\,P(x) \imp \phi \vdash \forall x(P(x) \imp \phi)$
 		\item $\forall x (P(x)\land Q(x)) \vdash \forall x \, P(x) \land \forall x \, Q(x)$
 		\item $\vdash \forall x \left( P(x) \imp Q(x) \right) \imp \left( \forall x\, P(x) \imp \forall x\, Q(x) \right)$
-		\item $\phi\imp\exists x \, Q(x) \vdash \exists x (\phi\imp Q(x))$\\
-		Hint: Start med at antage $\forall x \neg(\phi\imp Q(x))$
+		\item * $\phi\imp\exists x \, Q(x) \vdash \exists x (\phi\imp Q(x))$\\
+		Hint: Start med at antage $\forall x \neg(\phi\imp Q(x))$ og slut af med at bruge ækvivalensen mellem $\forall$ og $\exists$.
 	\end{enumerate}
 	\item Bevis følgende sekvent uden at referere til sætningerne om ækvivalens mellem $\exists$ og $\forall$:
 	$\vdash \exists x \, \phi \bimp \neg \forall x \, \neg \phi$
@@ -151,8 +151,8 @@
 	\item{Afgør sandheden af følgende}
 	\begin{enumerate}
 		\item $\forall x \forall y P(x,y) \vdashv \forall y \forall x P(x,y)$
-		\item $\exists x \forall y P(x,y) \vdashv \forall y \exists x P(x,y)$
 		\item $\exists x \exists y P(x,y) \vdashv \exists y \exists x P(x,y)$
+		\item $\exists x \forall y P(x,y) \vdashv \forall y \exists x P(x,y)$
 	\end{enumerate}
 \end{enumerate}
 \end{opg}
