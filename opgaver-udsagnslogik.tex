@@ -65,20 +65,74 @@
             \: p \land (q \land r) \bimp (p \land q) \land r  \= \bimp i \, \ref{imp_i1}, \ref{imp_i2}
         \end{proofbox}
 
+        $\vdash p \lor (q \lor r) \bimp (p \lor q) \lor r$
+        implikation vises kun den ene vej, da den anden vej foregår analogt
+        \begin{proofbox}
+            \lbl{imp_beg}
+            \[
+                \lbl{pqr}
+                \: p \lor (q \lor r)            \= \text{antagelse for $\imp i$} \\
+                \lbl{Vep}
+                \[
+                    \lbl{p}
+                    \: p                        \= \text{antaglese for $\lor e$} \\
+                    \lbl{p_pq}
+                    \: p \lor q                 \= \lor i \, \ref{p} \\
+                    \label{assoc_p_pqr}
+                    \: (p \lor q) \lor r        \= \lor i \, \ref{p_pq} \\
+                \]
+                \lbl{Veq}
+                \[
+                    \lbl{q}
+                    \: q                        \= \text{antaglese for $\lor e$} \\
+                    \lbl{q_pq}
+                    \: p \lor q                 \= \lor i \, \ref{q} \\
+                    \label{assoc_q_pqr}
+                    \: (p \lor q) \lor r        \= \lor i \, \ref{q_pq} \\
+                \]
+                \label{assoc_imp_end}
+                \: (p \lor q) \lor r            \= \lor i \, \ref{pqr}, \ref{Vep}-\ref{assoc_p_pqr}, \ref{Veq}-\ref{assoc_q_pqr}
+            \]
+            \: p \lor (q \lor r) \imp (p \lor q) \lor r            \= \imp i \, \ref{imp_beg}-\ref{assoc_imp_end}
+        \end{proofbox}
     \end{solution}
 \end{opg}
 
 \begin{opg}
     Vis at $p \imp q, \lnot q \vdash \lnot p$.
 	\begin{solution}
-		Løsning...
+        \begin{proofbox}
+            \lbl{p_imp_q}
+            \: p \imp q                            \= \text{Antagelse} \\
+            \lbl{non_q}
+            \: \lnot q                              \= \text{Antagelse} \\
+            \lbl{opg3_box}
+            \[
+                \lbl{p}
+                \: p                            \= \text{antagelse for $\lnot i$} \\
+                \lbl{q}
+                \: q                            \= \imp e \, \ref{p_imp_q}, \ref{p} \\
+                \: q \land \lnot q               \= \land i \, \ref{q}, \ref{non_q} \\
+                \label{opg3_bot}
+                \: \bot                         \= \bot i
+            \]
+            \: \lnot p                          \= \lnot i \, \ref{opg3_box}-\ref{opg3_bot}
+        \end{proofbox}
 	\end{solution}
 \end{opg}
 
 \begin{opg}[bevis ved modstrid]
     bevis at 'bevis ved modstrid virker', ved at se på $\lnot p \imp \bot \vdash p$
     \begin{solution}
-        Løsning...
+        \begin{proofbox}
+            \: \lnot p \imp \bot                \= \text{antagelse} \\
+            \[
+                \: \lnot p                      \= \text{antagelse for $\lnot i$} \\
+                \: \bot                         \= \imp e
+            \]
+            \: \lnot \lnot p                    \= \lnot i \\
+            \: p                                \= \lnot \lnot e
+        \end{proofbox}
     \end{solution}
 \end{opg}
 
@@ -87,7 +141,50 @@
     \[ \vdash \lnot (p \land q) \bimp \lnot p \lor \lnot q \]
     \[ \vdash \lnot (p \lor q) \bimp \lnot p \land \lnot q \]
 	\begin{solution}
-		Løsning...
+        bevis for $\vdash \lnot (p \land q) \bimp \lnot p \lor \lnot q$:
+        \begin{proofbox}
+            \[
+                \: \lnot p \lor \lnot q             \= \text{antaglese for $\imp i$} \\
+                \[
+                    \: \lnot p                      \= \text{antaglese for $\lor e$} \\
+                    \[
+                        \: p \land q                \= \text{antaglese for $\lnot i$} \\
+                        \: p                        \= \land e \\
+                        \: p \land \lnot p          \= \land i \\
+                        \: \bot                     \= \bot i
+                    \]
+                    \lnot (p \land q)               \= \lnot i
+                \]
+                \[
+                    \: \lnot q                      \= \text{antaglese for $\lor e$} \\
+                    \[
+                        \: p \land q                \= \text{antaglese for $\lnot i$} \\
+                        \: q                        \= \land e \\
+                        \: q \land \lnot q          \= \land i \\
+                        \: \bot                     \= \bot i
+                    \]
+                    \lnot (p \land q)               \= \lnot i
+                \]
+                \: \lnot (p \land q)                \= \lor e
+            \]
+            \lbl{imp_1}
+            \: \lnot p \lor \lnot q \imp \lnot (p \land q) \= \imp i
+            \[
+                \: \lnot (p \land q)                \= \text{antagelse for $\imp i$} \\
+                \[
+                    \: \lnot (\lnot p \land \lnot q)            \= \text{antagelse for $\lnot i$} \\
+                    \: (\lnot \lnot p) \land (\lnot \lnot q)    \= \imp e \, \ref{imp_1} \quad \text{OBS!} \\
+                    \: p                                        \= \text{$\land e$ og $\lnot\lnot e$} \\
+                    \: q                                        \= \text{$\land e$ og $\lnot\lnot e$} \\
+                    \: p \land q                                \= \land i \\
+                    \: \bot                                     \= \text{$\land i$ og $\bot i$}
+                \]
+                \: \lnot \lnot (\lnot p \land \lnot q)          \= \lnot i \\
+                \: \lnot p \land \lnot q                        \= \lnot \lnot e
+            \]
+            \: \lnot (p \land q) \imp \lnot p \land \lnot q     \= \imp i \\
+            \: \lnot p \lor \lnot q \bimp \lnot (p \land q)     \= \bimp i
+        \end{proofbox}
 	\end{solution}
 \end{opg}
 
