@@ -109,7 +109,12 @@ Vi bliver derfor nødt til at skabe 2 seperate beviser hvor vi antager $\phi$ og
     \TrinaryInfC{$\alpha$}
 \end{prooftree}
 
-Vi vil også indføre et symbol som altid er falsk. Til dette bruger vi $\bot$. $\bot$ har inden introduktions regel, men kun en eliminations regel:
+Her er der kommet noget nyt notation: Kasser.
+Kasser kan bruges til at laver antagelser og konkludere not udfra disse. Det Vigtige her er at kasser kan referere til verdenen omkring kassen.
+Man man kan ikke bruge ting man har antaget inden i kassen uden at man har et specifikt aksiom(ligesom overstående) som siger at man godt må.
+
+Vi vil også indføre et symbol som altid er falsk. Til dette bruger vi $\bot$.
+$\bot$ har ingen introduktions regel(Men den kan introduceres ved $\not e$), men kun en eliminations regel:
 \begin{prooftree}
     \AxiomC{$\bot$}
     \RightLabel{($\bot e$)}
@@ -130,6 +135,14 @@ Reglerne for negation:
 \end{prooftree}
 Hvis du antager noget og kommer frem til at du kan konkludere falsk,
 må det du antog være falsk. Det omvendte er derfor sandt.
+
+\begin{prooftree}
+    \AxiomC{$p$}
+    \AxiomC{$\lnot p$}
+    \RightLabel{($\lnot e$)}
+    \BinaryInfC{$\bot$}
+\end{prooftree}
+$p$ og ikke $p$ kan ikke værer sande samtidig, så derfor kan vi opnå falskhed hvis begge er det aligevel.
 
 \begin{prooftree}
     \AxiomC{$\lnot \lnot \phi$}
@@ -160,6 +173,151 @@ Hvis $\phi$ medfører $\psi$, og $\phi$ er sand, må $\psi$ også være sand.
 
 Ækvivalent med ($\bimp$) er bare en forkortelse for at der er en implikation begge veje mellem udtrykkene. Det kan vi udtrykke ved reglerne
 \par\noindent \begin{tabular}{@{}l@{}l@{}}
+	\begin{minipage}{0.5\textwidth}
+		\begin{prooftree}
+		    \AxiomC{$\phi \imp \psi$}
+		    \AxiomC{$\psi \imp \phi$}
+		    \RightLabel{($\bimp$ i)}
+		    \BinaryInfC{$\phi \bimp \psi$}
+		\end{prooftree}
+	\end{minipage}
+	&
+	\begin{minipage}{0.5\textwidth}
+		\begin{prooftree}
+		    \AxiomC{$\phi \bimp \psi$}
+		    \RightLabel{($\bimp\text{ e}_\land$)}
+		    \UnaryInfC{$\left(\phi \imp \psi\right) \land \left(\psi \imp \phi\right)$}
+		\end{prooftree}
+	\end{minipage}
+\end{tabular}
+
+\pagebreak
+\subsection{Aksiom liste}
+\hspace{0pt}
+\par\noindent \begin{tabular}{@{}l@{}l@{}}
+    \begin{minipage}{0.5\textwidth}
+        \begin{prooftree}
+            \AxiomC{$a \imp b$}
+            \AxiomC{$a$}
+            \RightLabel{($\imp e$)}
+            \BinaryInfC{$b$}
+        \end{prooftree}
+    \end{minipage}
+    &
+    \begin{minipage}{0.5\textwidth}
+        \begin{prooftree}
+            \AxiomC{$$\boxed{
+                \begin{matrix}
+                    \phi \\
+                    \vdots \\
+                    \psi
+                \end{matrix}}$$}
+            \RightLabel{($\imp$ i)}
+            \UnaryInfC{$\phi \imp \psi$}
+        \end{prooftree}
+    \end{minipage}
+    \\
+    \begin{minipage}{0.5\textwidth}
+        \begin{prooftree}
+            \AxiomC{$\phi$}
+            \AxiomC{$\psi$}
+            \RightLabel{($\land$i)}
+            \BinaryInfC{$\phi \land \psi$}
+        \end{prooftree}
+    \end{minipage}
+    &
+    \\
+    \begin{minipage}{0.5\textwidth}
+        \begin{prooftree}
+            \AxiomC{$\phi \land \psi$}
+            \RightLabel{($\land e_1$)}
+            \UnaryInfC{$\phi$}
+        \end{prooftree}
+    \end{minipage}
+    &
+    \begin{minipage}{0.5\textwidth}
+        \begin{prooftree}
+            \AxiomC{$\phi \land \psi$}
+            \RightLabel{($\land e_2$)}
+            \UnaryInfC{$\psi$}
+        \end{prooftree}
+    \end{minipage}
+    \\
+    \begin{minipage}{0.5\textwidth}
+        \begin{prooftree}
+            \AxiomC{$\phi$}
+            \RightLabel{($\lor i_1$)}
+            \UnaryInfC{$\phi \lor \psi$}
+        \end{prooftree}
+    \end{minipage}
+    &
+    \begin{minipage}{0.5\textwidth}
+        \begin{prooftree}
+            \AxiomC{$\psi$}
+            \RightLabel{($\lor i_2$)}
+            \UnaryInfC{$\phi \lor \psi$}
+        \end{prooftree}
+    \end{minipage}
+    \\
+    \begin{minipage}{0.5\textwidth}
+        \begin{prooftree}
+            \AxiomC{$\phi \lor \psi$}
+            \AxiomC{$$\boxed{
+                \begin{matrix}
+                    \phi \\
+                    \vdots \\
+                    \alpha
+                \end{matrix}}$$}
+            \AxiomC{$$\boxed{
+                \begin{matrix}
+                    \psi \\
+                    \vdots \\
+                    \alpha
+                \end{matrix}}$$}
+            \RightLabel{($\lor e$)}
+            \TrinaryInfC{$\alpha$}
+        \end{prooftree}
+    \end{minipage}
+    &
+    \\
+    \begin{minipage}{0.5\textwidth}
+        \begin{prooftree}
+            \AxiomC{$p$}
+            \AxiomC{$\lnot p$}
+            \RightLabel{($\lnot e$)}
+            \BinaryInfC{$\bot$}
+        \end{prooftree}
+    \end{minipage}
+    &
+    \begin{minipage}{0.5\textwidth}
+        \begin{prooftree}
+            \AxiomC{$\bot$}
+            \RightLabel{($\bot e$)}
+            \UnaryInfC{$\phi$}
+        \end{prooftree}
+    \end{minipage}
+    \\
+    \begin{minipage}{0.5\textwidth}
+        \begin{prooftree}
+            \AxiomC{$$\boxed{
+                \begin{matrix}
+                    \phi \\
+                    \vdots \\
+                    \bot
+                \end{matrix}}$$}
+            \RightLabel{($\lnot i$)}
+            \UnaryInfC{$\lnot \phi$}
+        \end{prooftree}
+    \end{minipage}
+    &
+    \begin{minipage}{0.5\textwidth}
+        \begin{prooftree}
+            \AxiomC{$\lnot \lnot \phi$}
+            \RightLabel{($\lnot \lnot e$)}
+            \UnaryInfC{$\phi$}
+        \end{prooftree}
+    \end{minipage}
+    \\
 	\begin{minipage}{0.5\textwidth}
 		\begin{prooftree}
 		    \AxiomC{$\phi \imp \psi$}
@@ -211,7 +369,7 @@ Dette ser en smule kludret ud, derfor er det bedre at bruge en form for linært 
         \: p \imp q         \= \text{Antagelse} \\
         \lbl{eks1_q}
         \: q                \= \imp e \ref{eks1_p_imp_q}, \ref{eks1_p} \\
-        \lbl{eks1_imp_end}
+        \label{eks1_imp_end}
         \: q \land r        \= \land i \ref{eks1_q}, \ref{eks1_r}
     \]
     \: p \land r \imp q \land r \= \imp i \, \ref{eks1_imp_beg}-\ref{eks1_imp_end}
