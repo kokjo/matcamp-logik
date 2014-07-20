@@ -7,14 +7,14 @@
 \section{Prædikatlogik}
 I det foregående har vi set hvordan vi formelt kan beskrive simple udsagn og sammensætninger heraf. Hvis vi vil begynde at snakke om egenskaber ved samlinger af ting kommer vi imidlertid til kort her. Et udsagn som "Alle matcamp deltagerne er gode til logik" kan vi f.eks. godt se som et udsagn i udsagnslogik. "Der findes en matcamp deltager der er god til logik" er et andet udsagn, som i udsagnslogik ikke umiddelbart har nogen relation til det første. Men vores intuition fortæller os at hvis det første er sandt, så må det andet også være det. Vores mål her er at definere et "rigere" sprog der gør det muligt for os at analysere sammenhængende mellem udsavn om elementer i samlinger. Vi kalder dette sprog for "prædikatlogik"
 
-Basis for prædikatlogikken er kvantiseret udtryk:
+Basis for prædikatlogikken er hvad vi kalder for kvantiseret udtryk:
 \[
 	\forall x \, P(x)
 \]
 
-Det læses som: "For alle $x$ gælder $P(x)$". $\forall$ symbolet kaldet for en "alkvantor". $x$ her er en variabel, og $P(x)$ er hvad vi kalder for et prædikat - et prædikat er et udsagn der afhænger af en eller flere variable. Præcist hvad variable og prædikater kan være beskæftiger prædikatlogikken sig ikke direkte med, det er noget man definerer ved at tilføje flere aksiomer til ens logiske system.
+Det læses som: "For alle $x$ gælder $P(x)$". $\forall$ symbolet kaldet for en "alkvantor". $x$ her er en variabel, og $P(x)$ er hvad vi kalder for et prædikat -- et prædikat er et udsagn der afhænger af en eller flere variable. Præcist hvad variable og prædikater kan være beskæftiger prædikatlogikken sig ikke direkte med, det er noget man definerer ved at tilføje flere aksiomer til ens logiske system.
 
-Så hvad mener vi så når vi siger "alle $x$"? Det kommer an på hvad vi ellers har defineret - eneste det siger er at for enhver variabel vi på en eller anden måde kan komme frem til skal udagnet $P(x)$ være sandt. I matematik har i måske set et lignende udtryk i form af
+Så hvad mener vi så når vi siger "alle $x$"? Det kommer an på hvad vi ellers har defineret -- eneste det siger er at for enhver variabel vi på en eller anden måde kan komme frem til skal udagnet $P(x)$ være sandt. I matematik har i måske set et lignende udtryk i form af
 \[
 	\forall n \in \nats : 2n \geq n
 \]
@@ -46,7 +46,7 @@ Et term er et symbol som virker som en slags udskiftelig del af et udtryk. Hvis 
 Rent formelt set er der ikke nogen distinktion mellem termer og variable i form af tegnene selv, den findes kun i hvordan vi bruger dem.
 F.eks. er et udtryk som $\forall 0 \, 0=0$ ækvivalent med $\forall x \, x=x$, men det siger ikke noget om tallet 0 selv hvis vi har andre sætninger i vores system der definerer 0, fordi det eneste man kan gøre med 0'et her er at erstatte det med en anden term ved brug af $\forall 0$ e.
 
-Når vi læser reglerne for kvantorene skal vi forstå variablene der står der som placeholders for ethvert term - altså kan de $x$ og $x_0$ der står ved reglerne for kvantorene erstattes med ethvert andet term - specielt må de gerne erstattes af det samme term.
+Når vi læser reglerne for kvantorene skal vi forstå variablene der står der som placeholders for ethvert term -- altså kan de $x$ og $x_0$ der står ved reglerne for kvantorene erstattes med ethvert andet term -- specielt må de gerne erstattes af det samme term.
 F.eks. hvis vi har $\vdash 0+1=1$ kan vi ikke erstatte termen 0 med termen 1, men hvis der står $\forall 0 \, 0=0$ må vi gerne konkludere $1=1$. 
 Hvis vi skulle være meget pendantiske skulle vi faktisk angive ved reglerne hvilke termer der fungerer som variable.
 
@@ -140,7 +140,7 @@ er sande. Vi viser den første af dem her:
   			\: \bot \= \neg \text{e } \ref{2_1_2}, \ref{2}
   		\]
   		\label{_forall_to_not_box2b_end}
-  		\: \phi[x_0/x] \= \text{PBC } \ref{pbc_box}-\ref{_forall_to_not_box3b_end}
+  		\: \phi[x_0/x] \= \text{BVM } \ref{pbc_box}-\ref{_forall_to_not_box3b_end}
   	\]
   	\label{_forall_to_not_box1b_end}
   	\: \forall x \, \phi \= \forall x \text{ i } \ref{forall_box}-\ref{_forall_to_not_box2b_end}
@@ -167,7 +167,7 @@ Altså er ting lig med sig selv, hvilket ikke skulle være nogen overaskelse. $t
 	\BinaryInfC{$\phi[t_2/x]$}
 \end{prooftree}
 
-Her er også $t_1,t_2$ og $x$ placeholders for andre termer. Det kan være svært at se den egentlige styrke af reglen, tricket ved den er ofte at man skal finde den rigtige $\phi$ at bruge - bemærk nemmelig at det er to forskellige termer der er erstattet med i præmissen og i konklusionen. Vi kan bruge den til at konkludere nogen af de egenskaber vi forventer gælder for lig med. Vi vil gerne have at hvis $t_1=t_2$ og $t_2=t_3$ så er $t_1=t_2$. Altså at der gælder $t_1=t_2,t_2=t_3\vdash t_1=t_3$.Vi kalder dette transitivitet.
+Her er også $t_1,t_2$ og $x$ placeholders for andre termer. Det kan være svært at se den egentlige styrke af reglen, tricket ved den er ofte at man skal finde den rigtige $\phi$ at bruge -- bemærk nemmelig at det er to forskellige termer der er erstattet med i præmissen og i konklusionen. Vi kan bruge den til at konkludere nogen af de egenskaber vi forventer gælder for lig med. Vi vil gerne have at hvis $t_1=t_2$ og $t_2=t_3$ så er $t_1=t_2$. Altså at der gælder $t_1=t_2,t_2=t_3\vdash t_1=t_3$.Vi kalder dette transitivitet.
 \begin{proofbox}
 	\lbl{1}
 	\: t_1 = t_2 \= \text{præmis} \\
