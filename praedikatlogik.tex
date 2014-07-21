@@ -5,7 +5,7 @@
 \fi
 
 \section{Prædikatlogik}
-I det foregående har vi set hvordan vi formelt kan beskrive simple udsagn og sammensætninger heraf. Hvis vi vil begynde at snakke om egenskaber ved samlinger af ting kommer vi imidlertid til kort her. Et udsagn som "Alle matcamp deltagerne er gode til logik" kan vi f.eks. godt se som et udsagn i udsagnslogik. "Der findes en matcamp deltager der er god til logik" er et andet udsagn, som i udsagnslogik ikke umiddelbart har nogen relation til det første. Men vores intuition fortæller os at hvis det første er sandt, så må det andet også være det. Vores mål her er at definere et "rigere" sprog der gør det muligt for os at analysere sammenhængende mellem udsavn om elementer i samlinger. Vi kalder dette sprog for "prædikatlogik"
+I det foregående har vi set hvordan vi formelt kan beskrive simple udsagn og sammensætninger heraf. Hvis vi vil begynde at snakke om egenskaber ved samlinger af ting kommer vi imidlertid til kort her. Et udsagn som "Alle matcamp deltagerne er gode til logik"{} kan vi f.eks. godt se som et udsagn i udsagnslogik. "Der findes en matcamp deltager der er god til logik"{} er et andet udsagn, som i udsagnslogik ikke umiddelbart har nogen relation til det første. Men vores intuition fortæller os at hvis det første er sandt, så må det andet også være det. Vores mål her er at definere et "rigere"{} sprog der gør det muligt for os at analysere sammenhængende mellem udsavn om elementer i samlinger. Vi kalder dette sprog for "prædikatlogik"
 
 Basis for prædikatlogikken er hvad vi kalder for kvantiseret udtryk:
 \[
@@ -77,6 +77,7 @@ Det venstrestillede $x_0$ betyder at vi har en variabel som vi bruger inde i bok
 
 Vi har nu for-alle-introduktion og eliminering og der-eksisterer-introduktion. Det vi nu mangler er en regel for der-eksisterer-eliminering ($\exists x$ e). Hvis vi ved at der eksisterer et element der opfylder en eller anden egenskab og gerne vil vise at en sætning gælder ud fra det, så skal vi vise at sætningen gælder uanset hvilken værdi det er der opfylder egenskaben. Så vi introducere "der eksisterer introduktion"{} ved:
 \begin{prooftree}
+	\AxiomC{$\exists x \phi$}
 	\AxiomC{$$\boxed{
 		\begin{matrix}
 			\multicolumn{1}{l}{x_0 \quad \phi[x_0/x]} \\
@@ -85,7 +86,7 @@ Vi har nu for-alle-introduktion og eliminering og der-eksisterer-introduktion. D
 		\end{matrix}
 	}$$}
 	\RightLabel{$\exists x $ e}
-	\UnaryInfC{$\chi$}
+	\BinaryInfC{$\chi$}
 \end{prooftree}
 Altså lader vi der være en arbitrær variabel vi siger prædikatet er opfyldt for, og så viser vi at der er en sætning $\chi$ der er opfyldt \textit{som ikke selv indeholder variablen}.
 
@@ -167,7 +168,8 @@ Altså er ting lig med sig selv, hvilket ikke skulle være nogen overaskelse. $t
 	\BinaryInfC{$\phi[t_2/x]$}
 \end{prooftree}
 
-Her er også $t_1,t_2$ og $x$ placeholders for andre termer. Det kan være svært at se den egentlige styrke af reglen, tricket ved den er ofte at man skal finde den rigtige $\phi$ at bruge -- bemærk nemmelig at det er to forskellige termer der er erstattet med i præmissen og i konklusionen. Vi kan bruge den til at konkludere nogen af de egenskaber vi forventer gælder for lig med. Vi vil gerne have at hvis $t_1=t_2$ og $t_2=t_3$ så er $t_1=t_2$. Altså at der gælder $t_1=t_2,t_2=t_3\vdash t_1=t_3$.Vi kalder dette transitivitet.
+Her er også $t_1,t_2$ og $x$ placeholders for andre termer. Det kan være svært at se den egentlige styrke af reglen, tricket ved den er ofte at man skal finde den rigtige $\phi$ at bruge -- bemærk nemmelig at det er to forskellige termer der er erstattet med i præmissen og i konklusionen. Vi kan bruge den til at konkludere nogen af de egenskaber vi forventer gælder for lig med.
+Vi vil gerne have at hvis $t_1=t_2$ og $t_2=t_3$ så er $t_1=t_3$. Altså at der gælder $t_1=t_2,t_2=t_3\vdash t_1=t_3$.Vi kalder dette transitivitet.
 \begin{proofbox}
 	\lbl{1}
 	\: t_1 = t_2 \= \text{præmis} \\
