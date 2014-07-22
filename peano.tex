@@ -13,7 +13,7 @@ f. eks er velkendt at $2$ kommer efter $1$, og der ikke kommer nogle (positive) 
 Den måde hvor med vi lærte at ligge tal sammen var at man holdt $3$ fingre op på
 den ene hånd og $2$ fingre på den anden,
 og derefter hver gang man tog en finger ned på den ene hånd,
-slog man en fingre ned på den anden indtil at alle fingrene var taget ned på den ene hånd.
+slog man en fingre op på den anden indtil at alle fingrene var taget ned på den ene hånd.
 På den helt sammen og meget simple måde kommer vi også til at formulere de naturlige tal i logik.
 
 Aksiomer vi har tænkt os at bruge ser således ud:
@@ -86,8 +86,6 @@ For multiplikation gælder der ligende regler:
     \UnaryInfC{$\forall a \forall b \, a \times S(b) = a \times b + a$}
 \end{prooftree}
 
-Hvis vi ønsker at antage alle peanos aksiomer på engang bruger vi $PA \vdash \cdots$
-
 
 \subsection*{Bevis for at ``$0$'' er et neutral element}
 For at $0$ skal være et additivt neutralelement skal det gælde at $\forall a \, (a+0 = a \land 0+a = a)$.
@@ -96,7 +94,7 @@ vi mangler derfor at vise at det er et venstre nuetral element.
 For at gøre dette viser vi at predikatet $P(a) := 0+a = a$ er sand for alle naturlige tal.
 
 \begin{proofbox}
-    \: 0+0 = 0 \= \text{${p+}_1$ hvor $a$ er $0$} \\
+    \: 0+0 = 0              \= \text{${p+}_1$ hvor $a$ er $0$} \\
     \lbl{base}
     \: P(0)
     \[
@@ -107,9 +105,24 @@ For at gøre dette viser vi at predikatet $P(a) := 0+a = a$ er sand for alle nat
         \: P(S(a))
     \]
     \lbl{step}
-    \: P(a) \imp P(S(a)) \= \imp i \\
-    \: \forall a P(a) \= p_I\, \ref{base}-\ref{step} 
+    \: P(a) \imp P(S(a))    \= \imp i \\
+    \: \forall a P(a)       \= p_I\, \ref{base}-\ref{step} 
     \: \forall a (0+a = a)
 \end{proofbox}
+
+Hvis vi ønsker at antage alle peanos aksiomer på engang bruger vi $PA \vdash \cdots$
+
+\subsection*{Regler som kan udledes}
+Med de aksiomer som vi nu har indført kan vi bevise en masse pæne egenskaber omkring de naturlige tal.
+Vi vil dog ikke give bevis for disse sætninger da de alle er meget lange og en smule besværlige at vise.
+
+Følgende sætninger må bruges uden bevis i jeres opgaver:
+\begin{align*}
+    &PA \vdash \forall a \forall b \, a+b = b+a &\text{Kommutivitet af $+$} \\
+    &PA \vdash \forall a \forall b \, a \times b = b \times a &\text{Kommutivitet af $\times$} \\
+    &PA \vdash \forall a \forall b \forall c \, a+(b+c) = (a+b)+c &\text{Associvitet af $+$} \\
+    &PA \vdash \forall a \forall b \forall c \, a+(b+c) = (a+b)+c &\text{Associvitet af $\times$} \\
+    &PA \vdash \forall a \forall b \forall c \, a\times (b +c) = a \times b + a \times c &\text{Den distributive lov}
+\end{align*}
 
 \ifdefined\startPeano\end{document}\fi
