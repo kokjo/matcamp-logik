@@ -89,25 +89,43 @@ For multiplikation gælder der ligende regler:
 
 \subsection*{Bevis for at ``$0$'' er et neutral element}
 For at $0$ skal være et additivt neutralelement skal det gælde at $\forall a \, (a+0 = a \land 0+a = a)$.
-Vi ved allerede at ``$0$''neutral element hvis man bruger det fra højre side, det nemlig hvad aksiomet ${p+}_1$.
+Vi ved allerede at ``$0$'' er neutral element hvis man bruger det fra højre side, det nemlig hvad aksiomet ${p+}_1$.
 vi mangler derfor at vise at det er et venstre nuetral element.
-For at gøre dette viser vi at predikatet $P(a) := 0+a = a$ er sand for alle naturlige tal.
+For at gøre dette viser vi at prædikatet $P(a) := 0+a = a$ er sand for alle naturlige tal.
 
 \begin{proofbox}
-    \: 0+0 = 0              \= \text{${p+}_1$ hvor $a$ er $0$} \\
+    \lbl{-1}
+    \: \forall a\,a+0 = a   \= \text{${p+}_1$} \\
+    \lbl{0}
+    \: 0+0 = 0              \= \text{$\forall a$ e \ref{-1}} \\
     \lbl{base}
-    \: P(0)
+    \: P(0)                 \= \text{definition af $P(x)$ \ref{0}}\\
+		\lbl{forall_box}
     \[
-        \: P(a) \\
-        \: 0+a = a          \= \text{antagelse for $\imp i$} \\
-        \: S(0+a) = S(a)    \= \text{$=i$ og $=e$} \\
-        \: 0+S(a) = S(a)    \= {p+}_1 \\
-        \: P(S(a))
+        a_0                 \= \text{lad $a_0$ være givet} \\
+        \lbl{imp_box}
+        \[
+          \lbl{_0}
+            \: P(a_0)             \= \text{antagelse for $\imp$i}\\
+          \lbl{_1}
+            \: 0+a_0 = a_0        \= \text{definition af $P(a)$ \ref{_0}} \\
+          \lbl{_2}
+          \: S(0+a_0) = S(0+a_0)  \= \text{$=i$ \ref{_1}} \\
+          \lbl{_3}
+            \: S(0+a_0) = S(a_0)  \= \text{$=e$ \ref{_1},\ref{_2} $(\phi:=S(0+a_0)=S(x),[0+a_0/x]\to[a_0/x])$} \\
+          \lbl{_4}
+            \: 0+S(a_0) = S(a_0)    \= \text{$\forall a$ e \ref{-1}} \\
+          \label{imp_box_324637244309464580372ab1ac546349}
+            \: P(S(a_0))          \= \text{definition af $P(a)$ \ref{_4}}
+        \]
+        \label{forall_box_324637244309464580372ab1ac546349}
+    		\: P(a) \imp P(S(a))    \= \text{$\imp$i \ref{imp_box}-\ref{imp_box_324637244309464580372ab1ac546349}} \\
     \]
     \lbl{step}
-    \: P(a) \imp P(S(a))    \= \imp i \\
-    \: \forall a P(a)       \= p_I\, \ref{base}-\ref{step} 
-    \: \forall a (0+a = a)
+    \: \forall a (P(a) \imp P(S(a)))    \= \text{$\imp$i \ref{forall_box}-\ref{forall_box_324637244309464580372ab1ac546349}} \\
+    \lbl{2}
+    \: \forall a P(a)       \= p_I\, \ref{base},\ref{step} \\
+    \: \forall a (0+a = a)  \= \text{definition af $P(a)$ \ref{2}}
 \end{proofbox}
 
 Hvis vi ønsker at antage alle peanos aksiomer på engang bruger vi $PA \vdash \cdots$
@@ -121,7 +139,7 @@ Følgende sætninger må bruges uden bevis i jeres opgaver:
     &PA \vdash \forall a \forall b \, a+b = b+a &\text{Kommutivitet af $+$} \\
     &PA \vdash \forall a \forall b \, a \times b = b \times a &\text{Kommutivitet af $\times$} \\
     &PA \vdash \forall a \forall b \forall c \, a+(b+c) = (a+b)+c &\text{Associvitet af $+$} \\
-    &PA \vdash \forall a \forall b \forall c \, a+(b+c) = (a+b)+c &\text{Associvitet af $\times$} \\
+    &PA \vdash \forall a \forall b \forall c \, a\times(b\times c) = (a\times b)\times c &\text{Associvitet af $\times$} \\
     &PA \vdash \forall a \forall b \forall c \, a\times (b +c) = a \times b + a \times c &\text{Den distributive lov}
 \end{align*}
 
