@@ -8,9 +8,10 @@
 \usepackage{boxproof}
 \usepackage{environ}
 \usepackage{wasysym}
-\newtheorem{thm}{Sætning}
-\newtheorem{lem}{Lemma}
-\newtheorem{cor}{Korollar}
+\usepackage{cleveref}
+%\newtheorem{thm}{S{\ae}tning}
+%\newtheorem{lem}{Lemma}
+%\newtheorem{cor}{Korollar}
 
 \theoremstyle{definition}
 \newtheorem{dfn}{Definition}
@@ -42,6 +43,12 @@
 \DeclareMathOperator{\Pfarmor}{farmor}
 \DeclareMathOperator{\Pbedstemor}{bedstemor}
 \DeclareMathOperator{\Pbedsteforaelder}{bedsteforælder}
+
+\DeclareMathOperator{\Pvfu}{vfu}
+\DeclareMathOperator{\pct}{\%}
+\DeclareMathOperator{\BevisPar}{BevisPar}
+\DeclareMathOperator{\Sub}{Sub}
+\DeclareMathOperator{\Quine}{Quine}
 
 \newif\ifsolution
 \NewEnviron{solution}{\ifsolution{\par\noindent\textbf{Løsning.} }\expandafter\BODY\hfill$\square$\par\fi}

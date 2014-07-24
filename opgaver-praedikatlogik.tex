@@ -119,7 +119,7 @@
 				\lbl{pbc_box}
 				\[
 					\lbl{is_false}
-					\: \neg \exists x \, \phi \= \text{antagelse (for PBC)} \\
+					\: \neg \exists x \, \phi \= \text{antagelse (for BVM)} \\
 					\lbl{forall_box}
 					\[
 						x_0 \: \= \text{lad $x_0$ være givet (for $\forall x$ i)} \\
@@ -141,7 +141,7 @@
 					\: \bot \= \text{$\neg$e } \ref{forall_is_true},\ref{forall_is_false}
 				\]
 				\label{_pr_exc1_imp_box2a_end}
-				\: \exists x \, \phi \= \text{PBC } \ref{pbc_box}-\ref{_pr_exc1_pbc_box2a_end}
+				\: \exists x \, \phi \= \text{BVM } \ref{pbc_box}-\ref{_pr_exc1_pbc_box2a_end}
 			\]
 			\lbl{imp2}
 			\: \neg \forall x \, \neg \phi \imp \exists x \, \phi \= \text{$\imp$i } \ref{imp_box2}-\ref{_pr_exc1_imp_box2a_end} \\
@@ -160,7 +160,12 @@
 	Kan vi afgøre sandheden af følgende udsagn? Under hvilke omstændigheder er de sande og falske? Bevis at de gælder eller ikke gælder under jeres antagelser.
 	\begin{enumerate}
 		\item $\exists x \forall y P(x,y) \vdash \forall y \exists x P(x,y)$
+		%\begin{solution}
+		%	\begin{proofbox}
+		%	\end{proofbox}
+		%\end{solution}
 		\item *** $\forall y \exists x P(x,y) \vdash \exists x \forall y P(x,y)$
+		\input{projektloesning.tex}
 	\end{enumerate}
 \end{opg}
 

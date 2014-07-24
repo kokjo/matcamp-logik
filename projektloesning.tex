@@ -1,0 +1,289 @@
+\ifx\preampleIncluded\undefined
+\def\startProjektLoesning{}
+\include{preample}
+\begin{document}
+\*** $\forall y \exists x P(x,y) \vdash \exists x \forall y P(x,y)$
+\solutiontrue
+\fi
+
+\begin{solution}
+	Idéen her er at sætningen er sand hvis der kun er et element og falsk ellers.
+	Vi kan formulere at der findes mere end et element som sætningen
+	\[
+		\vdash \exists v_1 \exists v_2 \neg (v_1 = v_2)
+	\]
+	Hvis vi skal vise at udtrykket er falsk under antagelse af at der er mere end et element så skal vi under antagelse af udtrykket samt ovenstående sætning kunne vise en modstrid.
+
+	Tricket her er først og fremmest at formulere det rigtige prædikat. Vi forestiller os nu at vi har netop to elementer $t_1$ og $t_2$ der er forskellige fra hinanden og har udtrykket
+	$P(x,y) := \neg (x=y))$. Hvis vi har udtrykket $\forall y \exists x P(x,y)$ så kan vi bekræfte det ved at vi har for $y=t_1$ har $x=t_2$ hvorved $\neg (x = y) \bimp \neg (t_2 = t_1)$.
+	For den anden mulighed $y=t_2$ har vi $x=t_1$ hvorved $\neg (x = y) \bimp \neg (t_1 = t_2)$. Vi kan derved konkludere at $\exists x \forall y \neg (x=y)$.
+	Men udsagnet er ikke sandt for nogen af værdierne for $x$. For $x=t_1$ er $x\neq t_2$ men $x=t_1$. Omvendt så for $x=t_2$ er $\neg (x=t_1)$ men $x=t_2$.
+
+	Nu er det en ret streng ting at antage at universet har netop to elementer, så vi skulle gerne nøjes med at der er mindst to elementer.
+	Så vi skal tilføje begrænsningen om at de kun omhandler de to elementer vi ved noget om til prædikatet. Dvs. at vi skal have at det kun omtaler situationen hvor
+	$y = t_1 \lor y = t_2$ og at $x$ i det tilfæde er enten $t_1$ eller $t_2$. Altså kommer vores prædikat til at være: 
+	\[P := (y=t_1 \lor y=t_2) \imp ((x=t_1 \lor x=t_2) \land \neg(x=y))\]
+	Dvs. at slutningen som vi skal vise er ugyldig er
+	\begin{flalign*}
+		\exists x \forall y (y=t_1 \lor y=t_2) \imp ((x=t_1 \lor x=t_2) \land \neg(x=y))& \vdash \\
+		\forall x \exists y (y=t_1 \lor y=t_2) \imp ((x=t_1 \lor x=t_2) \land \neg(x=y))&
+	\end{flalign*}
+
+	Vi viser først en lile hjælpesætning som vi kalder $\neq$ symmetri: \[\neg(t_1=t_2)\vdash \neg(t_2=t_1).\]Bevis:
+	\begin{proofbox}
+		\lbl{1}
+		\: \neg(t_1=t_2) \= \text{præmis} \\
+		\lbl{box}
+		\[
+			\lbl{2}
+			\: t_2=t_1 \= \text{antagelse} \\
+			\lbl{3}
+			\: t_1=t_2 \= \text{$=$ symmetri \ref{2}} \\
+			\label{_2c4a7db379aa42abadf4315e1c8c241b}
+			\: \bot \= \text{$\neg$e \ref{3},\ref{1}} \\
+		\]
+		\: \neg(t_2=t_1) \= \text{$\neg$i \ref{box}-\ref{_2c4a7db379aa42abadf4315e1c8c241b}}
+	\end{proofbox}
+
+	Tilbage til hovedsætningen. Vi antager at den holder og viser $\bot$. Vi viser det ved at splitte den op i nogen mindre dele.
+	Først skal vi vise at
+	\begin{equation}
+		\label{pr_exc3_2_premise}
+		\exists x \forall y ((y=t_1 \lor y=t_2) \imp ((x=t_1 \lor x=t_2) \land \neg(x=y)))
+	\end{equation}
+	er sand. Det gør vi ved at undersøge de forskellige muligheder for $y$ hver for sig. Til dette vil vi benytte $\exists v_1/v_2$ e til at få de førnævnte $t_1$ og $t_2$
+	som vi ved er forskellige. Dernæst lader vi et $y_0$ være givet så vi kan vise at det gælder for alle y. Fra loven om den udelukket midte kan vi konkludere
+	\[
+		((y_0=t_1)\lor(y_0=t_2)) \lor \neg ((y_0=t_1)\lor(y_0=t_2)),
+	\]
+	hvilket vi kan bruge til at dele mulighederne for $y_0$ op i tre tilfælde -- enten er den $t_1$ eller $t_2$ eller også ingen af dem.
+	I alle tre tilfælde skal vi kunne vise højresiden af implikationspilen i \eqref{pr_exc3_2_premise}.
+	Vi viser det først for $y_0=t_1$. Dvs. vi viser
+	\def\mynegspace{\hspace{0pt}}
+	\begin{theorem}\label{pr_exc3_2_case1}
+			\begin{flalign*}
+				\neg(t_1=t_2), y_0=t_1 &\vdash \\
+				\exists x ((y_0=t_1 \lor y_0=t_2) \imp ((x=t_1 \lor x=t_2) \land \neg(x=y_0)))&
+			\end{flalign*}
+	\end{theorem}
+	\begin{proof}
+	\begin{proofbox}
+		\lbl{diffelems}
+		\: \neg(t_1=t_2) \= \text{præmis} \\
+		\lbl{y0_eq_t1}
+		\: y_0=t_1 \= \text{præmis} \\
+		\lbl{imp_box}
+		\[
+			\lbl{or_1_1_1}
+			\: y_0=t_1 \lor y_0 =t_2 \= \text{{\mynegspace}antagelse} \\
+			\lbl{_boxes}
+			\(
+				\lbl{_1}
+				\: y_0 = t_1 \= \text{ant. (for $\lor$e \ref{or_1_1_1})} \\
+				\lbl{_2}
+				\: t_1 = y_0 \= \text{$=$ symmetri \ref{_1}} \\
+				\lbl{_3}
+				\: \neg(y_0=t_2) \= \text{$=$e \ref{_2},\ref{diffelems}} \\
+				\label{__b76dc59605ad493a9c9d46823f3f26b4}
+				\: \neg(t_2=y_0) \= \text{$\neq$ symmetri \ref{_3}}
+			\*
+				\lbl{_1}
+				\: y_0=t_2 \= \text{ant. ($\lor$e \ref{or_1_1_1})}\\
+				\lbl{_2}
+				\: t_1=t_2 \= \text{$=$e \ref{y0_eq_t1}},\ref{_1}\\
+				\lbl{_3}
+				\: \bot \= \text{$\neg$e \ref{_2},\ref{diffelems}}\\
+				\: \neg(t_2=y_0) \= \text{$\bot$e \ref{_3}}
+			\)
+			\lbl{t2_neq_y0}
+			\: \neg(t_2=y_0) \= \mynegspace\text{$\lor$e \ref{or_1_1_1},\ref{_boxes}-\ref{__b76dc59605ad493a9c9d46823f3f26b4}} \\
+			\lbl{t2_eq_t2} \\
+			\: t_2=t_2 \= \mynegspace\text{$=$i} \\
+			\lbl{t2_eq_t2_or} \\
+			\: t_2=t_1 \lor t_2=t_2 \= \mynegspace\lor\text{i}_2\text{ \ref{t2_eq_t2}} \\
+			\label{__9602f7e0e29742c491028dbfaa52a026}
+			\: (t_2=t_1 \lor t_2=t_2) \land \neg(t_2=y_0) \= \text{\mynegspace$\land$i \ref{t2_eq_t2_or},\ref{t2_neq_y0}} \\
+		\]
+		\lbl{pre_case_one}
+		\: (y_0=t_1 \lor y_0 =t_2) \imp ((t_2=t_1 \lor t_2=t_2) \land \neg(t_2=y_0)) \= \text{$\imp$i \ref{imp_box}-\ref{__9602f7e0e29742c491028dbfaa52a026}} \\
+		\: \exists x(y_0=t_1 \lor y_0 =t_2) \imp (i(x=t_1 \lor x=t_2) \land \neg(x=y_0)) \= \text{$\exists x$ i \ref{pre_case_one}}
+	\end{proofbox}
+	\end{proof}
+	\text{Den anden mulighed er $y_0=t_2$.}
+	\begin{theorem}\label{pr_exc3_2_case2}
+			\begin{flalign*}
+				\neg(t_1=t_2), y_0=t_2 &\vdash \\
+				\exists x ((y_0=t_1 \lor y_0=t_2) \imp ((x=t_1 \lor x=t_2) \land \neg(x=y_0)))&
+			\end{flalign*}
+	\end{theorem}
+	\begin{proof}
+	\begin{proofbox}
+		\lbl{diffelems}
+		\: \neg(t_1=t_2) \= \text{præmis} \\
+		\lbl{y0_eq_t2}
+		\: y_0=t_2 \= \text{præmis} \\
+		\lbl{imp_box}
+		\[
+			\lbl{or_1_1_2}
+			\: y_0 = t_1 \lor y_0 = t_2 \= \mynegspace\text{antagelse} \\
+			\lbl{_boxes}
+			\(
+				\lbl{_1}
+				\: y_0 = t_1 \= \text{ant. (for $\lor$e \ref{or_1_1_2})} \\
+				\lbl{_2}
+				\: t_2 = t_1 \= \text{$=e$ \ref{y0_eq_t2}, \ref{_1}} \\
+				\lbl{_2}
+				\: t_1 = t_2 \= \text{$=$ symmetri \ref{_2}} \\
+				\lbl{_3}
+				\: \bot \= \text{$\neg$e \ref{_2},\ref{diffelems}} \\
+				\label{_e12c10b617394a59b5bbbe39df1cdc86}
+				\: \neg(t_1=y_0) \= \text{$\bot$e \ref{_3}}
+			\*
+				\lbl{_1}
+				\: y_0 = t_2 \= \text{ant. (for $\lor$e \ref{or_1_1_2})} \\
+				\lbl{_2}
+				\: t_2 = y_0 \= \text{$=$ symmetri \ref{_1}} \\
+				\: \neg(t_1=y_0) \= \text{$=$e \ref{_2},\ref{diffelems}}
+			\)
+			\lbl{t1_neq_y0}
+			\: \neg(t_1=y_0) \= \mynegspace\text{$\lor$e \ref{or_1_1_2},\ref{_boxes}-\ref{_e12c10b617394a59b5bbbe39df1cdc86}} \\
+			\lbl{t1_eq_t1}
+			\: t_1=t_1 \= \mynegspace\text{$=$i} \\
+			\lbl{t1_is_t1_or_t2}
+			\: t_1=t_1 \lor t_1=t_2 \= \mynegspace\lor\text{i}_1\text{ \ref{t1_eq_t1}} \\
+			\label{_35dbeca84d524f1c8a7e0c8fb0249620}
+			\: (t_1=t_1 \lor t_1=t_2) \land \neg(t_1=y_0) \= \text{$\land$i \ref{t1_is_t1_or_t2},\ref{t1_neq_y0}}
+		\]
+		\lbl{pre_exists}
+		\: (y_0 = t_1 \lor y_0 = t_2) \imp ((t_1=t_1 \lor t_1=t_2) \land \neg(t_1=y_0)) \= \text{$\imp$i \ref{imp_box}-\ref{_35dbeca84d524f1c8a7e0c8fb0249620}} \\
+		\: \exists x ((y_0 = t_1 \lor y_0 = t_2) \imp ((x=t_1 \lor x=t_2) \land \neg(x=y_0))) \= \text{$\exists$i \ref{pre_exists}} \\
+	\end{proofbox}
+	\end{proof}
+	
+	\text{Den tredje mulighed er $\neg(y_0=t_1 \lor y_0=t_2 )$:}
+	\begin{theorem}\label{pr_exc3_2_case3}
+			\begin{flalign*}
+				\neg(t_1=t_2), \neg(y_0=t_1 \lor y_0=t_2) &\vdash \\
+				\exists x ((y_0=t_1 \lor y_0=t_2) \imp ((x=t_1 \lor x=t_2) \land \neg(x=y_0)))&
+			\end{flalign*}
+	\end{theorem}
+	\begin{proof}
+	\begin{proofbox}
+		\: \neg(t_1=t_2) \= \text{præmis}\\
+		\: \neg(y_0=t_1\lor y_0=t_2) \= \text{præmis} \\
+		\lbl{de_morgan}
+		\: \neg(y_0=t_1)\land(y_0=t_2) \= \text{De Morgan} \\
+		\lbl{imp_box}
+		\[
+			\lbl{or}
+			\: (y_0=t_1) \lor (y_0=t_2) \= \text{antagelse} \\
+			\lbl{or_box}
+			\(
+				\lbl{_1}
+				\: y_0 = t_1 \= \text{ant. (for $\lor$e \ref{or})} \\
+				\lbl{_2}
+				\: \neg(y_0=t_1) \= \land\text{e}_1\text{ \ref{de_morgan}} \\
+				\: \bot \= \text{$\neg$e \ref{_1},\ref{_2}}\\
+			\*
+				\lbl{_1}
+				\: y_0 = t_2 \= \text{ant. (for $\lor$e \ref{or})} \\
+				\lbl{_2}
+				\: \neg(y_0=t_2) \= \land\text{e}_1\text{ \ref{de_morgan}} \\
+				\label{345b8a5af9fe4305b7e34b4e326f3a16}
+				\: \bot \= \text{$\neg$e \ref{_1},\ref{_2}}\\
+			\)
+			\lbl{bot}
+			\: \bot \= \text{$\lor$e \ref{or}, \ref{or_box}-\ref{345b8a5af9fe4305b7e34b4e326f3a16}} \\
+			\label{a3bae2e406114cb3bc52c7a8341ec888}
+			\: (x_0=t_1 \lor x_0=t_2) \land \neg(x_0=y_0) \= \text{$\bot$e \ref{bot}}
+		\]
+		\lbl{pre_exists}
+		\: (y_0=t_1 \lor y_0=t_2) \imp ((x_0=t_1 \lor x_0=t_2) \land \neg(x_0=y_0)) \= \text{$\imp$i \ref{imp_box}-\ref{a3bae2e406114cb3bc52c7a8341ec888}} \\
+		\: \exists x ((y_0=t_1 \lor y_0=t_2) \imp ((x=t_1 \lor x=t_2) \land \neg(x=y_0))) \= \text{$\exists x$ i \ref{pre_exists}}
+	\end{proofbox}
+	\end{proof}
+
+	Vi sammenholder nu resultaterne fra sætning \ref{pr_exc3_2_case1}, \ref{pr_exc3_2_case2} og \ref{pr_exc3_2_case3} til at bevise at når der findes to forskellige elementer
+	kan vi konkludere \eqref{pr_exc3_2_premise}.
+	\begin{theorem}\label{pr_exc3_2_premise_true}
+		\begin{flalign*}
+				\neg(t_1=t_2) &\vdash \\
+				\exists x ((y_0=t_1 \lor y_0=t_2) \imp ((x=t_1 \lor x=t_2) \land \neg(x=y_0)))&
+		\end{flalign*}
+	\end{theorem}
+	\begin{proof}
+	\begin{proofbox}
+		\lbl{diffelems}
+		\: \neg(t_1=t_2) \= \text{præmis}\\
+		\lbl{lum}
+		\: (y_0=t_1 \lor y_0 = t_2) \lor \neg(y_0=t_1 \lor y_0 = t_2) \= \text{LUM}\\
+		\lbl{box0}
+		\[
+			\lbl{lum1}
+			\: y_0=t_1 \lor y_0 = t_2 \= \text{antagelse (for $\lor$e \ref{lum})} \\
+			\lbl{box1}
+			\[
+				\lbl{_1}
+				\: y_0=t_1 \= \text{antagelse (for $\lor$e \ref{lum1})} \\
+				\label{box1_fe6ae791ed1b4869ba9b822bfdb2b7de}
+				\: \exists x ((y_0=t_1 \lor y_0=t_2) \imp ((x=t_1 \lor x=t_2) \land \neg(x=y_0))) \= \text{sætning \ref{pr_exc3_2_case1} (\ref{diffelems},\ref{_1})}
+			\]
+			\lbl{box2}
+			\[
+				\lbl{_1}
+				\: y_0=t_2 \= \text{antagelse (for $\lor$e \ref{lum1})} \\
+				\label{box2_fe6ae791ed1b4869ba9b822bfdb2b7de}
+				\: \exists x ((y_0=t_1 \lor y_0=t_2) \imp ((x=t_1 \lor x=t_2) \land \neg(x=y_0))) \= \text{sætning \ref{pr_exc3_2_case2} (\ref{diffelems},\ref{_1})}
+			\]
+			\label{box0_fe6ae791ed1b4869ba9b822bfdb2b7de}
+			\: \exists x ((y_0=t_1 \lor y_0=t_2) \imp ((x=t_1 \lor x=t_2) \land \neg(x=y_0))) \=
+				\text{$\lor$e \ref{lum1},\ref{box1}-\ref{box1_fe6ae791ed1b4869ba9b822bfdb2b7de},\ref{box2}-\ref{box2_fe6ae791ed1b4869ba9b822bfdb2b7de}}
+		\]
+		\lbl{box3}
+		\[
+			\lbl{_1}
+			\: \neg(y_0=t_1 \lor y_0 = t_2) \= \text{antagelse (for $\lor$e \ref{lum})} \\
+			\label{box3_fe6ae791ed1b4869ba9b822bfdb2b7de}
+			\: \exists x ((y_0=t_1 \lor y_0=t_2) \imp ((x=t_1 \lor x=t_2) \land \neg(x=y_0))) \= \text{sætning \ref{pr_exc3_2_case3} (\ref{diffelems},\ref{_1})}
+		\]
+		\: \exists x ((y_0=t_1 \lor y_0=t_2) \imp ((x=t_1 \lor x=t_2) \land \neg(x=y_0))) \=
+			\text{$\lor$e \ref{lum},\ref{box0}-\ref{box0_fe6ae791ed1b4869ba9b822bfdb2b7de},\ref{box3}-\ref{box3_fe6ae791ed1b4869ba9b822bfdb2b7de}}
+	\end{proofbox}
+	\end{proof}
+
+	\def\mynegspace{\hspace{-90pt}}
+	\begin{proofbox}
+		\lbl{exists_1}
+		\: \exists v_1 \exists v_2 \neg(v_1=v_2) \= \text{\mynegspace\hspace{-90pt}antagelse om at der findes mere end et element} \\
+		\lbl{exists_e1_box}
+		\[
+			\lbl{exists_2}
+			t_1 \: \exists v_2 \neg(t_1=v_2) \= \text{\mynegspace(start på $\exists v_1$ e \ref{exists_1})} \\
+			\lbl{exists_e2_box}
+			\[
+				\lbl{diffelems}
+				t_2 \: \neg(t_1=t_2) \= \text{\mynegspace(start på $\exists v_2$ e \ref{exists_2})}\\
+				\lbl{forall_box}
+				\[
+					y_0 \= \text{\mynegspace(start på $\forall y$ i)} \\
+					\label{310a0360a6c841da87817072166ea2b8}
+					\: \exists x ((y_0=t_1 \lor y_0=t_2) \imp ((x=t_1 \lor x=t_2) \land \neg(x=y_0))) \= \text{s. \ref{pr_exc3_2_premise_true} (\ref{diffelems})}
+				\]
+				\lbl{our_premise}
+				\: \forall y \exists x ((y_0=t_1 \lor y_0=t_2) \imp ((x=t_1 \lor x=t_2) \land \neg(x=y_0))) \= 
+					\text{$\forall y$ i \ref{forall_box}-\ref{310a0360a6c841da87817072166ea2b8}} \\
+				\lbl{pos}
+				\: \exists x \forall y ((y_0=t_1 \lor y_0=t_2) \imp ((x=t_1 \lor x=t_2) \land \neg(x=y_0))) \= \text{eq (\ref{our_premise})} \\
+				\lbl{neg}
+				\: \neg\exists x \forall y ((y_0=t_1 \lor y_0=t_2) \imp ((x=t_1 \lor x=t_2) \land \neg(x=y_0))) \= \text{...} \\
+				\label{1_310a0360a6c841da87817072166ea2b8}
+				\: \bot \= \mynegspace\text{$\neg$e \ref{pos},\ref{neg}}
+			\]
+			\label{2_310a0360a6c841da87817072166ea2b8}
+			\: \bot \= \mynegspace\text{$\exists v_2$ e \ref{exists_2},\ref{exists_e2_box}-\ref{1_310a0360a6c841da87817072166ea2b8}}
+		\]
+		\: \bot \= \mynegspace\text{$\exists v_1$ e \ref{exists_1},\ref{exists_e1_box}-\ref{2_310a0360a6c841da87817072166ea2b8}}
+	\end{proofbox}
+\end{solution}
+
+\ifdefined\startProjektLoesning\end{document}\fi
