@@ -1848,8 +1848,8 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
 \newcommand{\ttfUNFfont}[1]{\ttfUNFfontR #1}
 %\newcommand{\ttfUNFfont}[1]{\fontfamily{Antique-Olive_Th} #1}
 
-\declaretheorem[name=Sætning]{theorem}
-\declaretheorem[sibling=theorem,name=Cantors Sætning]{cantor}
+\declaretheorem[name=S{\ae}tning]{theorem}
+%\declaretheorem[sibling=theorem,name=Cantors S{\ae}tning]{cantor}
 \declaretheorem[sibling=theorem,name=Korollar]{corollary}
 \declaretheorem[style=definition,name=Opgave]{opg}
 
@@ -1857,14 +1857,14 @@ Le-gendre Mar-kov-ian Noe-ther-ian No-vem-ber Rie-mann-ian Sep-tem-ber}
 \declaretheorem[style=definition,qed=$\ocircle$,sibling=theorem,name=Eksempel]{example}
 \declaretheorem[style=definition,qed=$\triangle$,sibling=theorem,name=Notation]{notation}
 \declaretheorem[style=definition,qed=$\triangle$,numbered=no,name=Notation]{notation*}
-\declaretheorem[style=definition,qed=$\triangle$,sibling=theorem,name=Bemærkning]{remark}
+\declaretheorem[style=definition,qed=$\triangle$,sibling=theorem,name=Bem{\ae}rkning]{remark}
 \declaretheorem[style=definition,qed=$\triangle$,sibling=theorem,name=Advarsel]{advarsel}
 \declaretheorem[style=definition,qed=$\triangle$,sibling=theorem,name=Note]{note}
 
 \numberwithin{section}{chapter}
 \numberwithin{subsection}{section}
 \numberwithin{theorem}{chapter}
-\numberwithin{cantor}{chapter}
+%\numberwithin{cantor}{chapter}
 \numberwithin{corollary}{chapter}
 \numberwithin{definition}{chapter}
 \numberwithin{example}{chapter}
