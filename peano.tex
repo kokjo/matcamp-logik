@@ -110,11 +110,15 @@ For at gøre dette viser vi at prædikatet $P(a) := 0+a = a$ er sand for alle na
           \lbl{_1}
             \: 0+a_0 = a_0        \= \text{definition af $P(a)$ \ref{_0}} \\
           \lbl{_2}
-          \: S(0+a_0) = S(0+a_0)  \= \text{$=i$ \ref{_1}} \\
+          \: S(0+a_0) = S(0+a_0)  \= \text{$=i$} \\
           \lbl{_3}
             \: S(0+a_0) = S(a_0)  \= \text{$=e$ \ref{_1},\ref{_2} $(\phi:=S(0+a_0)=S(x),[0+a_0/x]\to[a_0/x])$} \\
+		  \lbl{p+2}
+          \: \forall a \forall b \, a + S(b) = S(a+b) \= \text{${p+}_2$} \\
+		  \lbl{_3.5}
+          \: \forall b \, 0 + S(b) = S(0+b) \= \text{$\forall a$ e \ref{p+2}} \\
           \lbl{_4}
-            \: 0+S(a_0) = S(a_0)    \= \text{$\forall a$ e \ref{-1}} \\
+            \: 0+S(a_0) = S(a_0)    \= \text{$\forall b$ e \ref{_3.5}} \\
           \label{imp_box_324637244309464580372ab1ac546349}
             \: P(S(a_0))          \= \text{definition af $P(a)$ \ref{_4}}
         \]
