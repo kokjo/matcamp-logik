@@ -199,7 +199,7 @@ Faktisk er der velkendte sætninger i matematik der er eksempler på $\omega$-in
 \subsection{Metasætninger i P.A}
 Det viser sig at vi er i stand til at vise ting om et vilkårligt logisk system udelukkende ved
 brug af Peanos aksiomer. Men de taler kun om tal, så hvordan søren kan vi pludselig få dem
-til at omtale udtryk og beviser?
+til at omtale udsagn og beviser?
 Tricket beror på hvad der kaldes Gödel nummerering. Vi kan tage hvert tegn vi bruger i
 logik og tildele et tal. F.eks. til at beskrive udsagnslogik kunne vi definere
 \begin{align*}
@@ -226,8 +226,8 @@ variable etc. Vi kan nu tage et udsagn i udsangslogik og oversætte med vores de
 	\underset{01}{\phi} \underset{14}{\land\vphantom{\phi}} \underset{02}{\psi} \underset{12}{\imp\vphantom{\phi}}
 	\underset{02}{\psi} \underset{14}{\land\vphantom{\phi}} \underset{01}{\phi}
 \]
-Tallet 01140212021401 her er hvad vi kalder for udtrykkets Gödel nummer -- eller forkortet G.n.
-Vi vil referere til et udtryks Gödel nummer ved at puttet udtrykket i mellem $\langle$ og $\rangle$ tegn. F.eks.
+Tallet 01140212021401 her er hvad vi kalder for udsagnets Gödel nummer -- eller forkortet G.n.
+Vi vil referere til et udsagns Gödel nummer ved at puttet udsagnet i mellem $\langle$ og $\rangle$ tegn. F.eks.
 \[
 	\langle \phi \land \psi \imp \psi \land \phi \rangle = 01140212021401
 \]
@@ -265,12 +265,12 @@ Følgende skulle gerne demonstrere idéen bag:
 \]
 
 Vi vil ikke pensle ud hvordan reglerne for alle tegnene skal opbygges her. Det afgørende at bemærke her er at vi
-helt slavisk kan kontrollere om prædikatet er opfyldt. Vi kan, givet Gödel tallet for et vilkårligt udtryk, konstruere
+helt slavisk kan kontrollere om prædikatet er opfyldt. Vi kan, givet Gödel tallet for et vilkårligt udsagn, konstruere
 et bevis for om det er velformet eller ej. I princippet skal vi bare tjekke hver af kravene igennem og tjekke det
 endelige antal muligheder for $m$ igennem. Hver af kravene der selv referere til prædikatet deler det op i mindre
-bider, så vi er garanteret at vi med et endelig antal trin kan kontrollere hele udtrykket.
+bider, så vi er garanteret at vi med et endelig antal trin kan kontrollere hele udsagnet.
 
-Ligesom vi kan definere et prædikat der siger om et tal er G.n. for et velformet udtryk kan vi også definere et der siger
+Ligesom vi kan definere et prædikat der siger om et tal er G.n. for et velformet udsagn kan vi også definere et der siger
 siger om et talpar udgør en sætning med et bevis herfor:
 \[
 	\BevisPar(b,u):= \text{$b$ er et gyldigt bevis for udsagnet $u$}
@@ -279,7 +279,7 @@ Så vi kan f.eks. skrive
 \[
 	\exists b \BevisPar(b,u_0)
 \]
-Som betyder: "Der findes et bevis med G.n. $b$ for udtrykket med G.n. $u_0$".
+Som betyder: "Der findes et bevis med G.n. $b$ for udsagnet med G.n. $u_0$".
 
 \subsection{Gödels første ufuldstændighedsætning}
 Vi vil nu til at prøve at konstruere et udsagn der siger "Jeg kan ikke bevises i P.A."{}. Det er nok ikke helt åbentlyst at
@@ -300,7 +300,7 @@ Vi giver også dette tilfælde et navn:
 
 Vi kan formulere $\Quine(u,u')$ som: $u'$ er G.n. for udsagnet med G.n $u$ hvor en fri variabel er erstattet med $u$. Med andre ord så erklærer prædikatet at vi har lavet en ny sætning ved at erstattet en fri variabel med Gödel nummeret for den gamle sætning. F.eks. er
 \[
-	\Quine(\langle x=SO \rangle, \langle\langle x=S0\rangle=S0\rangle)
+	\Quine(\langle x=S0 \rangle, \langle\langle x=S0\rangle=S0\rangle)
 \]
 sand. Sætningen $\langle x=S0 \rangle = S0$ er selvfølgelig falsk.
 
@@ -311,7 +311,7 @@ Vi definerer nu et udsagn der benytter sig af dette
 Den siger: "Der findes ikke en sætning med G.n. $u$ så $u$ er $u_0$ hvor en fri variabel er erstattet med $u_0$".
 
 Det interessante er nu hvad der sker hvis vi prøver at indsætte dens eget Gödel nummer for $u_0$.
-Vi ser på udtrykket
+Vi ser på udsagnet
 \[
 	G := \neg\exists b \exists u \left( \BevisPar(b,u) \land \Quine(\langle G_0 \rangle,u) \right)
 \]
@@ -326,7 +326,7 @@ Altså må udsagnet $u$ eksistere. Så årsagen til at sætningen er falsk må v
 
 Men så må det G siger være: "Der findes ikke noget bevis for udsagnet med G.n. $u$".
 Eller med andre ord "$G$ kan ikke bevises i P.A.". Som nævnt før må dette betyde at hvis vi kan vise $G$ har vi en modstrid.
-Samtidig hvis vi kan vise $\neg G$ så siger $\neg G$: "$G$ kan bevises i P.A." hvilket igen er en modstrid.
+Samtidig hvis vi kan vise $\neg G$ så siger $\neg G$: "$G$ kan bevises i P.A.", hvilket igen er en modstrid.
 Vi kan altså konkludere at $G$ er en ufuldstændighed i P.A. Faktisk kan vi vise at der er tale om en $\omega$-ufuldstændighed.
 Betragt nemlig
 \[
