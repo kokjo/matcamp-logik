@@ -12,13 +12,52 @@ Men istedet fokuseret på sammenhængen mellem udsagn og hvorledes det er
 muligt at deducere og udlede ting på baggrund af aksiomer og antagelser som vi har en hvis viden omkring.
 
 Grunden til denne indgangsvinkel er at det gør det muligt at fjerne eller tilføje aksiomer som vi har fundet passende.
-Alle de aksiomer som vi har brugt gennem forløbet har været fuldstædig uafhænige af hinnanden
+Alle de aksiomer som vi har brugt gennem forløbet har været fuldstædig uafhænige af hinnanden.
 
 \section{Sandhedstabeller}
 Sandhedstabeller kan beskrive udsagnslogik såfremt at man antager alle de sædvanlige aksiomer
 inklusiv dobbelt negations elimination aksiomet.
 
-Under disse antagelser er alle sætninger enten sande eller falske, og det er endvidere muligt at udregne alle mulige
+Under disse antagelser er alle sætninger enten sande eller falske,
+og det er endvidere muligt at udregne sandhedsværdien alle mulige kombinationer af udsagn og variabler.
+
+Måden hvormed dette forgår er at man opskriver alle kombinationer af mulighedder for del udsagn og
+derefter bruger interferance regler til at udregne sandhedsværdier af sammensatte udsagn.
+
+\begin{eks}[Sandhedstabellen for $p \lor q$]
+    For at konstruere sandhedstabellen for $\lor$ opskrives først alle mulige kombinationer af $p$ og $q$:
+    \begin{center}
+    \begin{tabular}{|l|r|}
+        \hline
+        p & q \\
+        $\bot$ & $\bot$ \\
+        \hline
+        $\top$ & $\bot$ \\
+        \hline
+        $\bot$ & $\top$ \\
+        \hline
+        $\top$ & $\top$ \\
+        \hline
+    \end{tabular}
+    \end{center}
+    hvorefter man så man man bruger at udsagnet $p \lor q$ er sandt hvis mindst en af $p$ eller $q$ er sande,
+    til at finde dets sandhedsværdi:
+    \begin{center}
+    \begin{tabular}{|l|c|r|}
+        \hline
+        p & q & $p \lor q$ \\
+        $\bot$ & $\bot$ & $\bot$ \\
+        \hline
+        $\top$ & $\bot$ & $\top$ \\
+        \hline
+        $\bot$ & $\top$ & $\top$ \\
+        \hline
+        $\top$ & $\top$ & $\top$ \\
+        \hline
+    \end{tabular}
+    \end{center}
+
+\end{eks}
 
 
 \ifdefined\startSamlet\end{document}\fi
