@@ -1,0 +1,54 @@
+\ifx\preampleIncluded\undefined
+\def\startProjektTwo{}
+\include{preample}
+\usepackage{enumitem}
+\begin{document}
+\solutiontrue
+\fi
+
+Vi vil i dette projekt betragte følgende udsagn i ren prædikatlogik:
+\[
+	\forall y \exists x P(x,y) \imp \exists x \forall y P(x,y)
+\]
+
+Hvis nu vi forestiller os en verden med kun et enkelt objekt i så må udsagnet være sandt, da
+der så ikke er nogen forskel på at sige for-alle og der-eksisterer. Så vi vil derfor gå udfra
+at sætningen udgør en ufuldstændighed (dette skal i ikke bevise).
+Det vi gerne vil gøre her er at sætte så få krav som muligt til det logiske system som stadigvæk
+gør det muligt at vise at sætningen er falsk.
+
+\begin{enumerate}
+	\item Start med at overvej hvad det egentligt er sætningen siger.
+	\item \label{it2} Prøv uformelt at beskrive en situation hvor sætningen ikke holder.
+\end{enumerate}
+	Vi vil holde kravene vi stiller så generelle som muligt. F.eks. vil vi ikke kræve eksistensen af nogen navngivne objekter eller sætte nogen øvre grænser
+	for hvor mange objekter der kan være. Specielt skal kravet vi stiller være kompatibelt med Peanos aksiomer. Prøv så at formulere et aksiom således at udsagnet bliver falsk.
+
+	Nu vil vi gerne vise at vore tilføjede aksiom er tilstrækkeligt til at vi kan vise at udsagnet er falsk. Så vi skal prøve at formulere et prædikat $P$
+	som virker som et modeksempel. Den sværeste del her er at vise at præmissen for udtrykket er opfyldt.
+
+	I skal nu prøve at formalisere det i fandt frem til i \ref{it2}. 
+\begin{enumerate}[resume]
+	\item Forestil jeg at vores univers kun indeholder to elementer. Prøv at skriv et prædikat op der kan bruges som modeksempel.
+
+	\item Nu skal der jo gerne kunne være mere end to elementer. Kan i omformulere jeres prædikat på en sådan måde at fortsat kan bruges som modeksempel?	
+\end{enumerate}
+
+Nu er vi så kommet til at vi skal prøve at bevise at udsagnet er falsk. Det er samlet ret langt så vi deler det op i mindre delsætninger.
+Til at hjælpe jer må i bruge den her afledte sætning som vi kan kalde $\neq$ symmetri: 
+\[\neg (t_0 = t_1) \vdash \neg(t_1 = t_0).\]
+Det er selvfølgelig baseret på $=$ symmetrien der er vist i noterne
+\[t_0=t_1 \vdash t_1=t_0.\]
+Husk også specielt Loven om den Udeladte Midte:
+\[
+	\vdash \phi \lor \neg\phi
+\]
+I må selvføgelig også bruge alle de andre afledte sætninger i har set.
+\begin{enumerate}
+\item Start med at antage at vi kan bevise at venstresiden af udsagnet er sandt. Skriv så et formelt bevis op for at vi får en modstrid.
+\item Beviset for at venstresiden er falsk kræver at man deler det op i forskellige tilfælde for $y$. Overvej hvordan man formelt kan lave et
+bevis der er delt op i tilfælde. Antag så at hver af tilfældene er bevist, og skriv et formelt bevis op for at venstresiden er sand.
+\item Lav nu et formelt bevis for hver af tilfældene.
+\end{enumerate}
+
+\ifdefined\startProjektTwo\end{document}\fi
