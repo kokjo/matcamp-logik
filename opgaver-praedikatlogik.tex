@@ -76,12 +76,159 @@
 	\item Bevis følgende sekventer
 	\begin{enumerate}
 		\item $(y=0)\land(y=x)\vdash 0=x$
+		\begin{solution}
+			\begin{proofbox}
+				\lbl{1}
+				\: (y=0) \land (y=x) \= \text{præmis} \\
+				\lbl{2}
+				\: y = 0 \= \text{$\land\text{e}_1$ \ref{1}} \\
+				\lbl{3}
+				\: y = x \= \text{$\land\text{e}_2$ \ref{1}} \\
+				\: 0 = x \= \text{$=$e \ref{2},\ref{3} $\phi: t=x,[y/t]\to[0/t]$}
+			\end{proofbox}
+		\end{solution}
 		\item $t_1=t_2 \vdash (t+t_2) = (t+t_1)$
+		\begin{solution}
+			\begin{proofbox}
+				\lbl{1}
+				\: t_1 = t_2 \= \text{præmis} \\
+				\lbl{2}
+				\: (t+t_1)=(t+t_1) \= \text{$=$i} \\
+				\: (t+t_2)=(t+t_1) \= \text{$=$e \ref{1},\ref{2} $\phi: (t+x)=(t+t_1),[t_1/x]\to[t_2/x]$}
+			\end{proofbox}
+		\end{solution}
 		\item $\exists x\,P(x) \imp \phi \vdash \forall x(P(x) \imp \phi)$
+		\begin{solution}
+			\begin{proofbox}
+				\lbl{1}
+				\: \exists x \, P(x) \imp \phi \= \text{præmis} \\
+				\lbl{ai_box}
+				\[
+					x_0 \: \\
+					\lbl{imp_box}
+					\[
+						\lbl{2}
+						\: P(x_0) \= \text{antagelse} \\
+						\lbl{3}
+						\: \exists x \, P(x) \= \text{$\exists x$ i \ref{2}} \\
+						\label{imp_box_460294eb496d46ab96dac79e5ae8607c}
+						\: \phi \= \text{$\imp$e \ref{1},\ref{3}}
+					\]
+					\label{ai_box_460294eb496d46ab96dac79e5ae8607c}
+					\: P(x_0) \imp \phi \= \text{$\imp$i \ref{imp_box}-\ref{imp_box_460294eb496d46ab96dac79e5ae8607c}}
+				\]
+				\forall x (P(x)\imp\phi) \= \text{$\forall x$ i \ref{ai_box}-\ref{ai_box_460294eb496d46ab96dac79e5ae8607c}}
+			\end{proofbox}
+		\end{solution}
 		\item $\forall x (P(x)\land Q(x)) \vdash \forall x \, P(x) \land \forall x \, Q(x)$
+		\begin{solution}
+			\begin{proofbox}
+				\lbl{1}
+				\: \forall x (P(x)\land Q(x)) \= \text{præmis} \\
+				\lbl{b2}
+				\[
+					\lbl{2}
+					x_0 \: P(x_0) \land Q(x_0) \= \text{$\forall x$ e \ref{1}} \\
+					\label{3_9631bcc7ccbd4567a027d520b942550c}
+					\: P(x_0) \= \text{$\land\text{e}_1$ \ref{2}}
+				\]
+				\lbl{4}
+				\: \forall x \, P(x_0) \= \text{$\forall x$ i \ref{b2}-\ref{3_9631bcc7ccbd4567a027d520b942550c}} \\
+				\lbl{b5}
+				\[
+					\lbl{5}
+					x_0 \: P(x_0) \land Q(x_0) \= \text{$\forall x$ e \ref{1}} \\
+					\label{6_9631bcc7ccbd4567a027d520b942550c}
+					\: Q(x_0) \= \text{$\land\text{e}_2$ \ref{5}}
+				\]
+				\lbl{7}
+				\: \forall x \, Q(x_0) \= \text{$\forall x$ i \ref{b2}-\ref{6_9631bcc7ccbd4567a027d520b942550c}} \\
+				\: \forall x \, P(x) \land \forall x \, Q(x) \= \text{$\land$i \ref{4},\ref{7}}
+			\end{proofbox}
+		\end{solution}
 		\item $\vdash \forall x \left( P(x) \imp Q(x) \right) \imp \left( \forall x\, P(x) \imp \forall x\, Q(x) \right)$
+		\begin{solution}
+			\begin{proofbox}
+				\lbl{b1}
+				\[
+					\lbl{1}
+					\: \forall x (P(x) \imp Q(x)) \= \text{antagelse} \\
+					\lbl{b2}
+					\[
+						\lbl{2}
+						\: \forall x \, P(x) \= \text{antagelse} \\
+						\lbl{b3}
+						\[
+							\lbl{3}
+							x_0 \: P(x_0) \= \text{$\forall x$ e \ref{2}} \\
+							\lbl{4}
+							\: P(x_0) \imp Q(x_0) \= \text{$\forall x$ e \ref{1}} \\
+							\label{b3_e0e94964b3534fabba510b16ec0ea6e0}
+							\: Q(x_0) \= \text{$\imp$e \ref{4},\ref{3}}
+						\]
+						\label{b2_e0e94964b3534fabba510b16ec0ea6e0}
+						\: \forall x \, Q(x_0) \= \text{$\forall x$ i \ref{b3}-\ref{b3_e0e94964b3534fabba510b16ec0ea6e0}} \\
+					\]
+					\label{b1_e0e94964b3534fabba510b16ec0ea6e0}
+					\: \forall x \, P(x) \imp \forall x \, Q(x) \= \text{$\imp$i \ref{b2}-\ref{b2_e0e94964b3534fabba510b16ec0ea6e0}} \\
+				\]
+				\: \forall x (P(x) \imp Q(x)) \imp (\forall x \, P(x) \imp \forall x \, Q(x)) \= \text{$\imp$i \ref{b1}-\ref{b1_e0e94964b3534fabba510b16ec0ea6e0}}
+			\end{proofbox}
+		\end{solution}
 		\item * $\phi\imp\exists x \, Q(x) \vdash \exists x (\phi\imp Q(x))$\\
 		Hint: Start med at antage $\forall x \neg(\phi\imp Q(x))$ og slut af med at bruge ækvivalensen mellem $\forall$ og $\exists$.
+		\begin{solution}
+			\begin{proofbox}
+				\lbl{1}
+				\: \phi\imp\exists x \, Q(x) \= \text{præmis} \\
+				\lbl{2}
+				\[
+					\: \forall x \neg(\phi \imp Q(x)) \= \text{antagelse} \\
+					\lbl{3}
+					\[
+						\: \phi \= \text{antagelse} \\
+						\: \exists x \, Q(x) \= \text{$\imp$e \ref{1},\ref{3}}
+						\lbl{4.5}
+						\[
+							x_0 \: Q(x_0) \= \text{start på $\exists x$ e} \\
+							\lbl{5}
+							\: \neg (\phi \imp Q(x_0)) \= \text{$\forall x$ e \ref{2}} \\
+							\lbl{6}
+							\[
+								\: \phi \= \text{antagelse} \\
+								\label{7_5d965683aade4d358b3e7c14e4c0d636}
+								\: Q(x) \= \text{kopi \ref{4.5}}
+							\]
+							\lbl{8}
+							\: \phi \imp Q(x_0) \= \text{$\imp$i \ref{6}-\ref{7_5d965683aade4d358b3e7c14e4c0d636}} \\
+							\label{9_5d965683aade4d358b3e7c14e4c0d636}
+							\: \bot \= \text{$\neg$e \ref{8},\ref{5}}
+						\]
+						\label{11_5d965683aade4d358b3e7c14e4c0d636}
+						\: \bot \= \text{$\exists x$ e \ref{4.5}-\ref{9_5d965683aade4d358b3e7c14e4c0d636}} \\
+					\]
+					\lbl{11}
+					\: \neg \phi \= \text{$\neg$i \ref{3}-\ref{11_5d965683aade4d358b3e7c14e4c0d636}} \\
+					\lbl{12}
+					\[
+						\: \phi \= \text{antagelse} \\
+						\lbl{13}
+						\: \bot \= \text{$\neg$e \ref{12},\ref{11}} \\
+						\label{14_5d965683aade4d358b3e7c14e4c0d636}
+						\: Q(x_0) \= \text{$\bot$e \ref{13}}
+					\]
+					\lbl{15}
+					\: \phi \imp Q(x_0) \= \text{$\imp$i \ref{12}-\ref{14_5d965683aade4d358b3e7c14e4c0d636}} \\
+					\lbl{16}
+					\: \neg (\phi \imp Q(x_0) \= \text{$\forall x$ e \ref{2}} \\
+					\label{17_5d965683aade4d358b3e7c14e4c0d636}
+					\: \bot \= \text{$\neg$e \ref{15},\ref{16}}
+				\]
+				\lbl{18}
+				\: \neg \forall x \neg (\phi\imp Q(x)) \= \text{$\neg$i \ref{2}-\ref{17_5d965683aade4d358b3e7c14e4c0d636}} \\
+				\: \exists x (\phi \imp Q(x)) \= \text{$\forall x$ og $\exists x$ ækvivalens \ref{18}}
+			\end{proofbox}
+		\end{solution}
 	\end{enumerate}
 	\item Bevis følgende sekvent uden at referere til sætningerne om ækvivalens mellem $\exists$ og $\forall$:
 	$\vdash \exists x \, \phi \bimp \neg \forall x \, \neg \phi$
