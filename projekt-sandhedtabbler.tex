@@ -15,49 +15,128 @@ Grunden til denne indgangsvinkel er at det gør det muligt at fjerne eller tilf�
 Alle de aksiomer som vi har brugt gennem forløbet har været fuldstædig uafhænige af hinnanden.
 
 \section{Sandhedstabeller}
-Sandhedstabeller kan beskrive udsagnslogik såfremt at man antager alle de sædvanlige aksiomer
+Sandhedstabeller kan beskrive udsagnslogik såfremt at man antager alle de sædvanlige aksiomer,
 inklusiv dobbelt negations elimination aksiomet.
 
 Under disse antagelser er alle sætninger enten sande eller falske,
 og det er endvidere muligt at udregne sandhedsværdien alle mulige kombinationer af udsagn og variabler.
 
-Måden hvormed dette forgår er at man opskriver alle kombinationer af mulighedder for del udsagn og
-derefter bruger interferance regler til at udregne sandhedsværdier af sammensatte udsagn.
+Måden hvormed dette forgår er at man opskriver alle kombinationer af muligheder for deludsagn og
+derefter bruger interferens regler til at udregne sandhedsværdier af sammensatte udsagn.
 
-\begin{eks}[Sandhedstabellen for $p \lor q$]
-    For at konstruere sandhedstabellen for $\lor$ opskrives først alle mulige kombinationer af $p$ og $q$:
+Først bliver vi nød til at beskrive hvordan alle de konnektiver(symboler som klistre ting sammen) virker:
+\begin{description}
+    \item[``$p \land q$''] er sand såfremt at både $p$ og $q$ er sande.
+    \item[``$p \lor q$''] er sand såfremt mindst af $p$ eller $q$ er sande.
+    \item[``$p \imp q$''] er falsk hvis og kun hvis $p$ er sand samtidig med at $q$ er falsk.
+    \item[``$ \lnot p$''] er falsk hvis p er sand, og sand hvis p er falsk.
+    \item[``$p \bimp q$''] er sand såfremt at $p$ og $q$ har sammen sandheds værdi.
+\end{description}
+
+\begin{eks}[Sandhedstabellen for $(p \lor q) \imp q$]
+    For at konstruere en sandhedstabel for et sammensatudsagn opskrives først alle mulige kombinationer af alle under udsagn, i dette tilfælde $p$ og $q$:
     \begin{center}
     \begin{tabular}{|l|r|}
         \hline
         p & q \\
-        $\bot$ & $\bot$ \\
         \hline
-        $\top$ & $\bot$ \\
+        $F$ & $F$ \\
         \hline
-        $\bot$ & $\top$ \\
+        $S$ & $F$ \\
         \hline
-        $\top$ & $\top$ \\
+        $F$ & $S$ \\
+        \hline
+        $S$ & $S$ \\
         \hline
     \end{tabular}
     \end{center}
-    hvorefter man så man man bruger at udsagnet $p \lor q$ er sandt hvis mindst en af $p$ eller $q$ er sande,
+    hvorefter man så man bruger at udsagnet $p \lor q$ er sandt hvis mindst en af $p$ eller $q$ er sande,
+    og til sidst bruger hvordan vi har defineret $\imp$,
     til at finde dets sandhedsværdi:
     \begin{center}
-    \begin{tabular}{|l|c|r|}
+    \begin{tabular}{|c|c|c|c|}
         \hline
-        p & q & $p \lor q$ \\
-        $\bot$ & $\bot$ & $\bot$ \\
+        p & q & $p \lor q$ & $(p \lor q) \imp q$ \\
         \hline
-        $\top$ & $\bot$ & $\top$ \\
+        $F$ & $F$ & $F$ & $S$ \\
         \hline
-        $\bot$ & $\top$ & $\top$ \\
+        $S$ & $F$ & $S$ & $F$ \\
         \hline
-        $\top$ & $\top$ & $\top$ \\
+        $F$ & $S$ & $S$ & $S$ \\
+        \hline
+        $S$ & $S$ & $S$ & $S$ \\
         \hline
     \end{tabular}
     \end{center}
-
 \end{eks}
 
+
+\begin{dfn}[Modstrid]
+    Et sammensat udsagn, som er falsk i alle tilfælde kaldes en modstrid.
+\end{dfn}
+
+\begin{dfn}[Tautologi]
+    Et sammensat udsagn, som er sandt i alle tilfælde kaldes en tautologi.
+\end{dfn}
+
+\section{Opgaver}
+\begin{opg}
+    Opskriv en sandheds tabel for alle konnektiver. (Vigtig! Kan bruges i de andre opgaver)
+\end{opg}
+
+\begin{opg}
+    Vis at det sammensatte udsagn
+    \[ ((p \imp q)\land(q \imp p)) \bimp (p \bimp q) \]
+    er en tautologi.
+\end{opg}
+
+\begin{opg}[Kommutivitet af $\land$, $\lor$ og $\bimp$]
+    (Denne opgave er også stillet i udsagnslogik)
+
+    Vis at følgende er tautologier ved brug af sandhedstabeller
+    \begin{align*}
+        p \land q &\bimp q \land p \\
+        p \lor q &\bimp q \lor p \\
+        (p \bimp q) &\bimp (q \bimp p) \\
+    \end{align*}
+\end{opg}
+
+\begin{opg}
+    En kontraposition er at hvis vi ved at noget medføre noget andet og det sidste er falsk ved vi også at det første er falsk.
+    Vis at bevis ved kontraposition virker ved brug af sandhedstabeller.
+\end{opg}
+
+\begin{opg}
+    Vis at $p \land \lnot p$ er en modstrid.
+\end{opg}
+
+\begin{opg}
+    Lav en sandhedstabel for udsagnet
+    \[ (\lnot (p \lor q)) \imp r \]
+\end{opg}
+
+\begin{opg}
+    Vis, at 
+    \[ ( (p \imp q) \land (q \imp r) ) \imp (p \imp r) \]
+    er en tautologi.
+\end{opg}
+
+
+\begin{opg}[De morgans love]
+    hvis at
+    \[ \lnot (a \land b) \bimp \lnot a \lor \lnot b \]
+    og 
+    \[ \lnot (a \lor b) \bimp \lnot a \land \lnot b \]
+    er tautologier.
+\end{opg}
+
+\begin{opg}
+    Overvej om det er muligt at opskrive sandhedstabeller for prædikatlogik.
+    Er det muligt at gøre dette?
+\end{opg}
+
+\begin{opg}
+    Hvilke begrænsninger findes der for sandhedstabeller?
+\end{opg}
 
 \ifdefined\startSamlet\end{document}\fi
